@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ==================== -->
+    <!-- DARK MODE COLORS -->
+    <!-- ==================== -->
+
+    <!-- Background Colors -->
+    <color name="background_primary">#121212</color>
+    <color name="background_secondary">#1E1E1E</color>
+    <color name="splash_background">#121212</color>
+
+    <!-- Theme Colors -->
+    <color name="header_color">#2C3E50</color>
+    <color name="card_color">#1E2A38</color>
+    <color name="bottom_nav_color">#1F2937</color>
+    <color name="blackblue">#004CFF</color>
+    <color name="header_notif">#1E1E1E</color>
+
+
+    <!-- Text Colors -->
+    <color name="text_primary">#E0E0E0</color>
+    <color name="text_secondary">#B0B0B0</color>
+    <color name="text_hint">#707070</color>
+    <color name="text_on_header">#FFFFFF</color>
+
+    <!-- Basic Colors (tetap sama) -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="whiteb">#002AFF</color>
+
+    <!-- Material Design Colors (tetap sama) -->
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+
+    <!-- Additional Colors -->
+    <color name="grey">#2C3E50</color>
+    <color name="dark_grey">#1F2937</color>
+    <color name="white_grey">#1E2A38</color>
+    <color name="color_danger">#f87171</color>
+
+    <!-- Icon Tint -->
+    <color name="icon_tint">#E0E0E0</color>
+    <color name="icon_tint_light">#FFFFFF</color>
+
+    <!-- Divider & Border -->
+    <color name="divider_color">#2C2C2C</color>
+    <color name="border_color">#3C3C3C</color>
+
+    <!-- Notification Colors (Dark Mode) -->
+    <color name="notification_header_bg">#2C3E50</color>
+    <color name="notification_header_text">#FFFFFF</color>
+    <color name="notification_header_text_secondary">#B0B0B0</color>
+    <color name="notification_icon_tint">#FFFFFF</color>
+    <color name="notification_content_bg">@color/card_color</color>
+</resources>

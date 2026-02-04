@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8FAFC"
+    android:background="@color/background_primary"
     android:fillViewport="true">
 
     <LinearLayout
@@ -12,11 +12,10 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Toolbar -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="#BCCCDC"
+            android:background="@color/header_color"
             android:elevation="4dp">
 
             <ImageView
@@ -24,65 +23,57 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="4dp"
-                android:contentDescription="Tombol Kembali"
+                android:contentDescription="@string/desc_back_button"
                 android:padding="12dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_panah" />
+                android:layout_centerVertical="true"
+                app:srcCompat="@drawable/ic_panah"
+                app:tint="@color/text_on_header"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="Edit Profil"
-                android:textColor="#2C3E50"
+                android:text="@string/title_edit_profile"
+                android:textColor="@color/text_on_header"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
         </RelativeLayout>
 
-        <!-- Profile Picture Section -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
+            android:background="@color/background_primary"
             android:gravity="center"
             android:padding="32dp">
 
             <ImageView
                 android:id="@+id/imgProfile"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="101.2dp"
+                android:layout_height="103.5dp"
                 android:layout_centerInParent="true"
-                android:background="@drawable/circle_background"
-                android:contentDescription="Profile Picture"
+                android:contentDescription="@string/desc_profile_picture"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_person" />
+                android:src="@drawable/ic_person"/>
 
-            <!-- Camera Icon Button -->
             <ImageButton
                 android:id="@+id/btnChangePhoto"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_alignEnd="@id/imgProfile"
                 android:layout_alignBottom="@id/imgProfile"
-                android:layout_marginEnd="0dp"
-                android:layout_marginBottom="0dp"
-                android:background="@drawable/circle_camera_background"
-                android:contentDescription="Change Photo"
-                android:padding="0dp"
+                android:contentDescription="@string/desc_change_photo"
+                android:padding="10dp"
                 android:scaleType="centerInside"
-                android:src="@drawable/ic_camera" />
+                android:src="@drawable/ic_camera"/>
 
         </RelativeLayout>
 
-        <!-- Form Section -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            app:cardBackgroundColor="#D9EAFD"
+            app:cardBackgroundColor="@color/card_color"
             app:cardCornerRadius="16dp"
             app:cardElevation="0dp">
 
@@ -92,12 +83,11 @@
                 android:orientation="vertical"
                 android:padding="20dp">
 
-                <!-- Nama/Username Input -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
-                    app:cardBackgroundColor="@android:color/white"
+                    app:cardBackgroundColor="@color/background_secondary"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="2dp">
 
@@ -111,9 +101,8 @@
                         <ImageView
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:contentDescription="Icon Person"
                             android:src="@drawable/ic_person"
-                            app:tint="#2C3E50" />
+                            app:tint="@color/icon_tint" />
 
                         <EditText
                             android:id="@+id/etNama"
@@ -122,23 +111,20 @@
                             android:layout_marginStart="12dp"
                             android:layout_weight="1"
                             android:background="@null"
-                            android:hint="Nama anda"
+                            android:hint="@string/hint_your_name"
                             android:inputType="text"
                             android:maxLength="15"
-                            android:textColor="#2C3E50"
-                            android:textColorHint="#9AA6B2"
+                            android:textColor="@color/text_primary"
+                            android:textColorHint="@color/text_hint"
                             android:textSize="16sp" />
-
                     </LinearLayout>
-
                 </androidx.cardview.widget.CardView>
 
-                <!-- Bio Input -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
-                    app:cardBackgroundColor="@android:color/white"
+                    app:cardBackgroundColor="@color/background_secondary"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="2dp">
 
@@ -153,9 +139,8 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:layout_marginTop="2dp"
-                            android:contentDescription="Icon Bio"
                             android:src="@drawable/ic_edit"
-                            app:tint="#2C3E50" />
+                            app:tint="@color/icon_tint" />
 
                         <EditText
                             android:id="@+id/etBio"
@@ -165,24 +150,21 @@
                             android:layout_weight="1"
                             android:background="@null"
                             android:gravity="top|start"
-                            android:hint="Tulis Bio Tentang Dirimu..."
+                            android:hint="@string/hint_bio"
                             android:inputType="textMultiLine|textCapSentences"
                             android:maxLength="100"
                             android:minLines="3"
-                            android:textColor="#2C3E50"
-                            android:textColorHint="#9AA6B2"
+                            android:textColor="@color/text_primary"
+                            android:textColorHint="@color/text_hint"
                             android:textSize="16sp" />
-
                     </LinearLayout>
-
                 </androidx.cardview.widget.CardView>
 
-                <!-- ID Nama Input -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
-                    app:cardBackgroundColor="@android:color/white"
+                    app:cardBackgroundColor="@color/background_secondary"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="2dp">
 
@@ -196,9 +178,8 @@
                         <ImageView
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:contentDescription="Icon ID"
                             android:src="@drawable/ic_id_card"
-                            app:tint="#2C3E50" />
+                            app:tint="@color/icon_tint" />
 
                         <EditText
                             android:id="@+id/etIdNama"
@@ -208,21 +189,16 @@
                             android:layout_weight="1"
                             android:background="@null"
                             android:enabled="false"
-                            android:hint="ID Nama"
-                            android:inputType="text"
-                            android:textColor="#9AA6B2"
-                            android:textColorHint="#9AA6B2"
+                            android:hint="@string/hint_id_name"
+                            android:textColor="@color/text_hint"
                             android:textSize="16sp" />
-
                     </LinearLayout>
-
                 </androidx.cardview.widget.CardView>
 
-                <!-- Password Input -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardBackgroundColor="@android:color/white"
+                    app:cardBackgroundColor="@color/background_secondary"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="2dp">
 
@@ -236,9 +212,8 @@
                         <ImageView
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:contentDescription="Icon Key"
                             android:src="@drawable/ic_key"
-                            app:tint="#2C3E50" />
+                            app:tint="@color/icon_tint" />
 
                         <EditText
                             android:id="@+id/etPassword"
@@ -249,8 +224,8 @@
                             android:background="@null"
                             android:hint="••••••••••••"
                             android:inputType="textPassword"
-                            android:textColor="#2C3E50"
-                            android:textColorHint="#9AA6B2"
+                            android:textColor="@color/text_primary"
+                            android:textColorHint="@color/text_hint"
                             android:textSize="16sp" />
 
                         <ImageButton
@@ -260,53 +235,44 @@
                             android:padding="8dp"
                             android:scaleType="centerInside"
                             android:background="?attr/selectableItemBackgroundBorderless"
-                            android:contentDescription="Toggle Password Visibility"
+                            android:contentDescription="@string/desc_toggle_password"
                             android:src="@drawable/ic_eye_off" />
-
                     </LinearLayout>
-
                 </androidx.cardview.widget.CardView>
 
             </LinearLayout>
-
         </androidx.cardview.widget.CardView>
 
-        <!-- Buttons Section -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="24dp"
+            android:layout_margin="16dp"
             android:orientation="horizontal"
             android:weightSum="2">
 
-            <!-- Batal Button -->
             <Button
                 android:id="@+id/btnBatal"
                 android:layout_width="0dp"
                 android:layout_height="56dp"
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
-                android:text="Batal"
+                android:text="@string/btn_cancel"
                 android:backgroundTint="@color/white_grey"
                 android:textAllCaps="false"
-                android:textColor="@color/black"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <!-- Simpan Button -->
             <Button
                 android:id="@+id/btnSimpan"
                 android:layout_width="0dp"
                 android:layout_height="56dp"
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
-                android:text="Simpan"
-                android:backgroundTint="@color/bottom_nav_color"
+                android:text="@string/btn_save"
+                android:backgroundTint="@color/icon_tint"
                 android:textAllCaps="false"
-                android:textColor="@color/black"
+                android:textColor="@color/whiteb"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 

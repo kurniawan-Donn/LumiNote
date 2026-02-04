@@ -39,7 +39,7 @@ class FaforitAdapter(
         holder.tvDeskripsi.text = if (item.deskripsi.isNotEmpty()) {
             item.deskripsi
         } else {
-            "Tidak ada deskripsi"
+            holder.itemView.context.getString(R.string.no_description)
         }
 
         // Set tanggal

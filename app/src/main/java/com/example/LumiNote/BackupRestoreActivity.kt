@@ -8,6 +8,8 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -38,14 +40,12 @@ class BackupRestoreActivity : AppCompatActivity() {
 
     private val gson = Gson()
 
-    // Launcher untuk save file
     private val createFileLauncher = registerForActivityResult(
         ActivityResultContracts.CreateDocument("application/json")
     ) { uri ->
         uri?.let { saveBackupToFile(it) }
     }
 
-    // Launcher untuk open file
     private val openFileLauncher = registerForActivityResult(
         ActivityResultContracts.OpenDocument()
     ) { uri ->
@@ -53,15 +53,15 @@ class BackupRestoreActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        LanguageHelper.applyLanguage(this)
+        ThemeHelper.applyTheme(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_backup_restore)
 
-        // Inisialisasi
         initViews()
         initPreferences()
         loadLastBackupInfo()
 
-        // Setup listeners
         backButton.setOnClickListener { finish() }
         btnCadangkan.setOnClickListener { startBackup() }
         btnPulihkan.setOnClickListener { startRestore() }
@@ -87,29 +87,19 @@ class BackupRestoreActivity : AppCompatActivity() {
 
     private fun loadLastBackupInfo() {
         val lastBackup = backupPrefs.getLastBackupDate()
-        tvSimpanTerakhir.text = if (lastBackup != null) {
-            "Simpan Terakhir : $lastBackup"
-        } else {
-            "Simpan Terakhir : Belum Ada"
-        }
+        val statusText = lastBackup ?: getString(R.string.last_backup_none)
+        tvSimpanTerakhir.text = getString(R.string.last_backup_label, statusText)
     }
-
-    // =====================================
-    // BACKUP
-    // =====================================
 
     private fun startBackup() {
         val currentUserId = sessionManager.getUserId()
         if (currentUserId == null) {
-            Toast.makeText(this, "User tidak ditemukan", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.error_user_not_found), Toast.LENGTH_SHORT).show()
             return
         }
 
-        // Generate filename dengan timestamp
         val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
         val filename = "LumiNote_Backup_$timestamp.json"
-
-        // Launch file picker untuk save
         createFileLauncher.launch(filename)
     }
 
@@ -118,13 +108,9 @@ class BackupRestoreActivity : AppCompatActivity() {
         btnCadangkan.isEnabled = false
 
         try {
-            // Kumpulkan semua data
             val backupData = createBackupData()
-
-            // Konversi ke JSON
             val jsonString = gson.toJson(backupData)
 
-            // Tulis ke file
             contentResolver.openOutputStream(uri)?.use { outputStream ->
                 OutputStreamWriter(outputStream).use { writer ->
                     writer.write(jsonString)
@@ -132,18 +118,16 @@ class BackupRestoreActivity : AppCompatActivity() {
                 }
             }
 
-            // Simpan info backup terakhir
             val dateFormat = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
             val currentDate = dateFormat.format(Date())
             backupPrefs.saveLastBackupDate(currentDate)
 
-            // Update UI
             loadLastBackupInfo()
-            Toast.makeText(this, "Backup berhasil disimpan!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.toast_backup_success), Toast.LENGTH_SHORT).show()
 
         } catch (e: Exception) {
             e.printStackTrace()
-            Toast.makeText(this, "Backup gagal: ${e.message}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.toast_backup_failed, e.message), Toast.LENGTH_SHORT).show()
         } finally {
             progressBackup.visibility = View.GONE
             btnCadangkan.isEnabled = true
@@ -165,54 +149,55 @@ class BackupRestoreActivity : AppCompatActivity() {
         )
     }
 
-    // =====================================
-    // RESTORE
-    // =====================================
-
     private fun startRestore() {
-        // Launch file picker untuk open
         openFileLauncher.launch(arrayOf("application/json"))
     }
 
     private fun showRestoreDialog(uri: Uri) {
         tvWarningRestore.visibility = View.VISIBLE
+        val dialogView = layoutInflater.inflate(R.layout.dialog_backup_restore, null)
 
-        AlertDialog.Builder(this)
-            .setTitle("Pilih Mode Restore")
-            .setMessage("Bagaimana Anda ingin mengembalikan data?")
-            .setPositiveButton("Replace (Ganti Semua)") { _, _ ->
-                restoreFromFile(uri, RestoreMode.REPLACE)
+        val radioReplace = dialogView.findViewById<RadioButton>(R.id.radioReplace)
+        val radioMerge = dialogView.findViewById<RadioButton>(R.id.radioMerge)
+        val btnCancel = dialogView.findViewById<Button>(R.id.btnCancel)
+        val btnRestore = dialogView.findViewById<Button>(R.id.btnRestore)
+
+        val dialog = AlertDialog.Builder(this).setView(dialogView).setCancelable(false).create()
+
+        btnCancel.setOnClickListener { dialog.dismiss() }
+        btnRestore.setOnClickListener {
+            when {
+                radioReplace.isChecked -> {
+                    restoreFromFile(uri, RestoreMode.REPLACE)
+                    dialog.dismiss()
+                }
+                radioMerge.isChecked -> {
+                    restoreFromFile(uri, RestoreMode.MERGE)
+                    dialog.dismiss()
+                }
+                else -> {
+                    Toast.makeText(this, getString(R.string.toast_select_method), Toast.LENGTH_SHORT).show()
+                }
             }
-            .setNegativeButton("Merge (Gabungkan)") { _, _ ->
-                restoreFromFile(uri, RestoreMode.MERGE)
-            }
-            .setNeutralButton("Batal", null)
-            .show()
+        }
+        dialog.show()
     }
 
     private fun restoreFromFile(uri: Uri, mode: RestoreMode) {
         try {
-            // Baca file
             val jsonString = readJsonFromUri(uri)
-
-            // Parse JSON
             val backupData = gson.fromJson(jsonString, BackupData::class.java)
 
-            // Validasi data
             if (!validateBackupData(backupData)) {
-                Toast.makeText(this, "Format backup tidak valid!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.toast_restore_invalid_format), Toast.LENGTH_SHORT).show()
                 return
             }
 
-            // Konfirmasi restore
             showRestoreConfirmation(backupData, mode)
 
-        } catch (e: JsonSyntaxException) {
-            e.printStackTrace()
-            Toast.makeText(this, "File backup tidak valid!", Toast.LENGTH_SHORT).show()
         } catch (e: Exception) {
             e.printStackTrace()
-            Toast.makeText(this, "Restore gagal: ${e.message}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.toast_restore_invalid_format), Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -230,52 +215,51 @@ class BackupRestoreActivity : AppCompatActivity() {
     }
 
     private fun validateBackupData(backupData: BackupData): Boolean {
-        return backupData.version != null &&
-                backupData.backupDate != null &&
-                backupData.catatan != null &&
-                backupData.tugas != null
+        return backupData.catatan != null && backupData.tugas != null
     }
 
     private fun showRestoreConfirmation(backupData: BackupData, mode: RestoreMode) {
-        val message = when (mode) {
-            RestoreMode.REPLACE -> "Semua data saat ini akan DIHAPUS dan diganti dengan data backup.\n\nData Backup:\n" +
-                    "• ${backupData.catatan?.size ?: 0} Catatan\n" +
-                    "• ${backupData.tugas?.size ?: 0} Tugas\n" +
-                    "• ${backupData.arsipCatatanIds?.size ?: 0} Catatan Arsip\n" +
-                    "• ${backupData.arsipTugasIds?.size ?: 0} Tugas Arsip\n\n" +
-                    "Lanjutkan?"
+        val dialogView = layoutInflater.inflate(R.layout.dialog_restore_confirm, null)
+        val dialog = AlertDialog.Builder(this).setView(dialogView).create()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
-            RestoreMode.MERGE -> "Data backup akan DIGABUNGKAN dengan data saat ini.\n" +
-                    "Data duplikat akan dilewati.\n\n" +
-                    "Data Backup:\n" +
-                    "• ${backupData.catatan?.size ?: 0} Catatan\n" +
-                    "• ${backupData.tugas?.size ?: 0} Tugas\n" +
-                    "• ${backupData.arsipCatatanIds?.size ?: 0} Catatan Arsip\n" +
-                    "• ${backupData.arsipTugasIds?.size ?: 0} Tugas Arsip\n\n" +
-                    "Lanjutkan?"
+        val tvDescription = dialogView.findViewById<TextView>(R.id.tvDescription)
+        val tvDataSummary = dialogView.findViewById<TextView>(R.id.tvDataSummary)
+        val btnConfirm = dialogView.findViewById<Button>(R.id.btnConfirm)
+        val btnCancel = dialogView.findViewById<Button>(R.id.btnCancel)
+
+        tvDescription.text = if (mode == RestoreMode.REPLACE) {
+            getString(R.string.desc_restore_replace)
+        } else {
+            getString(R.string.desc_restore_merge)
         }
 
-        AlertDialog.Builder(this)
-            .setTitle("Konfirmasi Restore")
-            .setMessage(message)
-            .setPositiveButton("Ya, Restore") { _, _ ->
-                performRestore(backupData, mode)
-            }
-            .setNegativeButton("Batal", null)
-            .show()
+        val summary = StringBuilder()
+            .append(getString(R.string.summary_notes, backupData.catatan?.size ?: 0)).append("\n")
+            .append(getString(R.string.summary_tasks, backupData.tugas?.size ?: 0)).append("\n")
+            .append(getString(R.string.summary_archived_notes, backupData.arsipCatatanIds?.size ?: 0)).append("\n")
+            .append(getString(R.string.summary_archived_tasks, backupData.arsipTugasIds?.size ?: 0))
+            .toString()
+
+        tvDataSummary.text = summary
+
+        btnConfirm.setOnClickListener {
+            performRestore(backupData, mode)
+            dialog.dismiss()
+        }
+        btnCancel.setOnClickListener { dialog.dismiss() }
+        dialog.show()
     }
 
     private fun performRestore(backupData: BackupData, mode: RestoreMode) {
         try {
             when (mode) {
                 RestoreMode.REPLACE -> {
-                    // Hapus semua data lama
                     catatanPrefs.saveCatatanList(emptyList())
                     tugasPrefs.saveList(emptyList())
                     arsipPrefs.saveArsipCatatan(emptyList())
                     arsipPrefs.saveArsipTugas(emptyList())
 
-                    // Simpan data backup
                     backupData.catatan?.let { catatanPrefs.saveCatatanList(it) }
                     backupData.tugas?.let { tugasPrefs.saveList(it) }
                     backupData.arsipCatatanIds?.let { arsipPrefs.saveArsipCatatan(it) }
@@ -283,27 +267,20 @@ class BackupRestoreActivity : AppCompatActivity() {
                 }
 
                 RestoreMode.MERGE -> {
-                    // Gabungkan data
                     backupData.catatan?.let { backupCatatan ->
-                        val existingCatatan = catatanPrefs.getCatatanList().toMutableList()
-                        val existingIds = existingCatatan.map { it.id }.toSet()
-
-                        // Tambahkan hanya yang belum ada
-                        val newCatatan = backupCatatan.filter { it.id !in existingIds }
-                        existingCatatan.addAll(newCatatan)
-                        catatanPrefs.saveCatatanList(existingCatatan)
+                        val existing = catatanPrefs.getCatatanList().toMutableList()
+                        val existingIds = existing.map { it.id }.toSet()
+                        existing.addAll(backupCatatan.filter { it.id !in existingIds })
+                        catatanPrefs.saveCatatanList(existing)
                     }
 
                     backupData.tugas?.let { backupTugas ->
-                        val existingTugas = tugasPrefs.getAllTugas().toMutableList()
-                        val existingIds = existingTugas.map { it.id }.toSet()
-
-                        val newTugas = backupTugas.filter { it.id !in existingIds }
-                        existingTugas.addAll(newTugas)
-                        tugasPrefs.saveList(existingTugas)
+                        val existing = tugasPrefs.getAllTugas().toMutableList()
+                        val existingIds = existing.map { it.id }.toSet()
+                        existing.addAll(backupTugas.filter { it.id !in existingIds })
+                        tugasPrefs.saveList(existing)
                     }
 
-                    // Merge arsip IDs
                     backupData.arsipCatatanIds?.let { backupIds ->
                         val existingIds = arsipPrefs.getArsipCatatan().toMutableSet()
                         existingIds.addAll(backupIds)
@@ -318,36 +295,34 @@ class BackupRestoreActivity : AppCompatActivity() {
                 }
             }
 
-            // Update user data (jika ada di backup)
             backupData.user?.let { backupUser ->
                 val currentUserId = sessionManager.getUserId()
                 if (currentUserId != null) {
-                    // Update user info, tapi keep current userId
                     val updatedUser = backupUser.copy(idNama = currentUserId)
                     userManager.updateUser(updatedUser)
                 }
             }
 
-            Toast.makeText(this, "Restore berhasil!", Toast.LENGTH_SHORT).show()
-
-            // Restart app atau refresh
+            Toast.makeText(this, getString(R.string.toast_restore_success), Toast.LENGTH_SHORT).show()
             showRestartDialog()
 
         } catch (e: Exception) {
             e.printStackTrace()
-            Toast.makeText(this, "Restore gagal: ${e.message}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.toast_backup_failed, e.message), Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun showRestartDialog() {
-        AlertDialog.Builder(this)
-            .setTitle("Restore Berhasil")
-            .setMessage("Data telah dipulihkan. Aplikasi akan di-restart untuk menerapkan perubahan.")
-            .setPositiveButton("Restart") { _, _ ->
-                restartApp()
-            }
-            .setCancelable(false)
-            .show()
+        val dialogView = layoutInflater.inflate(R.layout.dialog_restore_succes, null)
+        val dialog = AlertDialog.Builder(this).setView(dialogView).setCancelable(false).create()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        val btnRestart = dialogView.findViewById<Button>(R.id.btnRestart)
+        btnRestart.setOnClickListener {
+            restartApp()
+            dialog.dismiss()
+        }
+        dialog.show()
     }
 
     private fun restartApp() {
@@ -356,10 +331,6 @@ class BackupRestoreActivity : AppCompatActivity() {
         startActivity(intent)
         finishAffinity()
     }
-
-    // =====================================
-    // DATA CLASSES
-    // =====================================
 
     data class BackupData(
         val version: String,
@@ -371,23 +342,11 @@ class BackupRestoreActivity : AppCompatActivity() {
         val arsipTugasIds: List<String>?
     )
 
-    enum class RestoreMode {
-        REPLACE, MERGE
-    }
+    enum class RestoreMode { REPLACE, MERGE }
 }
-
-// =====================================
-// BACKUP PREFERENCES (Helper Class)
-// =====================================
 
 class BackupPreferences(context: android.content.Context) {
     private val prefs = context.getSharedPreferences("BackupPrefs", android.content.Context.MODE_PRIVATE)
-
-    fun saveLastBackupDate(date: String) {
-        prefs.edit().putString("last_backup_date", date).apply()
-    }
-
-    fun getLastBackupDate(): String? {
-        return prefs.getString("last_backup_date", null)
-    }
+    fun saveLastBackupDate(date: String) = prefs.edit().putString("last_backup_date", date).apply()
+    fun getLastBackupDate(): String? = prefs.getString("last_backup_date", null)
 }

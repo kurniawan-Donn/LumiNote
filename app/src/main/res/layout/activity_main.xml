@@ -2,12 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/background_primary">
 
-    <!-- Header dengan ImageButton di dalamnya -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header_container"
         android:layout_width="0dp"
@@ -17,14 +17,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Judul di tengah header -->
         <TextView
             android:id="@+id/main_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingVertical="20dp"
-            android:text="Daftar Catatan"
-            android:textColor="@color/white"
+            android:text="@string/title_main_dashboard"
+            android:textColor="@color/text_on_header"
             android:textSize="20sp"
             android:fontFamily="@font/interbold"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,13 +31,12 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
 
-        <!-- ImageButton di pojok kanan header -->
         <ImageButton
             android:id="@+id/btnToProfil"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginEnd="16dp"
-            android:contentDescription="To Profile"
+            android:contentDescription="@string/desc_to_profile"
             android:padding="0dp"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_to_profil"
@@ -46,12 +44,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- ===================== -->
-    <!-- Fragment Container -->
-    <!-- ===================== -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/catatan_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -64,42 +58,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- ===================== -->
-    <!-- Bottom Navigation -->
-    <!-- ===================== -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav_view"
         android:layout_width="0dp"
         android:layout_height="80dp"
         android:background="@color/bottom_nav_color"
         app:itemIconSize="30dp"
-        app:itemIconTint="#FBF9F9"
-        app:itemTextColor="@color/white"
+        app:itemIconTint="@color/whiteb"
+        app:itemTextColor="@color/whiteb"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- ===================== -->
-    <!-- Floating Action Button -->
-    <!-- ===================== -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:contentDescription="@string/tambah"
-        android:src="@drawable/ic_plus"
-        app:backgroundTint="@color/white"
+        android:contentDescription="@string/desc_add_button"
+        android:src="@drawable/ic_plus1"
+        app:backgroundTint="@color/background_primary"
         app:borderWidth="0dp"
         app:elevation="10dp"
         app:fabCustomSize="76dp"
         app:fabSize="auto"
         app:maxImageSize="65dp"
-        app:tint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

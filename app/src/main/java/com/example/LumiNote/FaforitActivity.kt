@@ -28,6 +28,8 @@ class FaforitActivity : AppCompatActivity() {
     private var filteredList = listOf<FaforitItem>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        LanguageHelper.applyLanguage(this)
+        ThemeHelper.applyTheme(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_faforit)
 
@@ -92,7 +94,7 @@ class FaforitActivity : AppCompatActivity() {
 
         // Get all catatan (gunakan method yang benar)
         try {
-            val allCatatan = catatanPreferences.getCatatanList() // ✅ PERBAIKAN
+            val allCatatan = catatanPreferences.getCatatanList()
             val catatanFavorit = allCatatan.filter { it.id in favoritCatatanIds }
 
             catatanFavorit.forEach { catatan ->
@@ -107,7 +109,7 @@ class FaforitActivity : AppCompatActivity() {
 
         // Get all tugas (gunakan method yang benar)
         try {
-            val allTugas = tugasPreferences.getAllTugas() // ✅ Sudah benar
+            val allTugas = tugasPreferences.getAllTugas()
             val tugasFavorit = allTugas.filter { it.id in favoritTugasIds }
 
             tugasFavorit.forEach { tugas ->
@@ -145,16 +147,24 @@ class FaforitActivity : AppCompatActivity() {
     }
 
     private fun removeFavorit(item: FaforitItem) {
+        val translatedType = if (item.tipe == "Catatan") {
+            getString(R.string.type_catatan)
+        } else {
+            getString(R.string.type_tugas)
+        }
         when (item.tipe) {
             "Catatan" -> {
                 faforitPreferences.toggleCatatanFavorit(item.id)
-                Toast.makeText(this, "Catatan dihapus dari favorit😀", Toast.LENGTH_SHORT).show()
             }
             "Tugas" -> {
                 faforitPreferences.toggleTugasFavorit(item.id)
-                Toast.makeText(this, "Tugas dihapus dari favorit😀", Toast.LENGTH_SHORT).show()
             }
         }
+        Toast.makeText(
+            this,
+            getString(R.string.toast_favorite_removed_item, translatedType),
+            Toast.LENGTH_SHORT
+        ).show()
         loadFaforitData()
     }
 }

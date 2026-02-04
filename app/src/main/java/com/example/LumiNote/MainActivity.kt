@@ -19,21 +19,25 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnToProfil: ImageButton
     private lateinit var sessionManager: SessionManager
 
+    // 🔥 TAMBAHAN: Track dark mode state
+    private var currentDarkMode: Boolean = false
+    private var currentLanguage: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        LanguageHelper.applyLanguage(this)
+        ThemeHelper.applyTheme(this)
+
         super.onCreate(savedInstanceState)
 
-        // ✅ CEK SESSION DULU SEBELUM LOAD LAYOUT
-        sessionManager = SessionManager(this)
-        if (!sessionManager.isLoggedIn()) {
-            // Jika belum login, redirect ke LoginActivity
-            val intent = Intent(this, LoginActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-            finish()
-            return
-        }
+        android.util.Log.d("MainActivity", "🏠 MAIN onCreate - Language: ${LanguageHelper.getLanguage(this)}, Theme Applied")
 
         setContentView(R.layout.activity_main)
+
+        sessionManager = SessionManager(this)
+
+        // 🔥 Simpan state dark mode saat pertama kali dibuat
+        currentDarkMode = ThemeHelper.isDarkMode(this)
+        currentLanguage = LanguageHelper.getLanguage(this)
 
         // Inisialisasi views
         bottomNav = findViewById(R.id.bottom_nav_view)
@@ -46,14 +50,31 @@ class MainActivity : AppCompatActivity() {
         setupBottomNavListener()
         setupBackPressHandler()
         setupProfileButton()
+
+        // Log dark mode status
+        android.util.Log.d("MainActivity", "Dark Mode Active: ${ThemeHelper.isDarkMode(this)}")
+    }
+
+    // 🔥 SOLUSI UTAMA: Refresh theme saat kembali dari ProfilActivity
+    override fun onResume() {
+        super.onResume()
+
+        val newDarkMode = ThemeHelper.isDarkMode(this)
+        val newLanguage = LanguageHelper.getLanguage(this)
+
+        android.util.Log.d("MainActivity", "🔄 onResume - Current: $currentDarkMode, New: $newDarkMode")
+
+        // Jika dark mode berubah, recreate activity
+        if (currentDarkMode != newDarkMode || currentLanguage != newLanguage) {
+            android.util.Log.d("MainActivity", "🔄 Perubahan terdeteksi! Recreating MainActivity...")
+            currentDarkMode = newDarkMode
+            currentLanguage = newLanguage
+            recreate()
+        }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        // ✅ Logout otomatis saat aplikasi ditutup
-        if (isFinishing) {
-            sessionManager.logout()
-        }
     }
 
     private fun setupNavigation() {
@@ -121,7 +142,6 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    // ✅ FUNGSI BARU: Setup tombol profil
     private fun setupProfileButton() {
         btnToProfil.setOnClickListener {
             val intent = Intent(this, ProfilActivity::class.java)

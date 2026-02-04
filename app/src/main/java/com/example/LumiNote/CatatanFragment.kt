@@ -1,6 +1,5 @@
 package com.example.LumiNote
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -8,7 +7,9 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,7 +19,7 @@ class CatatanFragment : Fragment() {
 
     private lateinit var preferences: CatatanPreferences
     private lateinit var faforitPreferences: FaforitPreferences
-    private lateinit var arsipPreferences: ArsipPreferences // ✅ TAMBAHAN
+    private lateinit var arsipPreferences: ArsipPreferences
     private lateinit var adapter: CatatanAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var searchEditText: EditText
@@ -37,7 +38,7 @@ class CatatanFragment : Fragment() {
 
         preferences = CatatanPreferences(requireContext())
         faforitPreferences = FaforitPreferences(requireContext())
-        arsipPreferences = ArsipPreferences(requireContext()) // ✅ TAMBAHAN
+        arsipPreferences = ArsipPreferences(requireContext())
 
         recyclerView = view.findViewById(R.id.rv_catatan)
         searchEditText = view.findViewById(R.id.et_search)
@@ -81,7 +82,7 @@ class CatatanFragment : Fragment() {
             onFavoritClick = { catatan ->
                 toggleFavorit(catatan)
             },
-            onArsipClick = { catatan -> // ✅ TAMBAHAN: Callback arsip
+            onArsipClick = { catatan ->
                 showArsipDialog(catatan)
             }
         )
@@ -103,13 +104,8 @@ class CatatanFragment : Fragment() {
     }
 
     private fun loadData() {
-        // Ambil semua catatan
         allCatatan = preferences.getCatatanList().sortedByDescending { it.timestamp }
-
-        // ✅ Filter: Jangan tampilkan yang sudah diarsipkan
         allCatatan = allCatatan.filter { !arsipPreferences.isCatatanArsip(it.id) }
-
-        // Update status favorit dari FaforitPreferences
         allCatatan.forEach { catatan ->
             catatan.isFavorit = faforitPreferences.isCatatanFavorit(catatan.id)
         }
@@ -127,51 +123,79 @@ class CatatanFragment : Fragment() {
         adapter.updateData(filtered)
     }
 
-    // ✅ TAMBAHAN: Fungsi toggle favorit
     private fun toggleFavorit(catatan: Catatan) {
         // Toggle status favorit
         faforitPreferences.toggleCatatanFavorit(catatan.id)
         catatan.isFavorit = faforitPreferences.isCatatanFavorit(catatan.id)
 
-        // Update adapter
         adapter.notifyDataSetChanged()
 
-        // Tampilkan pesan
+        // Mengambil pesan Toast dari string resource
         val message = if (catatan.isFavorit) {
-            "Ditambahkan ke favorit"
+            getString(R.string.toast_added_favorite)
         } else {
-            "Dihapus dari favorit"
+            getString(R.string.toast_removed_favorite)
         }
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
     private fun showDeleteConfirmation(catatan: Catatan) {
-        AlertDialog.Builder(requireContext())
-            .setTitle("Hapus Catatan")
-            .setMessage("Apakah Anda yakin ingin menghapus \"${catatan.judul}\"?")
-            .setPositiveButton("Hapus") { _, _ ->
-                preferences.deleteCatatan(catatan.id)
-                // ✅ TAMBAHAN: Hapus juga dari favorit jika ada
-                if (faforitPreferences.isCatatanFavorit(catatan.id)) {
-                    faforitPreferences.toggleCatatanFavorit(catatan.id)
-                }
-                loadData()
+        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_konfirmasi_hapus_catatan, null)
+        val dialog = androidx.appcompat.app.AlertDialog.Builder(requireContext())
+            .setView(dialogView)
+            .create()
+
+        val tvPesan = dialogView.findViewById<TextView>(R.id.tv_pesan_hapus)
+        val btnBatal = dialogView.findViewById<Button>(R.id.btn_batal_hapus)
+        val btnOke = dialogView.findViewById<Button>(R.id.btn_oke_hapus)
+
+        // Set pesan konfirmasi hapus permanen menggunakan placeholder %1$s
+        tvPesan.text = getString(R.string.msg_confirm_delete_permanent, catatan.judul)
+
+        btnBatal.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        btnOke.setOnClickListener {
+            preferences.deleteCatatan(catatan.id)
+
+            if (faforitPreferences.isCatatanFavorit(catatan.id)) {
+                faforitPreferences.toggleCatatanFavorit(catatan.id)
             }
-            .setNegativeButton("Batal", null)
-            .show()
+
+            Toast.makeText(requireContext(), getString(R.string.toast_note_deleted), Toast.LENGTH_SHORT).show()
+            loadData()
+            dialog.dismiss()
+        }
+
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        dialog.show()
     }
 
-    // ✅ TAMBAHAN: Dialog konfirmasi arsip
     private fun showArsipDialog(catatan: Catatan) {
-        AlertDialog.Builder(requireContext())
-            .setTitle("Arsipkan Catatan")
-            .setMessage("Apakah Anda yakin ingin mengarsipkan \"${catatan.judul}\"?")
-            .setPositiveButton("Arsipkan") { _, _ ->
-                arsipPreferences.arsipkanCatatan(catatan.id)
-                Toast.makeText(requireContext(), "Catatan diarsipkan", Toast.LENGTH_SHORT).show()
-                loadData()
-            }
-            .setNegativeButton("Batal", null)
-            .show()
+        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_konfirmasi_arsip_catatan, null)
+        val dialog = androidx.appcompat.app.AlertDialog.Builder(requireContext())
+            .setView(dialogView)
+            .create()
+
+        val tvPesan = dialogView.findViewById<TextView>(R.id.tv_pesan_catatan)
+        val btnBatal = dialogView.findViewById<Button>(R.id.btn_batal_arsip_catatan)
+        val btnOke = dialogView.findViewById<Button>(R.id.btn_oke_arsip_catatan)
+
+        // Set pesan konfirmasi arsip menggunakan placeholder %1$s
+        tvPesan.text = getString(R.string.msg_confirm_archive, catatan.judul)
+
+        btnBatal.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        btnOke.setOnClickListener {
+            arsipPreferences.arsipkanCatatan(catatan.id)
+            Toast.makeText(requireContext(), getString(R.string.toast_note_archived), Toast.LENGTH_SHORT).show()
+            loadData()
+            dialog.dismiss()
+        }
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        dialog.show()
     }
 }

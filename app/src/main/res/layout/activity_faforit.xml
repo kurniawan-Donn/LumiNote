@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8FAFC"
+    android:background="@color/background_primary"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="#D9EAFD"
+        android:background="@color/header_color"
         android:elevation="4dp">
 
         <ImageView
@@ -19,16 +19,17 @@
             android:layout_height="48dp"
             android:layout_centerVertical="true"
             android:layout_marginStart="4dp"
-            android:contentDescription="Tombol Kembali"
+            android:contentDescription="@string/desc_back_button"
             android:padding="12dp"
+            app:tint="@color/text_on_header"
             app:srcCompat="@drawable/ic_panah" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Favorit"
-            android:textColor="#2C3E50"
+            android:text="@string/title_favorite"
+            android:textColor="@color/text_on_header"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -40,7 +41,7 @@
             android:layout_centerVertical="true"
             android:layout_marginEnd="12dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Favorit"
+            android:contentDescription="@string/desc_favorite_icon"
             android:padding="3dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_faforit" />
@@ -51,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        app:cardBackgroundColor="#D9EAFD"
+        app:cardBackgroundColor="@color/card_color"
         app:cardCornerRadius="24dp"
         app:cardElevation="2dp">
 
@@ -64,11 +65,11 @@
             android:paddingEnd="16dp">
 
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:contentDescription="Search Icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:contentDescription="@string/desc_search_icon"
                 android:src="@drawable/ic_search"
-                app:tint="#9AA6B2" />
+                app:tint="@color/text_secondary" />
 
             <EditText
                 android:id="@+id/etSearch"
@@ -77,11 +78,11 @@
                 android:layout_marginStart="12dp"
                 android:layout_weight="1"
                 android:background="@null"
-                android:hint="Cari..."
+                android:hint="@string/hint_search_favorite"
                 android:inputType="text"
-                android:textColor="#2C3E50"
-                android:textColorHint="#9AA6B2"
-                android:textSize="16sp" />
+                android:textColor="@color/text_secondary"
+                android:textColorHint="@color/text_secondary"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -112,16 +113,16 @@
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:alpha="0.5"
-            android:contentDescription="Empty"
+            android:contentDescription="@string/desc_empty_state"
             android:src="@drawable/ic_star_in"
-            app:tint="#BCCCDC" />
+            app:tint="@color/text_secondary" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Belum ada Catatan/Tugas Faforit 😓"
-            android:textColor="#9AA6B2"
+            android:text="@string/msg_empty_favorite"
+            android:textColor="@color/text_secondary"
             android:textSize="16sp" />
 
     </LinearLayout>

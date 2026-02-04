@@ -11,6 +11,9 @@ class SessionManager(context: Context) {
     companion object {
         private const val KEY_IS_LOGGED_IN = "is_logged_in"
         private const val KEY_USER_ID = "user_id"
+
+        // ✅ TAMBAHAN BARU: Keys untuk bahasa
+        private const val KEY_LANGUAGE = "app_language"
     }
 
     // Simpan session login
@@ -32,8 +35,43 @@ class SessionManager(context: Context) {
         return prefs.getString(KEY_USER_ID, null)
     }
 
-    // Logout - hapus session
+    // Logout - hapus session (KECUALI bahasa)
     fun logout() {
+        // ✅ PERBAIKAN: Simpan bahasa sebelum clear
+        val currentLanguage = getLanguage()
+
         prefs.edit().clear().apply()
+
+        // ✅ Restore bahasa setelah logout
+        setLanguage(currentLanguage)
+    }
+
+    // ========================================
+    // ✅ TAMBAHAN BARU: Language Management
+    // ========================================
+
+    /**
+     * Simpan bahasa yang dipilih
+     */
+    fun setLanguage(languageCode: String) {
+        prefs.edit().putString(KEY_LANGUAGE, languageCode).apply()
+    }
+
+    /**
+     * Ambil bahasa yang dipilih (default: Indonesia)
+     */
+    fun getLanguage(): String {
+        return prefs.getString(KEY_LANGUAGE, "id") ?: "id"
+    }
+
+    /**
+     * Ambil nama display bahasa untuk UI
+     */
+    fun getLanguageDisplayName(): String {
+        return when (getLanguage()) {
+            "en" -> "English"
+            "jv" -> "Jawa"
+            else -> "Indonesia"
+        }
     }
 }

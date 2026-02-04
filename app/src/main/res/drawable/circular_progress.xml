@@ -7,7 +7,7 @@
             android:shape="ring"
             android:thickness="12dp"
             android:useLevel="false">
-            <solid android:color="#E0E0E0" />
+            <solid android:color="#6CEC71" />
         </shape>
     </item>
 
@@ -23,9 +23,9 @@
                 android:useLevel="true">
                 <gradient
                     android:angle="0"
-                    android:endColor="#4CAF50"
-                    android:startColor="#8BC34A"
-                    android:type="sweep" />
+                    android:endColor="#7C4DFF"
+                    android:startColor="#FF9800"
+                    android:type="linear" />
             </shape>
         </rotate>
     </item>

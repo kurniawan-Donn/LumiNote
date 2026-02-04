@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Item Arsip / Archive Item Card -->
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardItem"
@@ -16,30 +18,31 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Header dengan Tipe dan Tanggal -->
+        <!-- Header -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginBottom="8dp">
 
-            <!-- Badge Tipe (Tugas/Catatan) -->
+            <!-- Tipe -->
             <TextView
                 android:id="@+id/tvTipe"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="[Catatan]"
+                android:text="@string/item_type_note"
                 android:textColor="@color/text_primary"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="[Catatan]" />
 
             <!-- Tanggal -->
             <TextView
                 android:id="@+id/tvTanggal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="22/12/2005"
+                android:text="@string/sample_date"
                 android:textColor="@color/text_primary"
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -53,7 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:text="Judul"
+            android:text="@string/sample_title"
             android:textColor="@color/text_primary"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -67,45 +70,42 @@
             android:layout_marginBottom="12dp"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="Deskripsi"
+            android:text="@string/sample_description"
             android:textColor="@color/text_secondary"
             android:textSize="14sp"
             tools:text="Deskripsi catatan" />
 
-        <!-- Button Container -->
+        <!-- Button -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="end">
 
-            <!-- Button Pulihkan -->
             <Button
                 android:id="@+id/btnPulihkan"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
                 android:layout_marginEnd="8dp"
-                android:text="Pulihkan"
+                android:text="@string/btn_restore"
                 android:textAllCaps="false"
                 android:textSize="14sp"
-                android:backgroundTint="@color/header_color"
-                android:textColor="@color/white"
+                android:backgroundTint="@color/text_secondary"
+                android:textColor="@color/background_primary"
                 app:cornerRadius="8dp" />
 
-            <!-- Button Hapus -->
             <Button
                 android:id="@+id/btnHapus"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:text="Hapus"
+                android:text="@string/btn_delete"
                 android:textAllCaps="false"
                 android:textSize="14sp"
-                android:backgroundTint="#f87171"
+                android:backgroundTint="@color/color_danger"
                 android:textColor="@color/white"
                 app:cornerRadius="8dp" />
 
         </LinearLayout>
 
     </LinearLayout>
-
 </androidx.cardview.widget.CardView>

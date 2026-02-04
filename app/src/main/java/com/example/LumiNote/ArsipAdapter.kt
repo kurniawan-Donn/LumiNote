@@ -22,7 +22,8 @@ class ArsipAdapter(
         val btnHapus: Button = view.findViewById(R.id.btnHapus)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArsipViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup, viewType: Int): ArsipViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_arsip, parent, false)
         return ArsipViewHolder(view)
@@ -41,7 +42,7 @@ class ArsipAdapter(
         holder.tvDeskripsi.text = if (item.deskripsi.isNotEmpty()) {
             item.deskripsi
         } else {
-            "Tidak ada deskripsi"
+            holder.itemView.context.getString(R.string.no_description)
         }
 
         // Set tanggal

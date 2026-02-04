@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <!-- ISI: biru lembut tapi jelas -->
+    <solid android:color="@color/card_color" />
+
+    <!-- BORDER: memberi efek wrap -->
+    <stroke
+        android:width="3dp"
+        android:color="@color/whiteb" />
+
+    <!-- Ruang dalam agar konten terasa dibungkus -->
+    <padding
+        android:left="16dp"
+        android:top="16dp"
+        android:right="16dp"
+        android:bottom="16dp" />
+</shape>

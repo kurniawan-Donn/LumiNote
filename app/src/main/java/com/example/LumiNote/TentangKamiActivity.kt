@@ -7,7 +7,9 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -36,6 +38,8 @@ class TentangKamiActivity : AppCompatActivity() {
     private val appVersion = "1.1.0"
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        LanguageHelper.applyLanguage(this)
+        ThemeHelper.applyTheme(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tentang_kami)
 
@@ -62,7 +66,7 @@ class TentangKamiActivity : AppCompatActivity() {
 
         // Email - auto link sudah di XML, tapi tambah copy to clipboard
         tvEmail.setOnLongClickListener {
-            copyToClipboard(emailAddress, "Email")
+            copyToClipboard(emailAddress, getString(R.string.label_email))
             true
         }
 
@@ -96,7 +100,7 @@ class TentangKamiActivity : AppCompatActivity() {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
             startActivity(intent)
         } catch (e: Exception) {
-            Toast.makeText(this, "Tidak dapat membuka $platform", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.toast_tidak_dapat_membuka, platform), Toast.LENGTH_SHORT).show()
             e.printStackTrace()
         }
     }
@@ -104,7 +108,7 @@ class TentangKamiActivity : AppCompatActivity() {
     private fun openWhatsApp() {
         try {
             // Format pesan default
-            val message = "Hallo!  Info Ngopi Bolo Ghassh 🍵🍵 "
+            val message = getString(R.string.whatsapp_default_message)
             val encodedMessage = Uri.encode(message)
 
             // Coba buka WhatsApp langsung
@@ -117,10 +121,10 @@ class TentangKamiActivity : AppCompatActivity() {
             }
 
             startActivity(intent)
-        } catch (e: Exception) {
+        } catch (_: Exception) {
             // Fallback: Copy nomor ke clipboard
-            copyToClipboard(whatsappNumber, "Nomor WhatsApp")
-            Toast.makeText(this, "WhatsApp tidak ditemukan. Nomor disalin!", Toast.LENGTH_SHORT).show()
+            copyToClipboard(whatsappNumber, getString(R.string.label_nomor_whatsapp))
+            Toast.makeText(this, getString(R.string.toast_whatsapp_tidak_ditemukan), Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -140,7 +144,7 @@ class TentangKamiActivity : AppCompatActivity() {
 
             startActivity(intent)
         } catch (e: Exception) {
-            Toast.makeText(this, "Tidak dapat membuka Instagram", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.toast_tidak_dapat_membuka_instagram), Toast.LENGTH_SHORT).show()
             e.printStackTrace()
         }
     }
@@ -150,24 +154,34 @@ class TentangKamiActivity : AppCompatActivity() {
     // =====================================
 
     private fun showShareDialog() {
-        val options = arrayOf(
-            "📤 Bagikan File APK",
-            "🔗 Bagikan Link Download",
-            "📋 Salin Link Download"
-        )
+        val dialogView = layoutInflater.inflate(R.layout.dialog_share_app, null)
+        val dialog = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .create()
 
-        AlertDialog.Builder(this)
-            .setTitle("Bagikan Aplikasi")
-            .setItems(options) { dialog, which ->
-                when (which) {
-                    0 -> shareApkFile()
-                    1 -> shareDownloadLink()
-                    2 -> copyDownloadLink()
-                }
-                dialog.dismiss()
-            }
-            .setNegativeButton("Batal", null)
-            .show()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        // Inisialisasi Klik Opsi
+        dialogView.findViewById<LinearLayout>(R.id.optionShareApk).setOnClickListener {
+            shareApkFile()
+            dialog.dismiss()
+        }
+
+        dialogView.findViewById<LinearLayout>(R.id.optionShareLink).setOnClickListener {
+            shareDownloadLink()
+            dialog.dismiss()
+        }
+
+        dialogView.findViewById<LinearLayout>(R.id.optionCopyLink).setOnClickListener {
+            copyDownloadLink()
+            dialog.dismiss()
+        }
+
+        dialogView.findViewById<Button>(R.id.btnCancelShare).setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 
     private fun shareApkFile() {
@@ -178,7 +192,7 @@ class TentangKamiActivity : AppCompatActivity() {
             val apkPath = packageInfo.applicationInfo?.sourceDir
 
             if (apkPath == null) {
-                Toast.makeText(this, "Error: File APK tidak ditemukan", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.toast_error_apk_tidak_ditemukan), Toast.LENGTH_SHORT).show()
                 shareDownloadLink()
                 return
             }
@@ -192,23 +206,18 @@ class TentangKamiActivity : AppCompatActivity() {
             val shareIntent = Intent(Intent.ACTION_SEND).apply {
                 type = "application/vnd.android.package-archive"
                 putExtra(Intent.EXTRA_STREAM, apkUri)
-                putExtra(Intent.EXTRA_SUBJECT, "LumiNote - Aplikasi Catatan & Tugas")
-                putExtra(Intent.EXTRA_TEXT,
-                    "Coba aplikasi LumiNote! 📝✨\n\n" +
-                            "Aplikasi catatan dan tugas yang membantu produktivitas harianmu.\n\n" +
-                            "Versi: $appVersion\n" +
-                            "GitHub: $githubUrl"
-                )
+                putExtra(Intent.EXTRA_SUBJECT, getString(R.string.share_apk_subject))
+                putExtra(Intent.EXTRA_TEXT, getString(R.string.share_apk_text, appVersion, githubUrl))
                 addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
             }
 
-            startActivity(Intent.createChooser(shareIntent, "Bagikan APK via"))
+            startActivity(Intent.createChooser(shareIntent, getString(R.string.share_apk_chooser)))
         } catch (e: PackageManager.NameNotFoundException) {
-            Toast.makeText(this, "Error: File APK tidak ditemukan", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.toast_error_apk_tidak_ditemukan), Toast.LENGTH_SHORT).show()
             e.printStackTrace()
             shareDownloadLink()
         } catch (e: Exception) {
-            Toast.makeText(this, "Error membagikan APK: ${e.message}", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.toast_error_bagikan_apk, e.message), Toast.LENGTH_LONG).show()
             e.printStackTrace()
 
             // Fallback ke share link
@@ -217,48 +226,41 @@ class TentangKamiActivity : AppCompatActivity() {
     }
 
     private fun shareDownloadLink() {
-        val shareText = """
-            📝 LumiNote - Aplikasi Catatan & Tugas
-            
-            Aplikasi catatan dan tugas yang membantu produktivitas harianmu! ✨
-            
-            ✨ Fitur:
-            • Catatan & Tugas
-            • Favorit & Arsip
-            • Statistik Produktivitas
-            • Backup & Restore
-            
-            📥 Download APK:
-            $apkDownloadUrl
-            
-            🐙 GitHub Repository:
-            $githubUrl
-            
-            Versi: $appVersion
-        """.trimIndent()
+        val shareText = getString(R.string.share_link_text, apkDownloadUrl, githubUrl, appVersion)
 
         val shareIntent = Intent(Intent.ACTION_SEND).apply {
             type = "text/plain"
-            putExtra(Intent.EXTRA_SUBJECT, "LumiNote - Aplikasi Catatan & Tugas")
+            putExtra(Intent.EXTRA_SUBJECT, getString(R.string.share_apk_subject))
             putExtra(Intent.EXTRA_TEXT, shareText)
         }
 
-        startActivity(Intent.createChooser(shareIntent, "Bagikan via"))
+        startActivity(Intent.createChooser(shareIntent, getString(R.string.share_link_chooser)))
     }
 
     private fun copyDownloadLink() {
-        copyToClipboard(apkDownloadUrl, "Link Download")
+        // 1. Proses Copy ke Clipboard
+        copyToClipboard(apkDownloadUrl, getString(R.string.label_link_download))
 
-        // Tampilkan info tambahan
-        AlertDialog.Builder(this)
-            .setTitle("Link Download Disalin! 📋")
-            .setMessage(
-                "Link download APK telah disalin ke clipboard.\n\n" +
-                        "Anda bisa paste link ini untuk dibagikan ke teman-teman:\n\n" +
-                        apkDownloadUrl
-            )
-            .setPositiveButton("Oke", null)
-            .show()
+        // 2. Tampilkan Custom Dialog
+        val dialogView = layoutInflater.inflate(R.layout.dialog_copy_link_success, null)
+        val dialog = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .create()
+
+        // Membuat background bawaan dialog menjadi transparan agar CardView terlihat rounded
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        // Set URL ke TextView di dalam kotak abu-abu
+        val tvUrlDisplay = dialogView.findViewById<TextView>(R.id.tvUrlDisplay)
+        tvUrlDisplay.text = apkDownloadUrl
+
+        // Tombol Oke
+        val btnOk = dialogView.findViewById<Button>(R.id.btnOkCopy)
+        btnOk.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 
     // =====================================
@@ -266,17 +268,17 @@ class TentangKamiActivity : AppCompatActivity() {
     // =====================================
 
     private fun copyToClipboard(text: String, label: String) {
-        val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clipboard = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
         val clip = ClipData.newPlainText(label, text)
         clipboard.setPrimaryClip(clip)
-        Toast.makeText(this, "$label disalin ke clipboard! 📋", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.toast_disalin_ke_clipboard, label), Toast.LENGTH_SHORT).show()
     }
 
     private fun isAppInstalled(packageName: String): Boolean {
         return try {
             packageManager.getPackageInfo(packageName, 0)
             true
-        } catch (e: PackageManager.NameNotFoundException) {
+        } catch (_: PackageManager.NameNotFoundException) {
             false
         }
     }

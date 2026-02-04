@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/background_primary">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Toolbar -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="56dp"
@@ -23,18 +22,20 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="4dp"
-                android:contentDescription="Tombol Kembali"
+                android:contentDescription="@string/back_button"
                 android:padding="12dp"
+                android:src="@drawable/ic_panah"
+                app:tint="@color/icon_tint_light"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_panah" />
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView android:id="@+id/textViewProfil"
+            <TextView
+                android:id="@+id/textViewProfil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Profil"
-                android:textColor="@color/white"
+                android:text="@string/profile"
+                android:textColor="@color/text_on_header"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintTop_toTopOf="parent"
@@ -42,15 +43,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
-            <!-- Ganti MaterialButton dengan Button biasa -->
             <Button
                 android:id="@+id/btnEdit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="12dp"
-                android:text="Edit"
+                android:text="@string/edit"
                 android:textAllCaps="false"
-                android:backgroundTint="@android:color/white"
+                android:backgroundTint="@color/card_color"
                 android:textColor="@color/text_primary"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -58,21 +58,19 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!-- Profile Section -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
+            android:background="@color/background_primary"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="24dp">
 
             <ImageView
                 android:id="@+id/imgProfile"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:background="@drawable/circle_background"
-                android:contentDescription="Profile Picture"
+                android:layout_width="101.2dp"
+                android:layout_height="103.5dp"
+                android:contentDescription="@string/profile_picture"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_person" />
 
@@ -81,14 +79,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Someone"
+                android:text="........"
                 android:textColor="@color/text_primary"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
 
-        <!-- Bio Card -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -106,7 +103,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bio"
+                    android:text="@string/bio"
                     android:textColor="@color/text_primary"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -116,7 +113,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="Deskripsi Bio..."
+                    android:text="Deskrisi...."
                     android:textColor="@color/text_secondary"
                     android:textSize="14sp" />
 
@@ -124,7 +121,6 @@
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Menu Card -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -145,12 +141,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
-                    android:text="Menu"
+                    android:text="@string/menu"
                     android:textColor="@color/text_primary"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
-                <!-- Faforit -->
                 <LinearLayout
                     android:id="@+id/layoutFsforit"
                     android:layout_width="match_parent"
@@ -163,14 +158,14 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:src="@drawable/ic_star"
-                        app:tint="@color/text_primary" />
+                        app:tint="@color/icon_tint" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
                         android:layout_weight="1"
-                        android:text="Faforit"
+                        android:text="@string/favorites"
                         android:textColor="@color/text_primary"
                         android:textSize="16sp" />
 
@@ -182,7 +177,6 @@
 
                 </LinearLayout>
 
-                <!-- Arsip -->
                 <LinearLayout
                     android:id="@+id/layoutArsip"
                     android:layout_width="match_parent"
@@ -195,14 +189,14 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:src="@drawable/ic_archive"
-                        app:tint="@color/text_primary" />
+                        app:tint="@color/icon_tint" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
                         android:layout_weight="1"
-                        android:text="Arsip"
+                        android:text="@string/archive"
                         android:textColor="@color/text_primary"
                         android:textSize="16sp" />
 
@@ -214,7 +208,6 @@
 
                 </LinearLayout>
 
-                <!-- Statistik -->
                 <LinearLayout
                     android:id="@+id/layoutStatistik"
                     android:layout_width="match_parent"
@@ -227,14 +220,14 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:src="@drawable/ic_chart"
-                        app:tint="@color/text_primary" />
+                        app:tint="@color/icon_tint" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
                         android:layout_weight="1"
-                        android:text="Statistik"
+                        android:text="@string/statistics"
                         android:textColor="@color/text_primary"
                         android:textSize="16sp" />
 
@@ -250,7 +243,6 @@
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Pengaturan Card -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -271,12 +263,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
-                    android:text="Pengaturan"
+                    android:text="@string/settings"
                     android:textColor="@color/text_primary"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
-                <!-- Mode Gelap -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
@@ -287,14 +278,14 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:src="@drawable/ic_dark_mode"
-                        app:tint="@color/text_primary" />
+                        app:tint="@color/icon_tint" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
                         android:layout_weight="1"
-                        android:text="Mode Gelap"
+                        android:text="@string/dark_mode"
                         android:textColor="@color/text_primary"
                         android:textSize="16sp" />
 
@@ -302,12 +293,11 @@
                         android:id="@+id/switchModeGelap"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:thumbTint="#FFFFFF"
+                        app:thumbTint="@color/white"
                         app:trackTint="@color/bottom_nav_color" />
 
                 </LinearLayout>
 
-                <!-- Pemberitahuan -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
@@ -318,14 +308,14 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:src="@drawable/ic_notification"
-                        app:tint="@color/text_primary" />
+                        app:tint="@color/icon_tint" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
                         android:layout_weight="1"
-                        android:text="Pemberitahuan"
+                        android:text="@string/notifications"
                         android:textColor="@color/text_primary"
                         android:textSize="16sp" />
 
@@ -333,12 +323,41 @@
                         android:id="@+id/switchPemberitahuan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:thumbTint="#FFFFFF"
+                        app:thumbTint="@color/white"
                         app:trackTint="@color/bottom_nav_color" />
 
                 </LinearLayout>
 
-                <!-- Bahasa Aplikasi -->
+                <LinearLayout
+                    android:id="@+id/layoutPengaturanPemberitahuan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
+                    android:paddingVertical="8dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="140dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/notification_settings"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_chevron_right"
+                        app:tint="@color/text_secondary" />
+
+                </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/layoutBahasa"
                     android:layout_width="match_parent"
@@ -351,14 +370,14 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:src="@drawable/ic_language"
-                        app:tint="@color/text_primary" />
+                        app:tint="@color/icon_tint" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
                         android:layout_weight="1"
-                        android:text="Bahasa Aplikasi"
+                        android:text="@string/app_language"
                         android:textColor="@color/text_primary"
                         android:textSize="16sp" />
 
@@ -367,7 +386,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
-                        android:text="Indonesia"
+                        android:text="@string/indonesian"
                         android:textColor="@color/text_secondary"
                         android:textSize="14sp" />
 
@@ -383,7 +402,6 @@
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Tentang Aplikasi Card -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -404,12 +422,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
-                    android:text="Tentang Aplikasi"
+                    android:text="@string/about_app"
                     android:textColor="@color/text_primary"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
-                <!-- Backup & Restore -->
                 <LinearLayout
                     android:id="@+id/layoutBackup"
                     android:layout_width="match_parent"
@@ -422,14 +439,14 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:src="@drawable/ic_backup"
-                        app:tint="@color/text_primary" />
+                        app:tint="@color/icon_tint" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
                         android:layout_weight="1"
-                        android:text="Cadangkan &amp; Pulihkan"
+                        android:text="@string/backup_restore"
                         android:textColor="@color/text_primary"
                         android:textSize="16sp" />
 
@@ -441,7 +458,6 @@
 
                 </LinearLayout>
 
-                <!-- Hapus Data -->
                 <LinearLayout
                     android:id="@+id/layoutHapusData"
                     android:layout_width="match_parent"
@@ -454,14 +470,14 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:src="@drawable/ic_reset"
-                        app:tint="@color/text_primary" />
+                        app:tint="@color/icon_tint" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
                         android:layout_weight="1"
-                        android:text="Hapus Data"
+                        android:text="@string/delete_data"
                         android:textColor="@color/text_primary"
                         android:textSize="16sp" />
 
@@ -473,7 +489,6 @@
 
                 </LinearLayout>
 
-                <!-- Tentang Kami -->
                 <LinearLayout
                     android:id="@+id/layoutTentangKami"
                     android:layout_width="match_parent"
@@ -486,14 +501,14 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:src="@drawable/ic_info"
-                        app:tint="@color/text_primary" />
+                        app:tint="@color/icon_tint" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
                         android:layout_weight="1"
-                        android:text="Tentang Kami"
+                        android:text="@string/about_us"
                         android:textColor="@color/text_primary"
                         android:textSize="16sp" />
 
@@ -505,7 +520,6 @@
 
                 </LinearLayout>
 
-                <!-- Logout -->
                 <LinearLayout
                     android:id="@+id/layoutLogout"
                     android:layout_width="match_parent"
@@ -519,15 +533,15 @@
                         android:layout_height="24dp"
                         android:src="@drawable/ic_panah"
                         android:rotation="180"
-                        app:tint="#f87171" />
+                        app:tint="@color/color_danger"/>
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
                         android:layout_weight="1"
-                        android:text="Logout"
-                        android:textColor="#f87171"
+                        android:text="@string/logout"
+                        android:textColor="@color/color_danger"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -535,7 +549,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:src="@drawable/ic_chevron_right"
-                        app:tint="#f87171" />
+                        app:tint="@color/color_danger" />
 
                 </LinearLayout>
 

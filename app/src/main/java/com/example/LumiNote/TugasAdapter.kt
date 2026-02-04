@@ -9,12 +9,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class TugasAdapter(
-    private val listTugas: MutableList<Tugas>,
+    internal val listTugas: MutableList<Tugas>,
     private val onEditClick: (Tugas) -> Unit,
     private val onDeleteClick: (Tugas) -> Unit,
     private val onCheckedChange: (Tugas, Boolean) -> Unit,
     private val onFavoritClick: ((Tugas) -> Unit)? = null,
-    private val onArsipClick: ((Tugas) -> Unit)? = null // ✅ TAMBAHAN: Callback arsip
+    private val onArsipClick: ((Tugas) -> Unit)? = null
 ) : RecyclerView.Adapter<TugasAdapter.TugasViewHolder>() {
 
     class TugasViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -25,7 +25,7 @@ class TugasAdapter(
         val btnEdit: ImageView = itemView.findViewById(R.id.ic_edit_tugas)
         val btnHapus: ImageView = itemView.findViewById(R.id.ic_hapus_tugas)
         val favoritIcon: ImageView = itemView.findViewById(R.id.ic_favorit_tugas)
-        val kartuTugas = itemView.findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.kartutugas) // ✅ TAMBAHAN
+        val kartuTugas = itemView.findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.kartutugas)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TugasViewHolder {
@@ -41,40 +41,42 @@ class TugasAdapter(
         holder.deskripsi.text = tugas.deskripsi
         holder.tanggal.text = tugas.tanggal ?: ""
 
-        if (tugas.isSelesai) {
-            holder.judul.setTextColor(holder.judul.context.getColor(android.R.color.darker_gray))
-            holder.deskripsi.setTextColor(holder.deskripsi.context.getColor(android.R.color.darker_gray))
-            holder.tanggal.setTextColor(holder.tanggal.context.getColor(android.R.color.darker_gray))
+        // Set warna text berdasarkan status selesai
+        val textColor = if (tugas.isSelesai) {
+            holder.judul.context.getColor(android.R.color.darker_gray)
         } else {
-            holder.judul.setTextColor(holder.judul.context.getColor(android.R.color.black))
-            holder.deskripsi.setTextColor(holder.deskripsi.context.getColor(android.R.color.black))
-            holder.tanggal.setTextColor(holder.tanggal.context.getColor(android.R.color.black))
+            holder.judul.context.getColor(R.color.text_primary)
         }
 
+        holder.judul.setTextColor(textColor)
+        holder.deskripsi.setTextColor(textColor)
+        holder.tanggal.setTextColor(textColor)
+
+        // Set checkbox
         holder.checkbox.setOnCheckedChangeListener(null)
         holder.checkbox.isChecked = tugas.isChecked()
         holder.checkbox.setOnCheckedChangeListener { _, isChecked ->
             onCheckedChange(tugas, isChecked)
         }
 
-        // ✅ TAMBAHAN: Set icon favorit dengan warna
+        // Set icon favorit dengan warna
         try {
             if (tugas.isFavorit) {
-                holder.favoritIcon.setImageResource(R.drawable.ic_star_in) // Bintang penuh
+                holder.favoritIcon.setImageResource(R.drawable.ic_star_in)
                 holder.favoritIcon.setColorFilter(
                     holder.favoritIcon.context.getColor(android.R.color.holo_orange_light)
-                ) // Warna kuning/orange
+                )
             } else {
-                holder.favoritIcon.setImageResource(R.drawable.ic_star) // Bintang kosong
+                holder.favoritIcon.setImageResource(R.drawable.ic_star)
                 holder.favoritIcon.setColorFilter(
                     holder.favoritIcon.context.getColor(android.R.color.darker_gray)
-                ) // Warna abu-abu
+                )
             }
         } catch (e: Exception) {
-            // Jika field isFavorit belum ada di data class, pakai default
             holder.favoritIcon.setImageResource(R.drawable.ic_star)
         }
 
+        // Click listeners
         holder.btnEdit.setOnClickListener {
             onEditClick(tugas)
         }
@@ -83,12 +85,11 @@ class TugasAdapter(
             onDeleteClick(tugas)
         }
 
-        // ✅ TAMBAHAN: Handle klik favorit
         holder.favoritIcon.setOnClickListener {
             onFavoritClick?.invoke(tugas)
         }
 
-        // ✅ TAMBAHAN: Long press untuk arsip
+        // Long press untuk arsip
         holder.kartuTugas.setOnLongClickListener {
             onArsipClick?.invoke(tugas)
             true

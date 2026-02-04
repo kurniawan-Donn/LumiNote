@@ -10,7 +10,7 @@ data class Catatan(
     val tanggal: String? = null,
     val waktu: String? = null,
     val timestamp: Long = System.currentTimeMillis(),
-    var isFavorit: Boolean = false // ✅ TAMBAHAN: Field untuk favorit
+    var isFavorit: Boolean = false
 ) {
     fun getFormatTanggal(): String {
         if (tanggal != null && waktu != null) {

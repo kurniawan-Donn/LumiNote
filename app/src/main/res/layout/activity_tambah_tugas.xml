@@ -3,9 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/background_primary">
 
-    <!-- Header -->
     <TextView
         android:id="@+id/tv_header"
         android:layout_width="0dp"
@@ -13,14 +12,13 @@
         android:background="@color/header_color"
         android:padding="16dp"
         android:text="@string/tugas_baru"
-        android:textColor="@color/white"
+        android:textColor="@color/text_on_header"
         android:textSize="20sp"
         android:fontFamily="@font/interbold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- ScrollView untuk form -->
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -35,7 +33,6 @@
             android:layout_height="wrap_content"
             android:padding="16dp">
 
-            <!-- Card Container -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_form"
                 android:layout_width="0dp"
@@ -54,13 +51,12 @@
                     android:orientation="vertical"
                     android:padding="20dp">
 
-                    <!-- Judul Catatan -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/judul_tugas"
                         android:textColor="@color/text_primary"
-                        android:textSize="16sp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <EditText
@@ -73,33 +69,34 @@
                         android:inputType="text"
                         android:textColor="@color/text_primary"
                         android:textColorHint="@color/text_hint"
-                        android:textSize="14sp" />
+                        android:textSize="18sp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginTop="8dp"
-                        android:background="@color/text_hint" />
-                    <!-- Tanggal & Waktu -->
+                        android:background="@color/text_secondary" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:text="Tugas"
+                        android:text="@string/tugas"
                         android:textColor="@color/text_primary"
                         android:textSize="16sp"
                         android:textStyle="bold" />
+
                     <EditText
                         android:id="@+id/et_isi_tugas"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:background="@android:color/transparent"
-                        android:hint="Masukan Isi Tugas"
+                        android:hint="@string/masukkan_isi_tugas"
                         android:inputType="text"
                         android:textColor="@color/text_primary"
-                        android:textColorHint="@color/text_hint"
-                        android:textSize="14sp" />
+                        android:textColorHint="@color/text_secondary"
+                        android:textSize="18sp" />
 
                     <View
                         android:layout_width="match_parent"
@@ -107,17 +104,15 @@
                         android:layout_marginTop="8dp"
                         android:background="@color/text_hint" />
 
-                    <!-- Tanggal & Waktu -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:text="@string/batas_waktu"
                         android:textColor="@color/text_primary"
-                        android:textSize="16sp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
-                    <!-- Pilih Tanggal -->
                     <LinearLayout
                         android:id="@+id/layout_tanggal_tugas"
                         android:layout_width="match_parent"
@@ -135,8 +130,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/pilih_tanggal"
-                            android:textColor="@color/text_hint"
-                            android:textSize="14sp" />
+                            android:textColor="@color/text_secondary"
+                            android:textSize="18sp" />
 
                         <ImageView
                             android:layout_width="24dp"
@@ -150,7 +145,6 @@
                         android:layout_height="1dp"
                         android:background="@color/text_hint" />
 
-                    <!-- Pilih Waktu -->
                     <LinearLayout
                         android:id="@+id/layout_waktu_tugas"
                         android:layout_width="match_parent"
@@ -169,8 +163,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/pilih_waktu"
-                            android:textColor="@color/text_hint"
-                            android:textSize="14sp" />
+                            android:textColor="@color/text_secondary"
+                            android:textSize="18sp" />
 
                         <ImageView
                             android:layout_width="24dp"
@@ -185,30 +179,27 @@
                         android:layout_height="1dp"
                         android:background="@color/text_hint" />
 
-                    <!-- Info Text -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="@string/tidak_ada_tanggal"
-                        android:textColor="@color/text_secondary"
-                        android:textSize="12sp" />
+                        android:textColor="@color/text_primary"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
-
             </androidx.cardview.widget.CardView>
 
-            <!-- Button Tambahkan -->
             <Button
                 android:id="@+id/btn_simpan"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="16dp"
-                android:backgroundTint="@color/bottom_nav_color"
+                android:backgroundTint="@color/text_secondary"
                 android:padding="16dp"
                 android:text="@string/simpan"
-                android:textColor="@color/white"
+                android:textColor="@color/background_primary"
                 android:textSize="16sp"
                 android:fontFamily="@font/interbold"
                 app:cornerRadius="12dp"

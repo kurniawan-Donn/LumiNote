@@ -18,8 +18,6 @@ data class Tugas(
         val kata = katakunci.lowercase()
         val judulLower = judul.lowercase()
         val deskripsiLower = deskripsi.lowercase()
-        val cocokDiJudul = judulLower.contains(kata)
-        val cocokDiDeskripsi = deskripsiLower.contains(kata)
-        return cocokDiJudul || cocokDiDeskripsi
+        return judulLower.contains(kata) || deskripsiLower.contains(kata)
     }
 }

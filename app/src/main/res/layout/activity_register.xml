@@ -17,26 +17,26 @@
             android:id="@+id/btnBack"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
+            android:backgroundTint="@color/text_primary"
             android:src="@drawable/ic_panah"
-            android:contentDescription="Kembali"
+            android:contentDescription="@string/back_button"
             android:layout_marginBottom="16dp" />
 
         <!-- Title -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Daftar Akun Baru"
+            android:text="@string/create_new_account"
             android:textSize="28sp"
             android:textStyle="bold"
-            android:textColor="@color/header_color"
+            android:textColor="@color/text_secondary"
             android:layout_marginBottom="8dp" />
 
         <!-- Subtitle -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Buat akun untuk mulai menggunakan LumiNote"
+            android:text="@string/create_account_description"
             android:textSize="14sp"
             android:textColor="@color/text_secondary"
             android:layout_marginBottom="32dp" />
@@ -67,7 +67,7 @@
                         android:layout_height="24dp"
                         android:src="@drawable/ic_id_card"
                         app:tint="@color/text_secondary"
-                        android:contentDescription="Icon ID" />
+                        android:contentDescription="@string/id_icon" />
 
                     <EditText
                         android:id="@+id/etIdNama"
@@ -76,12 +76,12 @@
                         android:layout_weight="1"
                         android:layout_marginStart="12dp"
                         android:background="@null"
-                        android:hint="ID Nama (min. 4 karakter)"
+                        android:hint="@string/id_name_hint"
                         android:inputType="text"
                         android:maxLength="30"
                         android:textColor="@color/text_primary"
                         android:textColorHint="@color/text_hint"
-                        android:textSize="16sp" />
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 
@@ -89,8 +89,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="Hanya huruf kecil dan angka"
-                    android:textSize="12sp"
+                    android:text="@string/id_name_rule"
+                    android:textSize="15sp"
                     android:textColor="@color/text_hint" />
 
             </LinearLayout>
@@ -123,7 +123,7 @@
                         android:layout_height="24dp"
                         android:src="@drawable/ic_key"
                         app:tint="@color/text_secondary"
-                        android:contentDescription="Icon Password" />
+                        android:contentDescription="@string/password_icon" />
 
                     <EditText
                         android:id="@+id/etPassword"
@@ -132,12 +132,12 @@
                         android:layout_weight="1"
                         android:layout_marginStart="12dp"
                         android:background="@null"
-                        android:hint="Password (min.5 karakter)"
+                        android:hint="@string/password_hint"
                         android:inputType="textPassword"
                         android:maxLength="30"
                         android:textColor="@color/text_primary"
                         android:textColorHint="@color/text_hint"
-                        android:textSize="16sp" />
+                        android:textSize="18sp" />
 
                     <ImageButton
                         android:id="@+id/btnTogglePassword"
@@ -146,7 +146,7 @@
                         android:padding="8dp"
                         android:scaleType="centerInside"
                         android:background="?attr/selectableItemBackgroundBorderless"
-                        android:contentDescription="Toggle Password"
+                        android:contentDescription="@string/toggle_password"
                         android:src="@drawable/ic_eye_off" />
 
                 </LinearLayout>
@@ -176,7 +176,7 @@
                     android:layout_height="24dp"
                     android:src="@drawable/ic_key"
                     app:tint="@color/text_secondary"
-                    android:contentDescription="Icon Confirm Password" />
+                    android:contentDescription="@string/confirm_password_icon" />
 
                 <EditText
                     android:id="@+id/etKonfirmasiPassword"
@@ -185,12 +185,12 @@
                     android:layout_weight="1"
                     android:layout_marginStart="12dp"
                     android:background="@null"
-                    android:hint="Konfirmasi Password"
+                    android:hint="@string/confirm_password_hint"
                     android:inputType="textPassword"
                     android:maxLength="30"
                     android:textColor="@color/text_primary"
                     android:textColorHint="@color/text_hint"
-                    android:textSize="16sp" />
+                    android:textSize="18sp" />
 
                 <ImageButton
                     android:id="@+id/btnToggleKonfirmasiPassword"
@@ -199,7 +199,7 @@
                     android:padding="8dp"
                     android:scaleType="centerInside"
                     android:background="?attr/selectableItemBackgroundBorderless"
-                    android:contentDescription="Toggle Confirm Password"
+                    android:contentDescription="@string/toggle_confirm_password"
                     android:src="@drawable/ic_eye_off" />
 
             </LinearLayout>
@@ -211,11 +211,12 @@
             android:id="@+id/btnDaftar"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:text="Daftar"
+            android:text="@string/register"
             android:textAllCaps="false"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold"
-            android:backgroundTint="@color/header_color"
+            android:textColor="@color/background_secondary"
+            android:backgroundTint="@color/text_hint"
             app:cornerRadius="12dp"
             android:layout_marginBottom="16dp" />
 
@@ -230,17 +231,17 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sudah punya akun? "
+                android:text="@string/already_have_account"
                 android:textColor="@color/text_secondary"
-                android:textSize="14sp" />
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/tvMasuk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Masuk"
-                android:textColor="@color/bottom_nav_color"
-                android:textSize="14sp"
+                android:text="@string/login"
+                android:textColor="@color/text_primary"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 android:padding="4dp" />
 

@@ -26,6 +26,8 @@ class RegisterActivity : AppCompatActivity() {
     private var isKonfirmasiPasswordVisible = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        LanguageHelper.applyLanguage(this)
+        ThemeHelper.applyTheme(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
@@ -102,46 +104,46 @@ class RegisterActivity : AppCompatActivity() {
 
         // Validasi ID Nama
         if (idNama.isEmpty()) {
-            Toast.makeText(this, "ID Nama tidak boleh kosong 🤪", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.toast_id_nama_kosong), Toast.LENGTH_SHORT).show()
             return
         }
 
         if (idNama.length < 4) {
-            Toast.makeText(this, "ID Nama minimal 4 karakter 🥺", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.toast_id_nama_minimal), Toast.LENGTH_SHORT).show()
             return
         }
 
         // Validasi hanya huruf kecil dan angka
         if (!idNama.matches(Regex("^[a-z0-9]+$"))) {
-            Toast.makeText(this, "ID Nama hanya boleh huruf kecil dan angka 😊", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.toast_id_nama_format), Toast.LENGTH_SHORT).show()
             return
         }
 
         // Validasi Password
         if (password.isEmpty()) {
-            Toast.makeText(this, "Password tidak boleh kosong 🤪", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.toast_password_kosong), Toast.LENGTH_SHORT).show()
             return
         }
 
         if (password.length < 5) {
-            Toast.makeText(this, "Password minimal 5 karakter 🤪", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.toast_password_minimal), Toast.LENGTH_SHORT).show()
             return
         }
 
         // Validasi Konfirmasi Password
         if (konfirmasiPassword.isEmpty()) {
-            Toast.makeText(this, "Konfirmasi Password tidak boleh kosong 🥲", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.toast_konfirmasi_password_kosong), Toast.LENGTH_SHORT).show()
             return
         }
 
         if (password != konfirmasiPassword) {
-            Toast.makeText(this, "Password dan Konfirmasi Password tidak cocok 🤪", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.toast_password_tidak_cocok), Toast.LENGTH_SHORT).show()
             return
         }
 
         // Cek apakah ID sudah digunakan
         if (userManager.isIdExists(idNama)) {
-            Toast.makeText(this, "ID Nama sudah digunakan 😥", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.toast_id_sudah_digunakan), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -149,7 +151,7 @@ class RegisterActivity : AppCompatActivity() {
         val success = userManager.registerUser(idNama, password)
 
         if (success) {
-            Toast.makeText(this, "Registrasi berhasil! Silakan login 🎉🎉", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.toast_registrasi_berhasil), Toast.LENGTH_SHORT).show()
 
             // Kembali ke LoginActivity
             val intent = Intent(this, LoginActivity::class.java)
@@ -157,7 +159,7 @@ class RegisterActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         } else {
-            Toast.makeText(this, "Registrasi gagal. Silakan coba lagi 😭😭", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.toast_registrasi_gagal), Toast.LENGTH_SHORT).show()
         }
     }
 }

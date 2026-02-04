@@ -4,8 +4,9 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import androidx.core.content.edit
 
-class UserManager(context: Context) {
+class UserManager(private val context: Context) {
 
     private val prefs: SharedPreferences =
         context.getSharedPreferences("LumiNoteUsers", Context.MODE_PRIVATE)
@@ -29,7 +30,7 @@ class UserManager(context: Context) {
     // Menyimpan semua user
     private fun saveAllUsers(users: List<User>) {
         val json = gson.toJson(users)
-        prefs.edit().putString(KEY_USERS, json).apply()
+        prefs.edit { putString(KEY_USERS, json) }
     }
 
     // Registrasi user baru
@@ -38,10 +39,16 @@ class UserManager(context: Context) {
 
         // Cek apakah ID sudah digunakan
         if (users.any { it.idNama == idNama }) {
-            return false // ID sudah ada
+            return false
         }
 
-        val newUser = User(idNama, password)
+        val newUser = User(
+            idNama = idNama,
+            password = password,
+            nama = context.getString(R.string.default_user_name),
+            bio = context.getString(R.string.default_user_bio),
+            fotoProfil = ""
+        )
         users.add(newUser)
         saveAllUsers(users)
         return true

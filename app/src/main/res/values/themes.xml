@@ -1,17 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Base application theme. -->
-    <style name="Theme.My_aplication" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-
-        <!-- Primary brand color. -->
+    <!-- Base application theme - LIGHT MODE -->
+    <style name="Theme.LumiNote" parent="Theme.AppCompat.NoActionBar">
+        <!-- Primary brand color -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
+
+        <!-- Secondary brand color -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">@color/header_color</item>
+
+        <!-- Background colors -->
+        <item name="android:windowBackground">@color/background_primary</item>
+        <item name="android:colorBackground">@color/background_primary</item>
+
+        <!-- Text colors -->
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+
+        <!-- Navigation bar color (opsional) -->
+        <item name="android:navigationBarColor">@color/bottom_nav_color</item>
+
+        <!-- Tambahkan baris ini agar TimePicker otomatis pakai style kustom -->
+        <item name="android:timePickerStyle">@style/CustomTimePickerStyle</item>
+
+        <!-- Penting: Untuk mengubah warna angka di dalam Spinner TimePicker -->
+        <item name="android:editTextColor">@color/text_secondary</item>
+
     </style>
-</resources>
+    <!-- Style untuk TimePicker -->
+    <style name="CustomTimePickerStyle" parent="android:Widget.Material.Light.TimePicker">
+        <item name="android:timePickerMode">spinner</item>
+        <!-- Warna angka saat ini -->
+        <item name="android:textColorPrimary">@color/text_secondary</item>
+        <!-- Warna angka saat di-scroll -->
+        <item name="android:textColorSecondary">@color/text_hint</item>
+        <!-- Warna garis pemisah (Divider) - Akan jadi Biru di Mode Gelap jika blackblue diatur biru -->
+        <item name="android:colorControlNormal">@color/blackblue</item>
+    </style></resources>

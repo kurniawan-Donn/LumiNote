@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8FAFC"
+    android:background="@color/background_primary"
     android:orientation="vertical">
 
-    <!-- Toolbar -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="@color/card_color"
+        android:background="@color/header_color"
         android:elevation="4dp">
 
         <ImageView
@@ -21,17 +20,18 @@
             android:layout_marginStart="4dp"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:contentDescription="Tombol Kembali"
+            android:contentDescription="@string/desc_back_button"
             android:padding="12dp"
+            app:tint="@color/text_on_header"
             app:srcCompat="@drawable/ic_panah" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Arsip"
+            android:text="@string/title_archive"
             android:textAlignment="center"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/text_on_header"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -43,13 +43,12 @@
             android:layout_centerVertical="true"
             android:layout_marginEnd="10dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Action"
+            android:contentDescription="@string/desc_action"
             android:src="@drawable/ic_faforit"
             android:scaleType="fitCenter" />
 
     </RelativeLayout>
 
-    <!-- Search Bar -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -69,7 +68,7 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:contentDescription="Search Icon"
+                android:contentDescription="@string/desc_search_icon"
                 android:src="@drawable/ic_search"
                 app:tint="@color/text_secondary" />
 
@@ -80,7 +79,7 @@
                 android:layout_marginStart="12dp"
                 android:layout_weight="1"
                 android:background="@null"
-                android:hint="Cari..."
+                android:hint="@string/hint_search"
                 android:inputType="text"
                 android:textColor="@color/text_primary"
                 android:textColorHint="@color/text_secondary"
@@ -90,7 +89,6 @@
 
     </androidx.cardview.widget.CardView>
 
-    <!-- RecyclerView untuk list item arsip -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPenting"
         android:layout_width="match_parent"
@@ -103,7 +101,6 @@
         tools:itemCount="3"
         tools:listitem="@layout/item_arsip" />
 
-    <!-- Empty State -->
     <LinearLayout
         android:id="@+id/layoutEmpty"
         android:layout_width="match_parent"
@@ -117,7 +114,7 @@
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:alpha="0.5"
-            android:contentDescription="Empty"
+            android:contentDescription="@string/desc_empty_state"
             android:src="@drawable/ic_archive"
             app:tint="@color/bottom_nav_color" />
 
@@ -125,7 +122,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Belum ada item yang diarsipkan"
+            android:text="@string/msg_empty_archive"
             android:textColor="@color/text_secondary"
             android:textSize="16sp" />
 

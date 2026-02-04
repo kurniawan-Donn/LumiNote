@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/background_primary"
     android:fillViewport="true">
 
     <LinearLayout
@@ -13,35 +13,31 @@
         android:padding="24dp"
         android:gravity="center">
 
-        <!-- Logo -->
         <ImageView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:src="@mipmap/ic_launcher"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:src="@drawable/ic_main"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="16dp"
-            android:contentDescription="Logo" />
+            android:contentDescription="@string/desc_logo_app" />
 
-        <!-- App Name -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/app_name"
             android:textSize="28sp"
             android:textStyle="bold"
-            android:textColor="@color/header_color"
+            android:textColor="@color/text_secondary"
             android:layout_marginBottom="8dp" />
 
-        <!-- Subtitle -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Masuk ke Akun Anda"
+            android:text="@string/subtitle_login"
             android:textSize="16sp"
             android:textColor="@color/text_secondary"
             android:layout_marginBottom="32dp" />
 
-        <!-- ID Nama Input -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,7 +58,7 @@
                     android:layout_height="24dp"
                     android:src="@drawable/ic_person"
                     app:tint="@color/text_secondary"
-                    android:contentDescription="Icon ID" />
+                    android:contentDescription="@string/desc_icon_id" />
 
                 <EditText
                     android:id="@+id/etIdNama"
@@ -71,17 +67,16 @@
                     android:layout_weight="1"
                     android:layout_marginStart="12dp"
                     android:background="@null"
-                    android:hint="ID Nama"
+                    android:hint="@string/hint_id_name"
                     android:inputType="text"
                     android:textColor="@color/text_primary"
                     android:textColorHint="@color/text_hint"
-                    android:textSize="16sp" />
+                    android:textSize="18sp" />
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Password Input -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -102,7 +97,7 @@
                     android:layout_height="24dp"
                     android:src="@drawable/ic_key"
                     app:tint="@color/text_secondary"
-                    android:contentDescription="Icon Password" />
+                    android:contentDescription="@string/desc_icon_password" />
 
                 <EditText
                     android:id="@+id/etPassword"
@@ -111,11 +106,11 @@
                     android:layout_weight="1"
                     android:layout_marginStart="12dp"
                     android:background="@null"
-                    android:hint="Password"
+                    android:hint="@string/hint_password"
                     android:inputType="textPassword"
                     android:textColor="@color/text_primary"
                     android:textColorHint="@color/text_hint"
-                    android:textSize="16sp" />
+                    android:textSize="18sp" />
 
                 <ImageButton
                     android:id="@+id/btnTogglePassword"
@@ -124,40 +119,38 @@
                     android:padding="8dp"
                     android:scaleType="centerInside"
                     android:background="?attr/selectableItemBackgroundBorderless"
-                    android:contentDescription="Toggle Password"
+                    android:contentDescription="@string/desc_toggle_password"
                     android:src="@drawable/ic_eye_off" />
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Lupa Password -->
         <TextView
             android:id="@+id/tvLupaPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:text="Lupa Password?"
-            android:textColor="@color/bottom_nav_color"
+            android:text="@string/label_forgot_password"
+            android:textColor="@color/text_secondary"
             android:textSize="14sp"
             android:textStyle="bold"
             android:layout_marginBottom="24dp"
             android:padding="8dp" />
 
-        <!-- Button Login -->
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:text="Masuk"
+            android:text="@string/btn_login"
             android:textAllCaps="false"
-            android:textSize="16sp"
+            android:textSize="18sp"
+            android:textColor="@color/background_primary"
             android:textStyle="bold"
-            android:backgroundTint="@color/header_color"
+            android:backgroundTint="@color/text_hint"
             app:cornerRadius="12dp"
             android:layout_marginBottom="16dp" />
 
-        <!-- Belum Punya Akun -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -167,7 +160,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Belum punya akun? "
+                android:text="@string/label_no_account"
                 android:textColor="@color/text_secondary"
                 android:textSize="14sp" />
 
@@ -175,8 +168,8 @@
                 android:id="@+id/tvDaftar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Daftar"
-                android:textColor="@color/bottom_nav_color"
+                android:text="@string/label_register"
+                android:textColor="@color/text_primary"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:padding="4dp" />

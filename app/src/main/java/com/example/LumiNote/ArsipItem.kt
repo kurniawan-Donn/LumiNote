@@ -17,9 +17,9 @@ data class ArsipItem(
             val tanggalDisplay = if (!catatan.tanggal.isNullOrEmpty() && !catatan.waktu.isNullOrEmpty()) {
                 "${catatan.tanggal} ${catatan.waktu}"
             } else if (!catatan.tanggal.isNullOrEmpty()) {
-                catatan.tanggal!!
+                catatan.tanggal
             } else if (!catatan.waktu.isNullOrEmpty()) {
-                catatan.waktu!!
+                catatan.waktu
             } else {
                 ""
             }
@@ -40,9 +40,9 @@ data class ArsipItem(
             val tanggalDisplay = if (!tugas.tanggal.isNullOrEmpty() && !tugas.waktu.isNullOrEmpty()) {
                 "${tugas.tanggal} ${tugas.waktu}"
             } else if (!tugas.tanggal.isNullOrEmpty()) {
-                tugas.tanggal!!
+                tugas.tanggal
             } else if (!tugas.waktu.isNullOrEmpty()) {
-                tugas.waktu!!
+                tugas.waktu
             } else {
                 ""
             }

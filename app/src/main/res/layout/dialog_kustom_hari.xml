@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Dialog Pilih Hari (Pengaturan Jadwal / Repeat Mingguan) -->
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    app:cardCornerRadius="28dp"
+    app:cardBackgroundColor="@color/card_color"
+    app:cardElevation="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_select_day_dialog"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textColor="@color/text_primary"
+            android:layout_marginBottom="16dp"/>
+
+        <LinearLayout
+            android:id="@+id/container_hari"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/card_color">
+
+            <CheckBox
+                android:id="@+id/cb_minggu"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/day_sunday"
+                android:buttonTint="@color/blackblue"
+                android:textColor="@color/text_secondary"
+                android:textSize="16sp"/>
+
+            <CheckBox
+                android:id="@+id/cb_senin"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/day_monday"
+                android:buttonTint="@color/blackblue"
+                android:textColor="@color/text_secondary"
+                android:textSize="16sp"/>
+
+            <CheckBox
+                android:id="@+id/cb_selasa"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/day_tuesday"
+                android:buttonTint="@color/blackblue"
+                android:textColor="@color/text_secondary"
+                android:textSize="16sp"/>
+
+            <CheckBox
+                android:id="@+id/cb_rabu"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/day_wednesday"
+                android:buttonTint="@color/blackblue"
+                android:textColor="@color/text_secondary"
+                android:textSize="16sp"/>
+
+            <CheckBox
+                android:id="@+id/cb_kamis"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/day_thursday"
+                android:buttonTint="@color/blackblue"
+                android:textColor="@color/text_secondary"
+                android:textSize="16sp"/>
+
+            <CheckBox
+                android:id="@+id/cb_jumat"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/day_friday"
+                android:buttonTint="@color/blackblue"
+                android:textColor="@color/text_secondary"
+                android:textSize="16sp"/>
+
+            <CheckBox
+                android:id="@+id/cb_sabtu"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/day_saturday"
+                android:buttonTint="@color/blackblue"
+                android:textColor="@color/text_secondary"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/btn_batal_hari"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:text="@string/btn_cancel"
+                android:textAllCaps="false"
+                android:backgroundTint="@color/text_secondary"
+                android:textColor="@color/background_primary"
+                app:cornerRadius="16dp"/>
+
+            <Button
+                android:id="@+id/btn_ok_hari"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:text="@string/btn_save"
+                android:textAllCaps="false"
+                android:backgroundTint="#4285F4"
+                android:textColor="@color/white"
+                app:cornerRadius="16dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

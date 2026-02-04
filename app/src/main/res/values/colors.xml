@@ -1,22 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-        <!-- Warna Tema Aplikasi -->
+        <!-- ==================== -->
+        <!-- LIGHT MODE COLORS -->
+        <!-- ==================== -->
+
+        <!-- Background Colors -->
+        <color name="background_primary">#FFFFFF</color>
+        <color name="background_secondary">#F5F5F5</color>
+        <color name="splash_background">#FFFFFF</color>
+
+        <!-- Theme Colors -->
         <color name="header_color">#BCCCDC</color>
         <color name="card_color">#D9EAFD</color>
         <color name="bottom_nav_color">#9AA6B2</color>
-        <color name="white">#FFFFFF</color>
-        <color name="black">#000000</color>
+        <color name="blackblue">#000000</color>
+        <color name="header_notif">#0067FF</color>
+
+        <!-- Text Colors -->
         <color name="text_primary">#333333</color>
         <color name="text_secondary">#666666</color>
         <color name="text_hint">#999999</color>
+        <color name="text_on_header">#FFFFFF</color>
 
-        <!-- Material Design warna lain jika dibutuhkan-->
+        <!-- Basic Colors -->
+        <color name="white">#FFFFFF</color>
+        <color name="black">#000000</color>
+        <color name="whiteb">#FFFFFF</color>
+
+        <!-- Material Design Colors -->
         <color name="purple_200">#FFBB86FC</color>
         <color name="purple_500">#FF6200EE</color>
         <color name="purple_700">#FF3700B3</color>
         <color name="teal_200">#FF03DAC5</color>
         <color name="teal_700">#FF018786</color>
+
+        <!-- Additional Colors -->
         <color name="grey">#BCCCDC</color>
         <color name="dark_grey">#9AA6B2</color>
         <color name="white_grey">#D9EAFD</color>
+        <color name="color_danger">#f87171</color>
+
+        <!-- Icon Tint -->
+        <color name="icon_tint">#333333</color>
+        <color name="icon_tint_light">#FFFFFF</color>
+
+        <!-- Divider & Border -->
+        <color name="divider_color">#E0E0E0</color>
+        <color name="border_color">#CCCCCC</color>
+
+        <!-- Notification Colors (Light Mode) -->
+        <color name="notification_header_bg">#BCCCDC</color>
+        <color name="notification_header_text">#FFFFFF</color>
+        <color name="notification_header_text_secondary">#E0E0E0</color>
+        <color name="notification_icon_tint">#FFFFFF</color>
+        <color name="notification_content_bg">@color/card_color</color>
 </resources>

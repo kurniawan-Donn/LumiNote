@@ -1,0 +1,737 @@
+<resources>
+    <string name="app_name">LumiNote</string>
+    <string name="title_home">Omah</string>
+    <string name="title_dashboard">Papan</string>
+    <string name="title_notifications">Wara-Wara</string>
+
+    <!-- activity faforit-->
+    <string name="desc_back_button">Tombol Bali</string>
+    <string name="title_archive">Arsip</string>
+    <string name="desc_action">Tumindak</string>
+    <string name="desc_search_icon">Ikon Goleki</string>
+    <string name="hint_search">Goleki…</string>
+    <string name="desc_empty_state">Suwung</string>
+    <string name="msg_empty_archive">Durung ana barang sing diarsipake</string>
+
+    <!-- activity backup and restore-->
+
+        <string name="title_backup_restore">Nyimpen &amp; Mbaleake</string>
+        <string name="desc_backup_info">Backup digunakake kanggo nyimpen cathetan lan tugas supaya ora ilang.</string>
+        <string name="desc_restore_info">Restore digunakake kanggo mbalekake data saka berkas serep.</string>
+        <string name="label_backup_data">Simpen Data</string>
+        <string name="desc_backup_data">Simpen kabeh cathetan lan tugas ing berkas serep ing piranti.</string>
+        <string name="last_backup_prefix">Simpenan Terakhir : %1$s</string>
+        <string name="backup_none">Durung Ana</string>
+        <string name="btn_backup">Simpen</string>
+        <string name="label_restore_data">Balekake Data</string>
+        <string name="desc_restore_data">Balekake data saka berkas serep sing kasimpen ing piranti.</string>
+        <string name="warning_restore">Data saiki bakal diganti karo data saka serepan</string>
+        <string name="btn_restore">Balekake</string>
+        <string name="desc_download_icon">Ikon Unduh</string>
+        <string name="desc_upload_icon">Ikon Unggah</string>
+
+
+    <!-- Activity catatan -->
+    <string name="title_note_editor">IRAH-IRAHAN CATETHAN</string>
+    <string name="hint_write_here">Mangga nulis ing kene</string>
+    <string name="label_date_time">Tanggal\nWektu</string>
+    <string name="desc_save_button">Tombol Simpen</string>
+
+    <!-- Activity edit catatan -->
+    <string name="catatan_baru">Catethan Anyar</string>
+    <string name="judul_catatan">Irah-irahan Catethan</string>
+    <string name="masukkan_judul">Lebokake Irah-irahan</string>
+    <string name="deskripsi">Katrangan</string>
+    <string name="masukkan_deskripsi">Lebokake Katrangan</string>
+    <string name="tanggal_waktu_opsional">Tanggal &amp; Wektu (Pilihan)</string>
+    <string name="pilih_tanggal">Pilih Tanggal</string>
+    <string name="pilih_waktu">Pilih Wektu</string>
+    <string name="simpan">Simpen</string>
+
+    <!-- edit profil-->
+    <string name="title_edit_profile">Owahi Profil</string>
+    <string name="hint_your_name">Jeneng sampeyan</string>
+    <string name="hint_bio">Tulis bio babagan sampeyan…</string>
+    <string name="hint_id_name">ID Jeneng</string>
+    <string name="btn_cancel">Batal</string>
+    <string name="btn_save">Simpen</string>
+    <string name="desc_profile_picture">Gambar Profil</string>
+    <string name="desc_change_photo">Ganti Foto</string>
+    <string name="desc_toggle_password">Tuduhake Sandi</string>
+
+    <!-- activity favorit-->
+    <string name="title_favorite">Favorit</string>
+    <string name="msg_empty_favorite">Durung ana Catethan/Tugas Favorit 😓</string>
+    <string name="hint_search_favorite">Goleki…</string>
+    <string name="desc_favorite_icon">Favorit</string>
+
+    <!-- activity forget password-->
+    <string name="title_forgot_password">Lali Sandi</string>
+    <string name="subtitle_forgot_password">Lebokake ID Jeneng lan sandi anyar sampeyan</string>
+    <string name="hint_new_password">Sandi Anyar (min. 5 karakter)</string>
+    <string name="hint_confirm_password">Baleni Sandi Anyar</string>
+    <string name="btn_reset_password">Ganti Sandi</string>
+    <string name="desc_icon_id">Ikon ID</string>
+    <string name="desc_icon_password">Ikon Sandi</string>
+
+    <!-- activity Login-->
+    <string name="subtitle_login">Mlebu menyang akun sampeyan</string>
+    <string name="hint_password">Sandi</string>
+    <string name="label_forgot_password">Lali Sandi?</string>
+    <string name="btn_login">Mlebu</string>
+    <string name="label_no_account">Durung duwe akun? </string>
+    <string name="label_register">Daftar</string>
+    <string name="desc_logo_app">Logo Aplikasi</string>
+
+    <!-- activity main-->
+    <string name="title_main_dashboard">Dhaptar Catethan</string>
+    <string name="label_add">Tambah</string>
+    <string name="desc_to_profile">Bukak Profil</string>
+    <string name="desc_add_button">Tambah catethan utawa tugas anyar</string>
+    <string name="title_catatan">Catethan</string>
+    <string name="title_tugas">Tugas</string>
+
+    <!-- activity pemberitahuan-->
+    <string name="notification_title">Wara-wara</string>
+    <string name="back_button_description">Bali</string>
+    <string name="notification_bell_description">Wara-wara</string>
+    <string name="info_description">Info</string>
+    <string name="info_text">Atur wara-wara kanggo ngingetake tugas-tugas penting sampeyan.</string>
+    <string name="set_notification">Atur Wara-wara</string>
+    <string name="set_alarm">Atur Weker</string>
+    <string name="notifications">Wara-wara</string>
+    <string name="alarm">Weker</string>
+    <string name="upcoming_tasks">Tugas Arep Teka</string>
+    <string name="upcoming_tasks_desc">Tampa wara-wara nalika tugas meh tekan wektu pungkasan</string>
+    <string name="late_tasks">Tugas Telat</string>
+    <string name="late_tasks_desc">Ingatke yen tugas durung rampung sawise wektu pungkasan</string>
+    <string name="preferences">Preferensi</string>
+    <string name="ringtone">Nada Dering</string>
+    <string name="default_text">Bawaan</string>
+    <string name="arrow_description">Panah</string>
+    <string name="enable_vibration">Aktifake Geter</string>
+    <string name="repeat">Mbaleni</string>
+    <string name="once_text">Sekali</string>
+    <string name="add_label">Tambah Label</string>
+    <string name="alarm_volume">Volume Weker</string>
+    <string name="volume_description">Volume</string>
+    <string name="do_not_disturb">Aja Ganggu</string>
+    <string name="quiet_time">Wektu Sepi</string>
+    <string name="quiet_time_desc">Mateni wara-wara ing wektu tartamtu</string>
+    <string name="start">Miwiti</string>
+    <string name="end">Rampung</string>
+
+    <!-- activity profil-->
+    <string name="profile">Profil</string>
+    <string name="edit">Sunting</string>
+    <string name="profile_picture">Foto Profil</string>
+    <string name="someone">Jeneng</string>
+    <string name="bio">Bio</string>
+    <string name="bio_description">Deskripsi Bio…</string>
+    <string name="menu">Menu</string>
+    <string name="favorites">Favorit</string>
+    <string name="archive">Arsip</string>
+    <string name="settings">Setelan</string>
+    <string name="dark_mode">Mode Peteng</string>
+    <string name="notification_settings">Setelan Wara-wara</string>
+    <string name="app_language">Basa Aplikasi</string>
+    <string name="indonesian">Indonesia</string>
+    <string name="about_app">Babagan Aplikasi</string>
+    <string name="backup_restore">Cadang &amp; Balèkake</string>
+    <string name="delete_data">Busek Data</string>
+    <string name="logout">Logout</string>
+
+    <!-- activity register-->
+    <string name="create_new_account">Nggawe Akun Anyar</string>
+    <string name="create_account_description">Gawen akun kanggo miwiti nggunakake LumiNote</string>
+    <string name="id_icon">Icon ID</string>
+    <string name="id_name_hint">Jeneng ID (min. 4 karakter)</string>
+    <string name="id_name_rule">Mung aksara cilik lan angka</string>
+    <string name="password_icon">Icon Sandi</string>
+    <string name="password_hint">Sandi (min. 5 karakter)</string>
+    <string name="confirm_password_icon">Icon Konfirmasi Sandi</string>
+    <string name="confirm_password_hint">Konfirmasi Sandi</string>
+    <string name="toggle_password">Tuduhake/Sembunyikake Sandi</string>
+    <string name="toggle_confirm_password">Tuduhake/Sembunyikake Konfirmasi Sandi</string>
+    <string name="register">Daftar</string>
+    <string name="already_have_account">Wis nduwe akun? </string>
+    <string name="login">Mlebu</string>
+
+    <!-- activity splash -->
+    <string name="splash_tagline">Cathet. Rencana. Lakoni.</string>
+    <string name="app_version">v1.0.0</string>
+
+    <!-- activity statistik-->
+        <string name="chart_icon">Icon Chart</string>
+        <string name="statistics">Statistik</string>
+        <string name="weekly_progress">Progres Mingguan Iki</string>
+        <string name="activity_summary">Ringkesan Aktivitas</string>
+        <string name="created">Nggawe</string>
+        <string name="completed">Rampung</string>
+        <string name="notes">Cathetan</string>
+        <string name="tasks">Tugas</string>
+        <string name="pending">Ngenteni</string>
+        <string name="weekly_progress_message">Sampeyan wis ngrampungake "65%"\nProgres Mingguan</string>
+        <string name="motivation_image">Gambar Motivasi</string>
+        <string name="bulb_icon">Icon Lampu</string>
+        <string name="motivation_quote1">"Kamu paling produktif ing dina Minggu"</string>
+        <string name="motivation_quote2">"Tingkat rampungan tugas minggu iki nambah"</string>
+
+    <!-- Tambah Catatan -->
+    <string name="tidak_ada_tanggal">Ora ana tanggal - ora ana notifikasi</string>
+    <string name="tambah">Tambahna</string>
+    <string name="tambah_catatan">Tambah Cathetan</string>
+
+    <!-- Tambah Tugas -->
+    <string name="tugas_baru">Tugas Anyar</string>
+    <string name="judul_tugas">Judhul Tugas</string>
+    <string name="tugas">Tugas</string>
+    <string name="masukkan_isi_tugas">Masukna isi tugas</string>
+    <string name="batas_waktu">Bates Wektu</string>
+
+    <!--about me-->
+    <string name="back_button">Tombol Bali</string>
+    <string name="profile_icon">Icon Profil</string>
+    <string name="open">Bukak</string>
+    <string name="about_us">Babagan Kita</string>
+    <string name="about_description1">LumiNote yaiku aplikasi pencatat tugas lan cathetan sing dirancang kanggo mbantu pangguna ngatur aktivitas saben dinane kanthi luwih terstruktur. Aplikasi iki nyedhiyakake fitur pencathetan, pengelompokan tugas, tandha favorit, arsip, uga statistik aktivitas kanggo ngawasi produktivitas pangguna.</string>
+    <string name="about_description2">Aplikasi iki dikembangake minangka bagean saka proyek pembelajaran pangembangan aplikasi mobile kanthi tujuan nerapake konsep desain antarmuka sing modern, navigasi sing sederhana, lan pangelolaan data sing efisien.</string>
+    <string name="cartoon_character">Karakter Kartun</string>
+    <string name="created_by">Digawe Dening:</string>
+    <string name="creators">Dony, Nicho, Alqiza</string>
+    <string name="upgraded_by">Ditingkatake Dening:</string>
+    <string name="upgrader_name">Dony Kurniawan</string>
+    <string name="date">tanggal : 24/12/2025</string>
+    <string name="developer_email">donykurniawan1298@gmail.com</string>
+    <string name="version_info">Versi 1.1.0 © 2025</string>
+    <string name="contact_share">Hubungi &amp; Bagike</string>
+    <string name="github">GitHub</string>
+    <string name="view_source_code">Deleng kode sumber</string>
+    <string name="whatsapp">WhatsApp</string>
+    <string name="contact_developer">Hubungi pangembang</string>
+    <string name="instagram">Instagram</string>
+    <string name="share">Bagike</string>
+    <string name="share_app">Bagike Aplikasi</string>
+    <string name="share_with_friends">Bagike karo kanca-kanca</string>
+
+    <!-- dialog backup restore -->
+    <string name="title_restore_dialog">Mbalekake Data</string>
+    <string name="msg_restore_dialog">Pilih cara mbalekake data sing dikandhut. Priksa dhisik supaya sampeyan ngerti bedane.</string>
+    <string name="option_replace_all">Ganti Kabeh</string>
+    <string name="option_merge">Gabungake</string>
+    <string name="btn_restore_now">Balekake Saiki</string>
+
+    <!--dialog copy link succes-->
+    <string name="title_copy_link">Link Sampun Disalin! 📋</string>
+    <string name="msg_copy_link">Link download APK sampun disalin. Sampeyan saged mbagiaken sakniki:</string>
+    <string name="btn_ok_copy">Nggih, Ngertos!</string>
+
+    <!-- Dialog delete Data Aplikasi -->
+        <string name="title_delete_data_dialog">Mbusak Data Aplikasi?</string>
+        <string name="msg_delete_data_dialog">Data sing dibusak kalebu kabeh Cathetan &amp; Tugas (Arsip/Favorit). Tumindak iki ora iso dibalekake! 🥺</string>
+        <string name="btn_delete">Busak</string>
+
+    <!-- Dialog Status Kasil -->
+        <string name="cd_success_image">Ilustrasi kasil</string>
+        <string name="title_success_dialog">Kasil!</string>
+        <string name="msg_success_detail">Rincian data…</string>
+        <string name="btn_ok">Inggih!</string>
+
+    <!-- Dialog Konfirmasi Mbusak Permanen -->
+        <string name="cd_delete_permanent_image">Ilustrasi mbusak permanen</string>
+        <string name="title_delete_permanent_dialog">Mbusak Permanen %1$s</string>
+        <string name="msg_delete_permanent_dialog">Apa sampeyan yakin arep mbusak \"%1$s\"? Tumindak iki ora iso dibalekake.</string>
+
+    <!-- Dialog Konfirmasi Mbusak Tugas -->
+        <string name="cd_delete_task_image">Ilustrasi mbusak tugas</string>
+        <string name="title_delete_task_dialog">Mbusak Tugas?</string>
+        <string name="msg_delete_task_dialog">Tugas lan pangeling alarm bakal dibusak permanen.</string>
+
+    <!-- Dialog Izin Alarm Presisi -->
+        <string name="cd_exact_alarm_image">Ilustrasi idin alarm presisi</string>
+        <string name="title_exact_alarm_permission">Izin Alarm Presisi</string>
+        <string name="msg_exact_alarm_permission">LumiNote butuh idin iki supaya alarm tugasmu muni pas ing waktune! ╰(*°▽°*)╯</string>
+        <string name="btn_later">Mengko Wae</string>
+        <string name="btn_open_settings">Bukak Setelan</string>
+
+    <!-- Dialog Konfirmasi Nyimpen Owah-owahan -->
+        <string name="title_save_changes_dialog">Apa sampeyan yakin arep nyimpen owah-owahan?</string>
+        <string name="btn_yes">Inggih</string>
+        <string name="cd_save_changes_image">Ilustrasi wong sing nuding pilihan batal utawa inggih kanthi ekspresi lucu</string>
+
+    <!-- Dialog Konfirmasi Ngarsip Cathetan -->
+        <string name="cd_archive_note_image">Ilustrasi ngarsip cathetan</string>
+        <string name="title_archive_note_dialog">Ngarsip Cathetan</string>
+        <string name="msg_archive_note_dialog">Apa cathetan iki arep dipindhah menyang arsip?</string>
+        <string name="btn_archive">Arsipke</string>
+
+    <!-- Dialog Konfirmasi Ngarsip Tugas -->
+        <string name="cd_archive_task_image">Ilustrasi ngarsip tugas</string>
+        <string name="title_archive_task_dialog">Ngarsip Tugas</string>
+        <string name="msg_archive_task_dialog">Apa sampeyan yakin?</string>
+
+    <!-- Dialog Konfirmasi Mbusak Cathetan -->
+        <string name="cd_delete_note_image">Ilustrasi mbusak cathetan</string>
+        <string name="title_delete_note_dialog">Mbusak Cathetan</string>
+        <string name="msg_delete_note_dialog">Tumindak iki ora isa dibalekake.</string>
+
+    <!-- Dialog Milih Dina -->
+        <string name="title_select_day_dialog">Milih Dina</string>
+        <string name="day_sunday">Minggu</string>
+        <string name="day_monday">Senin</string>
+        <string name="day_tuesday">Selasa</string>
+        <string name="day_wednesday">Rebo</string>
+        <string name="day_thursday">Kemis</string>
+        <string name="day_friday">Jumat</string>
+        <string name="day_saturday">Setu</string>
+
+    <!-- Dialog Label Alarm -->
+        <string name="title_alarm_label">Wenehi Label Alarm</string>
+        <string name="desc_alarm_label">Tambah katrangan kanggo alarm sampeyan</string>
+        <string name="hint_alarm_label">Tuladha: Tangi Esuk</string>
+
+    <!-- Dialog Konfirmasi Logout -->
+        <string name="cd_logout_image">Ilustrasi metu akun</string>
+        <string name="title_logout_dialog">Metu Akun</string>
+        <string name="msg_logout_dialog">Apa sampeyan yakin arep metu? 🤔Ojo lali bali maneh ya! 👋</string>
+        <string name="btn_stay">Tetep Ning Kéné</string>
+        <string name="btn_logout">Metu</string>
+
+    <!-- Dialog Konfirmasi Mulihake Item -->
+        <string name="cd_restore_item_image">Ilustrasi mulihake item</string>
+        <string name="title_restore_item_dialog">Mulihake %1$s</string>
+        <string name="msg_restore_item_dialog">Apa sampeyan yakin arep mulihake \"%1$s\" iki?</string>
+
+    <!-- Dialog Konfirmasi Mulihake Data -->
+        <string name="cd_restore_confirmation_image">Ilustrasi konfirmasi mulihake</string>
+        <string name="title_restore_confirmation_dialog">Konfirmasi Mulihake</string>
+        <string name="msg_restore_confirmation_dialog">Apa sampeyan yakin arep mulihake data iki?</string>
+        <string name="hint_restore_data_summary">• Ringkesan data</string>
+        <string name="btn_confirm_restore">Inggih, Mulihake</string>
+
+    <!-- Dialog Restore Kasil -->
+        <string name="cd_restore_success_icon">Ikon restore kasil</string>
+        <string name="title_restore_success_dialog">Restore Kasil</string>
+        <string name="msg_restore_success_dialog">Data wis kasil dimulihake. Aplikasi bakal diwiwiti maneh supaya owah-owahan bisa ditrapake.</string>
+        <string name="btn_restart_now">Restart Saiki</string>
+
+    <!-- Dialog Nuduhake Aplikasi -->
+        <string name="title_share_app">Nuduhake Aplikasi</string>
+        <string name="option_share_apk">Nuduhake File APK</string>
+        <string name="option_share_link">Nuduhake Tautan Download</string>
+        <string name="option_copy_link">Nyalin Tautan Download</string>
+        <string name="cd_share_illustration">Ilustrasi nuduhake aplikasi</string>
+        <string name="cd_share_apk">Opsi nuduhake file APK</string>
+        <string name="cd_share_link">Opsi nuduhake tautan unduhan</string>
+        <string name="cd_copy_link">Opsi nyalin tautan unduhan</string>
+
+    <!-- Dialog Milih Wektu -->
+        <string name="title_select_time">Milih Wektu</string>
+        <string name="btn_set_time">Setel</string>
+
+    <!-- Dialog Baleni Alarm -->
+        <string name="title_alarm_repeat">Baleni Alarm</string>
+        <string name="repeat_once">Sepisan</string>
+        <string name="repeat_every_day">Saben Dina</string>
+        <string name="repeat_weekdays">Dina Kerja</string>
+        <string name="repeat_weekend">Akhir Pekan</string>
+        <string name="repeat_custom">Kustom</string>
+
+         <string name="switch_don">Wes Bar</string>
+
+    <!-- Item Arsip -->
+        <string name="item_type_note">[Cathetan]</string>
+        <string name="sample_title">Judhul</string>
+        <string name="sample_description">Katrangan</string>
+        <string name="sample_date">01/01/2025</string>
+
+    <!-- Kartu Cathetan -->
+        <string name="note_title_sample">Judhul</string>
+        <string name="note_description_sample">• Katrangan</string>
+        <string name="note_date_sample">01/01/2025</string>
+        <string name="cd_edit_note">Sunting cathetan</string>
+        <string name="cd_delete_note">Busak cathetan</string>
+        <string name="cd_favorite_note">Tandhani favorit</string>
+
+    <!-- Kertu Tugas Favorit -->
+        <string name="item_type_task">[Tugas]</string>
+        <string name="item_title_sample">Judhul</string>
+        <string name="item_description_sample">Katrangan</string>
+        <string name="item_date_sample">01/01/2025</string>
+        <string name="cd_favorite_status">Status favorit</string>
+        <string name="cd_delete_task">Busak tugas</string>
+
+        <!-- Kertu Tugas -->
+        <string name="task_title_sample">Judhul Tugas</string>
+        <string name="task_description_sample">Katrangan tugas</string>
+        <string name="task_date_sample">01/01/2025</string>
+        <string name="cd_task_checkbox">Nandhani tugas rampung</string>
+        <string name="cd_edit_task">Ngganti tugas</string>
+        <string name="cd_favorite_task">Tugas favorit</string>
+
+    <!-- Notifikasi (Basa Jawa) -->
+    <string name="notification_header_title">Pangeling Tugas</string>
+    <string name="notification_time_now">Saiki</string>
+    <string name="notification_task_title">Judhul Tugas</string>
+    <string name="notification_task_description">Katrangan tugas</string>
+    <string name="notification_extra_label">Informasi tambahan</string>
+    <string name="cd_notification_icon">Ikon notifikasi</string>
+
+
+        <!-- Language Selection Page -->
+        <string name="select_language">Pilih Basa</string>
+        <string name="indonesia_flag">Gendera Indonesia</string>
+        <string name="language_indonesian">Indonesia</string>
+        <string name="english_flag">Gendera Inggris</string>
+        <string name="language_english">Inggris</string>
+        <string name="javanese_logo">Logo Jawa</string>
+        <string name="language_javanese">Jawa</string>
+        <string name="selected">Kapilih</string>
+
+    <!--  alarm recaiver -->
+    <string name="notification_task_title1">Pangeling Tugas</string>
+    <string name="notification_task_description1">Ana tugas sing kudu digarap</string>
+
+    <!--  alarm scheduler -->
+    <string name="repeat_once1">Sepisan</string>
+    <string name="repeat_daily">Saben Dina</string>
+    <string name="repeat_weekday">Dina Kerja</string>
+    <string name="repeat_weekend1">Akhir Pekan</string>
+    <string name="repeat_custom1">Kustom</string>
+    <string name="reminder_soon_title">⏰ Enggal! %1$s</string>
+    <string name="reminder_soon_desc">Wektu entèk 30 menit manèh</string>
+    <string name="reminder_late_title">⚠️ Telat! %1$s</string>
+    <string name="reminder_late_desc">Tugas durung rampung</string>
+
+    <!--  activity alarm -->
+    <string name="toast_feature_under_repair">Fitur lagi didandani</string>
+    <string name="toast_item_restored">%1$s dibalekake</string>
+    <string name="toast_item_deleted_perm">%1$s dibusak selawase</string>
+    <string name="type_catatan">Catatan</string>
+    <string name="type_tugas">Tugas</string>
+
+    <string name="no_description">Ora ono deskripsi</string>
+
+    <!--  Backup restore activity -->
+    <string name="last_backup_label">Simpenan Terakhir : %1$s</string>
+    <string name="last_backup_none">Durung Ono</string>
+    <string name="error_user_not_found">User ora ketemu</string>
+    <string name="toast_backup_success">Gawe serep (backup) wis kasil!</string>
+    <string name="toast_backup_failed">Gagal gawe serep: %1$s</string>
+    <string name="toast_restore_invalid_format">Format backup ora bener!</string>
+    <string name="toast_restore_success">Mbalekake data kasil!</string>
+    <string name="toast_select_method">Mangga pilih cara mbalekake data dhisik</string>
+    <string name="desc_restore_replace">Kabeh data saiki bakal DEBUSAK lan diganti data backup. Banjurake?</string>
+    <string name="desc_restore_merge">Data backup bakal DIGABUNGAKE karo data saiki. Data sing podo bakal dilewati.</string>
+    <string name="summary_notes">• %1$d Catatan</string>
+    <string name="summary_tasks">• %1$d Tugas</string>
+    <string name="summary_archived_notes">• %1$d Catatan Arsip</string>
+    <string name="summary_archived_tasks">• %1$d Tugas Arsip</string>
+
+    <string name="toast_language_already_selected">Basa wis dipilih ✨</string>
+    <string name="toast_language_changed">Basa diganti menyang %1$s 🌍</string>
+
+    <!-- catatan activity -->
+    <string name="default_note_title">JUDUL CATETAN</string>
+    <string name="no_date_time">Tanpa tanggal &amp; wektu</string>
+    <string name="error_empty_title">Judul ora oleh kothong🤪</string>
+    <string name="error_empty_content">Isine catetan ora oleh kothong🤪</string>
+    <string name="toast_note_updated">Catetan kasil dianyari🎉🎉</string>
+    <string name="toast_note_saved">Catetan kasil disimpen🎉🎉</string>
+
+    <!-- catatan activity -->
+    <string name="toast_added_favorite">Ditambahne menyang favorit</string>
+    <string name="toast_removed_favorite">Dibusak seko favorit</string>
+    <string name="msg_confirm_delete_permanent">Opo panjenengan yakin arep mbusak \"%1$s\" selawase?</string>
+    <string name="toast_note_deleted">Catetan dibusak ️</string>
+    <string name="msg_confirm_archive">Opo panjenengan yakin arep ngarsipne \"%1$s\"? Delok neng Profil</string>
+    <string name="toast_note_archived">Catetan diarsipne ✨</string>
+
+    <!-- edit profil aktivity -->
+    <string name="error_name_empty">Jeneng ora oleh kothong</string>
+    <string name="error_id_too_short">ID Jeneng sithiké 4 karakter 😤</string>
+    <string name="error_id_format">ID Jeneng mung oleh nganggo aksara cilik lan angka 🥺</string>
+    <string name="error_id_exists">ID Jeneng wis dinggo wong liya 🤫</string>
+    <string name="error_password_too_short">Sandi sithiké 5 karakter 🤪</string>
+    <string name="toast_profile_updated">Profil kasil dianyari 🛠</string>
+
+    <!--faforit activity-->
+    <string name="toast_favorite_removed_item">%1$s dibusak seko favorit😀</string>
+
+    <!--forget pw activity-->
+    <string name="error_id_empty">ID Jeneng ora oleh kothong 🤪</string>
+    <string name="error_password_new_empty">Sandi anyar ora oleh kothong 🤪</string>
+    <string name="error_password_too_short_12">Sandi sithiké 12 karakter 🥺</string>
+    <string name="error_confirm_password_empty">Konfirmasi Sandi ora oleh kothong 😤</string>
+    <string name="error_password_mismatch">Sandi lan Konfirmasi Sandi ora cocok 🫣</string>
+    <string name="error_id_not_found">ID Jeneng ora ketemu 🫣</string>
+    <string name="toast_reset_success">Sandi kasil direset! Mangga login 🎉</string>
+    <string name="toast_reset_failed">Gagal ngganti sandi. Mangga jajal maneh 🥺</string>
+
+    <!--langauge helper-->
+    <string name="lang_indonesia">Basa Indonesia</string>
+    <string name="lang_english">Basa Inggris</string>
+    <string name="lang_javanese">Basa Jawa</string>
+
+    <!--Login actiity-->
+    <string name="error_login_id_empty">ID Jeneng ora oleh kothong 🤪</string>
+    <string name="error_login_password_empty">Sandi ora oleh kothong 🤪</string>
+    <string name="toast_login_success">Kasil mlebu! Sugeng rawuh %1$s ✨✨</string>
+    <string name="error_login_failed">ID Jeneng utawa Sandi salah 🥺</string>
+
+    <!-- notifikasi recaiver-->
+    <string name="toast_task_done">✓ Tugas \"%1$s\" rampung!</string>
+    <string name="toast_task_not_found">Tugas ora ketemu</string>
+    <string name="toast_snooze_active">⏰ Pangeling ditunda 10 menit</string>
+    <string name="reminder_prefix">🔔 Pangeling: %1$s</string>
+    <string name="default_task_title">Tugas</string>
+
+    <!-- notifikasi helper-->
+    <string name="notif_channel_name">Pangeling Tugas</string>
+    <string name="notif_channel_desc">Saluran kanggo pangeling tugas</string>
+    <string name="notif_label_default">Pangeling Tugas</string>
+    <string name="notif_action_done">Rampung</string>
+    <string name="notif_action_snooze">Tunda 10m</string>
+    <string name="notif_content_label">🏷️ %1$s</string>
+
+    <!-- notifikasi activity-->
+    <string name="toast_nada_dering_diubah">Nada dering diganti: %1$s</string>
+    <string name="toast_nada_dering_default">Nada dering: Bawaan</string>
+    <string name="toast_pemberitahuan_aktif">Pemberitahuan diuripake 🔔</string>
+    <string name="toast_pemberitahuan_nonaktif">Pemberitahuan dipateni 🔕</string>
+    <string name="toast_alarm_aktif">Alarm diuripake ⏰</string>
+    <string name="toast_alarm_nonaktif">Alarm dipateni 🔕</string>
+    <string name="toast_tugas_mendatang_aktif">Pengeling tugas sing bakal teka aktif</string>
+    <string name="toast_tugas_mendatang_nonaktif">Pengeling tugas sing bakal teka mati</string>
+    <string name="toast_tugas_terlambat_aktif">Pengeling tugas sing telat aktif</string>
+    <string name="toast_tugas_terlambat_nonaktif">Pengeling tugas sing telat mati</string>
+    <string name="toast_getaran_aktif">Getaran diuripake</string>
+    <string name="toast_getaran_nonaktif">Getaran dipateni</string>
+    <string name="toast_waktu_tenang_aktif">Wektu tenang diuripake 🌙</string>
+    <string name="toast_waktu_tenang_nonaktif">Wektu tenang dipateni</string>
+    <string name="toast_aktifkan_waktu_tenang">Uripno Wektu Tenang dhisik ⏰</string>
+    <string name="toast_volume_alarm">Volume alarm: %1$d%%</string>
+    <string name="toast_warna_diubah">Werna nada dering diganti</string>
+    <string name="toast_gagal_preview">Gagal muter preview nada</string>
+    <string name="toast_gagal_buka_picker">Ora bisa mbukak pilihan nada dering</string>
+    <string name="toast_pengulangan">Baleni: %1$s</string>
+    <string name="toast_pengulangan_sekali">Baleni disetel dadi \'Sepisan\'</string>
+    <string name="toast_label_disimpan">Label disimpen: %1$s</string>
+    <string name="toast_label_dihapus">Label dibusek</string>
+    <string name="toast_waktu_disimpan">Wektu disimpen: %1$s</string>
+    <string name="dialog_pilih_warna_teks">Pilih Werna Teks Nada Dering</string>
+    <string name="dialog_waktu_mulai">Wektu Mulai</string>
+    <string name="dialog_waktu_selesai">Wektu Rampung</string>
+    <string name="picker_pilih_nada">Pilih Nada Dering</string>
+    <string name="ringtone_default">Bawaan</string>
+    <string-array name="days_of_week">
+        <item>Minggu</item>
+        <item>Senin</item>
+        <item>Selasa</item>
+        <item>Rebo</item>
+        <item>Kemis</item>
+        <item>Jumat</item>
+        <item>Sabtu</item>
+    </string-array>
+    <string-array name="color_names">
+        <item>Abang</item>
+        <item>Biru</item>
+        <item>Ijo</item>
+        <item>Ungu</item>
+        <item>Ireng</item>
+        <item>Oranye</item>
+    </string-array>
+
+    <!-- ProfilActivity Toast Messages -->
+    <string name="toast_profil_diperbarui">Profil kasil dianyari ✨</string>
+    <string name="toast_error">Error: %1$s 😅</string>
+    <string name="toast_user_tidak_ditemukan">User ora ketemu 🧐</string>
+    <string name="toast_session_tidak_valid">Session ora sah 🔄</string>
+    <string name="toast_error_loading_data">Error muat data: %1$s 😅</string>
+    <string name="toast_mode_gelap_aktif">Mode Peteng diuripake 🌙✨</string>
+    <string name="toast_mode_terang_aktif">Mode Padhang diuripake ☀️✨</string>
+    <string name="toast_penghapusan_dibatalkan">Mbusek dibatalke 😅</string>
+    <string name="toast_error_dialog">Error dialog: %1$s</string>
+    <string name="toast_gagal_hapus_data">Gagal mbusek data: %1$s</string>
+    <string name="toast_berhasil_logout">Kasil logout 👋✨</string>
+    <string name="dialog_hapus_data_title">Sampeyan Yakin Arep Mbusek Data Aplikasi?</string>
+    <string name="dialog_tidak_ada_data_title">Ora Ana Data 🤔</string>
+    <string name="dialog_tidak_ada_data_message">Ora ana data sing perlu dibusek.\nAplikasi wis resik! ✨</string>
+    <string name="dialog_data_berhasil_dihapus_title">Data Kasil Dibusek!</string>
+    <string name="dialog_total_item_dihapus">Total %1$d item dibusek:</string>
+    <string name="dialog_item_catatan">• %1$d Catetan</string>
+    <string name="dialog_item_tugas">• %1$d Tugas</string>
+    <string name="dialog_item_arsip_catatan">• %1$d Arsip Catetan</string>
+    <string name="dialog_item_arsip_tugas">• %1$d Arsip Tugas</string>
+
+    <!-- RegisterActivity Toast Messages -->
+    <string name="toast_id_nama_kosong">ID Jeneng ora oleh kosong 🤪</string>
+    <string name="toast_id_nama_minimal">ID Jeneng minimal 4 karakter 🥺</string>
+    <string name="toast_id_nama_format">ID Jeneng mung oleh aksara cilik lan angka 😊</string>
+    <string name="toast_password_kosong">Password ora oleh kosong 🤪</string>
+    <string name="toast_password_minimal">Password minimal 5 karakter 🤪</string>
+    <string name="toast_konfirmasi_password_kosong">Konfirmasi Password ora oleh kosong 🥲</string>
+    <string name="toast_password_tidak_cocok">Password lan Konfirmasi Password ora cocok 🤪</string>
+    <string name="toast_id_sudah_digunakan">ID Jeneng wis dianggo 😥</string>
+    <string name="toast_registrasi_berhasil">Registrasi kasil! Mangga login 🎉🎉</string>
+    <string name="toast_registrasi_gagal">Registrasi gagal. Mangga dicoba maneh 😭😭</string>
+
+    <!-- StatistikActivity - Days of Week (Short) -->
+    <string name="day_monday_short">Sen</string>
+    <string name="day_tuesday_short">Sel</string>
+    <string name="day_wednesday_short">Reb</string>
+    <string name="day_thursday_short">Kem</string>
+    <string name="day_friday_short">Jum</string>
+    <string name="day_saturday_short">Sab</string>
+    <string name="day_sunday_short">Min</string>
+    <string name="chart_label_created">Nggawe</string>
+    <string name="chart_label_completed">Rampung</string>
+    <string name="progress_percentage">%1$d%%</string>
+    <string name="progress_text">Sampeyan Wis Ngrampungake \"%1$d%%\"\nProgres Mingguan</string>
+    <string name="quote_format">\"%1$s\"</string>
+    <string name="quote_productive_day">Sampeyan paling produktif nang dina %1$s</string>
+    <string name="quote_trend_excellent">Luar biasa! Tingkat penyelesaian minggu iki dhuwur banget</string>
+    <string name="quote_trend_good">Tingkat penyelesaian tugas minggu iki mundhak</string>
+    <string name="quote_trend_keep_going">Terus semangat! Sampeyan meh tekan target</string>
+    <string name="quote_trend_achievement">Saben tugas sing rampung iku prestasi</string>
+    <string name="quote_trend_start">Ayo wiwit ngrampungake tugasmu dina iki</string>
+
+    <!-- TambahCatatanActivity -->
+    <string name="lanjut">Terus</string>
+    <string name="toast_judul_kosong">Judul ora oleh kosong 😥</string>
+    <string name="toast_catatan_diupdate">Catetan kasil diupdate 🎉🎉</string>
+
+    <!-- TambahTugasActivity -->
+    <string name="btn_update">Update</string>
+    <string name="toast_isi_tugas_kosong">Isi tugas ora oleh kosong 🥲</string>
+    <string name="toast_tanggal_waktu_harus_diisi">Tanggal lan wektu kudu diisi 🤪</string>
+    <string name="toast_waktu_alarm_masa_depan">Wektu alarm kudu nang masa ngarep ⏰</string>
+    <string name="toast_tugas_diupdate">Tugas kasil diupdate ✨</string>
+    <string name="toast_tugas_disimpan">Tugas kasil disimpen 🎉</string>
+    <string name="dialog_izin_diperlukan_title">Izin Dibutuhke</string>
+    <string name="dialog_izin_diperlukan_message">Aplikasi mbutuhke izin kanggo ngatur alarm. Aktifno nang setelan?</string>
+    <string name="dialog_ya">Ya</string>
+    <string name="dialog_tidak">Ora</string>
+    <string name="toast_alarm_tidak_dapat_dijadwalkan">Alarm ora bisa dijadwalke tanpa izin</string>
+    <string name="toast_izin_notifikasi_diperlukan">Izin notifikasi dibutuhke</string>
+    <string name="toast_izin_notifikasi_diberikan">Izin notifikasi diwenehi ✅</string>
+    <string name="toast_izin_notifikasi_ditolak">Izin notifikasi ditolak. Notifikasi ora bakal muncul.</string>
+
+    <!-- TentangKamiActivity -->
+    <string name="label_email">Email</string>
+    <string name="label_nomor_whatsapp">Nomer WhatsApp</string>
+    <string name="label_link_download">Link Download</string>
+    <string name="toast_tidak_dapat_membuka">Ora bisa mbukak %1$s</string>
+    <string name="toast_whatsapp_tidak_ditemukan">WhatsApp ora ketemu. Nomer wis disalin!</string>
+    <string name="toast_tidak_dapat_membuka_instagram">Ora bisa mbukak Instagram</string>
+    <string name="toast_error_apk_tidak_ditemukan">Error: File APK ora ketemu</string>
+    <string name="toast_error_bagikan_apk">Error mbagekke APK: %1$s</string>
+    <string name="toast_disalin_ke_clipboard">%1$s disalin nang clipboard! 📋</string>
+    <string name="whatsapp_default_message">Hallo! Info Ngopi Bolo Ghassh 🍵🍵 </string>
+    <string name="share_apk_subject">LumiNote - Aplikasi Catetan &amp; Tugas</string>
+    <string name="share_apk_text">Coba aplikasi LumiNote! 📝✨\n\nAplikasi catetan lan tugas sing mbantu produktivitas saben dina.\n\nVersi: %1$s\nGitHub: %2$s</string>
+    <string name="share_apk_chooser">Bagekke APK via</string>
+    <string name="share_link_text">📝 LumiNote - Aplikasi Catetan &amp; Tugas\n\nAplikasi catetan lan tugas sing mbantu produktivitas saben dina! ✨\n\n✨ Fitur:\n• Catetan &amp; Tugas\n• Favorit &amp; Arsip\n• Statistik Produktivitas\n• Backup &amp; Restore\n\n📥 Download APK:\n%1$s\n\n🐙 GitHub Repository:\n%2$s\n\nVersi: %3$s</string>
+    <string name="share_link_chooser">Bagekke via</string>
+
+    <!-- TugasFragment -->
+    <string name="completed_with_count">Rampung (%1$d)</string>
+    <string name="list_tugas_diperbarui">List tugas diperbarui</string>
+
+    <!-- User Default Values (opsional - yen nganggo solusi alternatif) -->
+    <string name="default_user_name">Jeneng</string>
+    <string name="default_user_bio">Deskripsi Bio…</string>
+
+
+
+
+
+
+    <!-- Header Navigation -->
+    <string name="header_catatan">Daftar Cathetan</string>
+    <string name="header_tugas">Daftar Tugas</string>
+
+    <!-- Bottom Navigation -->
+    <string name="title_plus">Tambah</string>
+
+
+    <!-- Fragment Catatan -->
+    <string name="daftar_catatan">Daftar Cathetan</string>
+    <string name="cari_catatan">Goleki Cathetan</string>
+
+    <!-- Fragment Tugas -->
+    <string name="daftar_tugas">Daftar Tugas</string>
+    <string name="cari_tugas">Goleki Tugas</string>
+
+
+
+
+    <!-- Dialog -->
+    <string name="menambahkan">Nambahake</string>
+    <string name="catatan">Cathetan</string>
+    <string name="tugas_text">Tugas</string>
+
+    <!-- Menu -->
+    <string name="hapus">Busek</string>
+    <string name="arsipkan">Arsipna</string>
+
+    <!-- Hints -->
+    <string name="deskripsi_hint">• Katerangan</string>
+
+    <!-- Login & Register -->
+    <string name="password">Tembung Wadi</string>
+    <string name="konfirmasi_password">Konfirmasi Tembung Wadi</string>
+    <string name="lupa_password">Lali Tembung Wadi?</string>
+    <string name="belum_punya_akun">Durung duwe akun?</string>
+    <string name="sudah_punya_akun">Wis duwe akun?</string>
+    <string name="masuk_ke_akun">Mlebu neng Akun Sampeyan</string>
+    <string name="daftar_akun_baru">Gawe Akun Anyar</string>
+
+    <!-- Profile -->
+    <string name="profil">Profil</string>
+    <string name="edit_profil">Sunting Profil</string>
+    <string name="nama">Jeneng</string>
+    <string name="faforit">Faforit</string>
+    <string name="arsip">Arsip</string>
+    <string name="statistik">Statistik</string>
+    <string name="mode_gelap">Mode Peteng</string>
+    <string name="pemberitahuan">Wara-wara</string>
+    <string name="bahasa_aplikasi">Basa Aplikasi</string>
+    <string name="hapus_data">Busek Data</string>
+    <string name="tentang_kami">Bab Kita</string>
+    <string name="simpan_perubahan">Simpen Owah-owahan</string>
+    <string name="batal">Wurung</string>
+
+    <!-- Messages -->
+    <string name="login_berhasil">Mlebu kasil!</string>
+    <string name="registrasi_berhasil">Ndaftar kasil!</string>
+    <string name="password_reset_berhasil">Tembung wadi kasil direset!</string>
+    <string name="profil_diperbarui">Profil kasil dianyari</string>
+    <string name="added_to_favorit">Ditambahna neng favorit</string>
+    <string name="removed_from_favorit">Dibusek saka favorit</string>
+    <string name="tugas_deleted">Tugas lan alarm dibusek 🗑️</string>
+    <string name="tugas_archived">Tugas diarsipna &amp; alarm dibatalake</string>
+
+    <!-- Dialog Messages -->
+    <string name="confirm_delete_tugas">Sampeyan yakin arep mbusek \"%1$s\" karo alarmé?</string>
+    <string name="confirm_arsip_tugas">Sampeyan yakin arep ngarsipake \"%1$s\"? Deleng arsip neng profil</string>
+    <string name="ya">Iya</string>
+    <string name="tidak">Ora</string>
+
+    <!-- Bottom Sheet Bahasa -->
+    <string name="pilih_bahasa">Pilih Basa</string>
+    <string name="bahasa_indonesia">Indonesia</string>
+    <string name="bahasa_inggris">Inggris</string>
+    <string name="bahasa_jawa">Jawa</string>
+
+    <!-- Tentang Kami -->
+    <string name="my_username_ig">\@kurniawandony7</string>
+    <string name="versi_aplikasi">Versi Aplikasi</string>
+    <string name="kontak_pengembang">Kontak Pangembang</string>
+
+    <!-- Empty State -->
+    <string name="tidak_ada_catatan">Ora ana cathetan</string>
+    <string name="tidak_ada_tugas">Ora ana tugas</string>
+    <string name="tidak_ada_arsip">Ora ana arsip</string>
+    <string name="tidak_ada_faforit">Ora ana favorit</string>
+</resources>

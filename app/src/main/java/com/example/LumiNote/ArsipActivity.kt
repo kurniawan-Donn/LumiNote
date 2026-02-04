@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -31,6 +33,8 @@ class ArsipActivity : AppCompatActivity() {
     private var filteredList = listOf<ArsipItem>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        LanguageHelper.applyLanguage(this)
+        ThemeHelper.applyTheme(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_arsip)
 
@@ -78,17 +82,14 @@ class ArsipActivity : AppCompatActivity() {
     }
 
     private fun setupListeners() {
-        // Back button
         backButton.setOnClickListener {
             finish()
         }
 
-        // Button action (dalam perbaikan)
         btnArsipAction.setOnClickListener {
-            Toast.makeText(this, "Fitur dalam perbaikan", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.toast_feature_under_repair), Toast.LENGTH_SHORT).show()
         }
 
-        // Search
         etSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -101,7 +102,6 @@ class ArsipActivity : AppCompatActivity() {
     private fun loadArsipData() {
         val arsipList = mutableListOf<ArsipItem>()
 
-        // Load Catatan Arsip
         val arsipCatatanIds = arsipPreferences.getArsipCatatan()
         val allCatatan = catatanPreferences.getCatatanList()
         val catatanArsip = allCatatan.filter { it.id in arsipCatatanIds }
@@ -110,7 +110,6 @@ class ArsipActivity : AppCompatActivity() {
             arsipList.add(ArsipItem.fromCatatan(catatan))
         }
 
-        // Load Tugas Arsip
         val arsipTugasIds = arsipPreferences.getArsipTugas()
         val allTugas = tugasPreferences.getAllTugas()
         val tugasArsip = allTugas.filter { it.id in arsipTugasIds }
@@ -119,7 +118,6 @@ class ArsipActivity : AppCompatActivity() {
             arsipList.add(ArsipItem.fromTugas(tugas))
         }
 
-        // Sort by timestamp (newest first)
         allArsipList = arsipList.sortedByDescending { it.timestamp }
         filteredList = allArsipList
 
@@ -145,66 +143,90 @@ class ArsipActivity : AppCompatActivity() {
             arsipAdapter.updateData(filteredList)
         }
     }
+    private fun getTranslatedType(tipe: String): String {
+        return if (tipe == "Catatan") getString(R.string.type_catatan) else getString(R.string.type_tugas)
+    }
 
     private fun showPulihkanDialog(item: ArsipItem) {
-        AlertDialog.Builder(this)
-            .setTitle("Pulihkan ${item.tipe}")
-            .setMessage("Apakah Anda yakin ingin memulihkan \"${item.judul}\"?")
-            .setPositiveButton("Pulihkan") { dialog, _ ->
-                pulihkanItem(item)
-                dialog.dismiss()
-            }
-            .setNegativeButton("Batal") { dialog, _ ->
-                dialog.dismiss()
-            }
-            .show()
+        val dialogView = layoutInflater.inflate(R.layout.dialog_pulihkan_arsip, null)
+        val dialog = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .create()
+
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        val tvTitle = dialogView.findViewById<TextView>(R.id.tvTitle)
+        val tvMessage = dialogView.findViewById<TextView>(R.id.tvMessage)
+        val btnConfirm = dialogView.findViewById<Button>(R.id.btnConfirm)
+        val btnCancel = dialogView.findViewById<Button>(R.id.btnCancel)
+
+        tvTitle.text = getString(R.string.title_restore_item_dialog, getTranslatedType(item.tipe))
+        tvMessage.text = getString(R.string.msg_restore_item_dialog, item.judul)
+
+        btnConfirm.setOnClickListener {
+            pulihkanItem(item)
+            dialog.dismiss()
+        }
+
+        btnCancel.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 
     private fun showHapusDialog(item: ArsipItem) {
-        AlertDialog.Builder(this)
-            .setTitle("Hapus ${item.tipe}")
-            .setMessage("Apakah Anda yakin ingin menghapus \"${item.judul}\" secara permanen?")
-            .setPositiveButton("Hapus") { dialog, _ ->
-                hapusItem(item)
-                dialog.dismiss()
-            }
-            .setNegativeButton("Batal") { dialog, _ ->
-                dialog.dismiss()
-            }
-            .show()
+        val dialogView = layoutInflater.inflate(R.layout.dialog_hapus_permanen, null)
+        val dialog = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .create()
+
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        val tvTitle = dialogView.findViewById<TextView>(R.id.tvDeleteTitle)
+        val tvMessage = dialogView.findViewById<TextView>(R.id.tvDeleteMessage)
+        val btnConfirm = dialogView.findViewById<Button>(R.id.btnConfirmDelete)
+        val btnCancel = dialogView.findViewById<Button>(R.id.btnCancelDelete)
+
+        // Set Data Dinamis
+        tvTitle.text = getString(R.string.title_delete_permanent_dialog, item.tipe)
+        tvMessage.text = getString(R.string.msg_delete_permanent_dialog, item.judul)
+
+        btnConfirm.setOnClickListener {
+            hapusItem(item)
+            dialog.dismiss()
+        }
+
+        btnCancel.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 
     private fun pulihkanItem(item: ArsipItem) {
+        val translatedType = getTranslatedType(item.tipe)
         when (item.tipe) {
-            "Catatan" -> {
-                arsipPreferences.pulihkanCatatan(item.id)
-                Toast.makeText(this, "Catatan dipulihkan", Toast.LENGTH_SHORT).show()
-            }
-            "Tugas" -> {
-                arsipPreferences.pulihkanTugas(item.id)
-                Toast.makeText(this, "Tugas dipulihkan", Toast.LENGTH_SHORT).show()
-            }
+            "Catatan" -> arsipPreferences.pulihkanCatatan(item.id)
+            "Tugas" -> arsipPreferences.pulihkanTugas(item.id)
         }
+        Toast.makeText(this, getString(R.string.toast_item_restored, translatedType), Toast.LENGTH_SHORT).show()
         loadArsipData()
     }
 
     private fun hapusItem(item: ArsipItem) {
+        val translatedType = getTranslatedType(item.tipe)
         when (item.tipe) {
             "Catatan" -> {
-                // Hapus dari arsip
                 arsipPreferences.pulihkanCatatan(item.id)
-                // Hapus data asli
                 catatanPreferences.deleteCatatan(item.id)
-                Toast.makeText(this, "Catatan dihapus permanen", Toast.LENGTH_SHORT).show()
             }
             "Tugas" -> {
-                // Hapus dari arsip
                 arsipPreferences.pulihkanTugas(item.id)
-                // Hapus data asli
                 tugasPreferences.deleteTugas(item.id)
-                Toast.makeText(this, "Tugas dihapus permanen", Toast.LENGTH_SHORT).show()
             }
         }
+        Toast.makeText(this, getString(R.string.toast_item_deleted_perm, translatedType), Toast.LENGTH_SHORT).show()
         loadArsipData()
     }
 }

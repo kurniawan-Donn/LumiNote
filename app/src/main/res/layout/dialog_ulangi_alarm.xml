@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Dialog Pengulangan Alarm / Alarm Repeat Dialog -->
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    app:cardBackgroundColor="@color/background_primary"
+    app:cardCornerRadius="28dp"
+    app:cardElevation="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/tv_title_repeat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_alarm_repeat"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textColor="@color/text_primary"
+            android:layout_marginBottom="16dp"/>
+
+        <RadioGroup
+            android:id="@+id/rg_ulangi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/card_color">
+
+            <RadioButton
+                android:id="@+id/rb_sekali"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/repeat_once"
+                android:buttonTint="@color/blackblue"
+                android:textColor="@color/text_secondary"
+                android:textSize="16sp"/>
+
+            <RadioButton
+                android:id="@+id/rb_setiap_hari"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/repeat_every_day"
+                android:buttonTint="@color/blackblue"
+                android:textColor="@color/text_secondary"
+                android:textSize="16sp"/>
+
+            <RadioButton
+                android:id="@+id/rb_hari_kerja"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/repeat_weekdays"
+                android:buttonTint="@color/blackblue"
+                android:textColor="@color/text_secondary"
+                android:textSize="16sp"/>
+
+            <RadioButton
+                android:id="@+id/rb_akhir_pekan"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/repeat_weekend"
+                android:buttonTint="@color/blackblue"
+                android:textColor="@color/text_secondary"
+                android:textSize="16sp"/>
+
+            <RadioButton
+                android:id="@+id/rb_kustom"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/repeat_custom"
+                android:buttonTint="@color/blackblue"
+                android:textColor="@color/text_secondary"
+                android:textSize="16sp"/>
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btn_batal_ulangi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/btn_cancel"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:backgroundTint="@color/text_secondary"
+            android:textColor="@color/background_primary"
+            app:cornerRadius="16dp"/>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

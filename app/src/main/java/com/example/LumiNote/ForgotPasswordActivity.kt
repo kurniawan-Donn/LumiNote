@@ -23,6 +23,8 @@ class ForgotPasswordActivity : AppCompatActivity() {
     private var isKonfirmasiPasswordVisible = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        LanguageHelper.applyLanguage(this)
+        ThemeHelper.applyTheme(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forgot_password)
 
@@ -88,35 +90,37 @@ class ForgotPasswordActivity : AppCompatActivity() {
         val passwordBaru = etPasswordBaru.text.toString()
         val konfirmasiPassword = etKonfirmasiPassword.text.toString()
 
-        // Validasi
+        // Validasi ID Nama
         if (idNama.isEmpty()) {
-            Toast.makeText(this, "ID Nama tidak boleh kosong 🤪", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.error_id_empty), Toast.LENGTH_SHORT).show()
             return
         }
 
+        // Validasi Password Baru
         if (passwordBaru.isEmpty()) {
-            Toast.makeText(this, "Password baru tidak boleh kosong 🤪", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.error_password_new_empty), Toast.LENGTH_SHORT).show()
             return
         }
 
         if (passwordBaru.length < 12) {
-            Toast.makeText(this, "Password minimal 12 karakter 🥺", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.error_password_too_short_12), Toast.LENGTH_SHORT).show()
             return
         }
 
+        // Validasi Konfirmasi Password
         if (konfirmasiPassword.isEmpty()) {
-            Toast.makeText(this, "Konfirmasi Password tidak boleh kosong 😤", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.error_confirm_password_empty), Toast.LENGTH_SHORT).show()
             return
         }
 
         if (passwordBaru != konfirmasiPassword) {
-            Toast.makeText(this, "Password dan Konfirmasi Password tidak cocok 🫣", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.error_password_mismatch), Toast.LENGTH_SHORT).show()
             return
         }
 
         // Cek apakah ID Nama ada
         if (!userManager.isIdExists(idNama)) {
-            Toast.makeText(this, "ID Nama tidak ditemukan 🫣", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.error_id_not_found), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -124,10 +128,10 @@ class ForgotPasswordActivity : AppCompatActivity() {
         val success = userManager.resetPassword(idNama, passwordBaru)
 
         if (success) {
-            Toast.makeText(this, "Password berhasil direset! Silakan login 🎉", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.toast_reset_success), Toast.LENGTH_SHORT).show()
             finish()
         } else {
-            Toast.makeText(this, "Reset password gagal. Silakan coba lagi 🥺", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.toast_reset_failed), Toast.LENGTH_SHORT).show()
         }
     }
 }

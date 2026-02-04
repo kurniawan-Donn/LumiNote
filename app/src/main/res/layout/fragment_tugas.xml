@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_primary"
     android:padding="16dp">
 
     <androidx.core.widget.NestedScrollView
@@ -17,13 +18,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!-- Search Card -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginBottom="12dp"
                 app:cardCornerRadius="25dp"
                 app:cardElevation="2dp"
-                app:cardBackgroundColor="@color/white_grey">
+                app:cardBackgroundColor="@color/card_color">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -36,7 +38,9 @@
                         android:id="@+id/searchicon"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/ic_search" />
+                        android:src="@drawable/ic_search"
+                        app:tint="@color/text_primary" />
+
                     <EditText
                         android:id="@+id/et_search"
                         android:layout_width="0dp"
@@ -44,11 +48,12 @@
                         android:layout_weight="1"
                         android:background="@null"
                         android:fontFamily="@font/intersemibold"
-                        android:hint="Cari Tugas..."
+                        android:hint="@string/hint_search"
                         android:paddingStart="12dp"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/dark_grey"
-                        android:textSize="20sp" />
+                        android:textColor="@color/text_primary"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="20sp"
+                        tools:ignore="RtlSymmetry" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -70,14 +75,14 @@
                 android:orientation="horizontal"
                 android:padding="10dp"
                 android:clickable="true"
-                android:focusable="true"
-                android:background="?attr/selectableItemBackground">
+                android:focusable="true">
 
                 <ImageView
                     android:id="@+id/ic_diselesaikan"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/ic_chevron_up" />
+                    android:src="@drawable/ic_chevron_up"
+                    app:tint="@color/text_primary" />
 
                 <TextView
                     android:id="@+id/tv_diselesaikan"
@@ -85,8 +90,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingHorizontal="12dp"
-                    android:text="Diselesaikan"
-                    android:textSize="14sp"
+                    android:text="@string/switch_don"
+                    android:textSize="16sp"
                     android:textColor="@color/text_secondary"/>
             </LinearLayout>
 

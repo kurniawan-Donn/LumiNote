@@ -24,6 +24,8 @@ class LoginActivity : AppCompatActivity() {
     private var isPasswordVisible = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        LanguageHelper.applyLanguage(this)
+        ThemeHelper.applyTheme(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
@@ -84,14 +86,14 @@ class LoginActivity : AppCompatActivity() {
         val idNama = etIdNama.text.toString().trim()
         val password = etPassword.text.toString()
 
-        // Validasi input
+        // Validasi input menggunakan strings.xml
         if (idNama.isEmpty()) {
-            Toast.makeText(this, "ID Nama tidak boleh kosong 🤪", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.error_login_id_empty), Toast.LENGTH_SHORT).show()
             return
         }
 
         if (password.isEmpty()) {
-            Toast.makeText(this, "Password tidak boleh kosong 🤪", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.error_login_password_empty), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -101,15 +103,21 @@ class LoginActivity : AppCompatActivity() {
         if (user != null) {
             // Login berhasil
             sessionManager.createLoginSession(idNama)
-            Toast.makeText(this, "Login berhasil! Selamat datang ${user.nama} ✨✨", Toast.LENGTH_SHORT).show()
+
+            // Menggunakan placeholder %1$s untuk menampilkan nama user secara dinamis
+            Toast.makeText(
+                this,
+                getString(R.string.toast_login_success, user.nama),
+                Toast.LENGTH_SHORT
+            ).show()
 
             val intent = Intent(this, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
             finish()
         } else {
-            // Login gagal
-            Toast.makeText(this, "ID Nama atau Password salah 🥺", Toast.LENGTH_SHORT).show()
+            // Login gagal menggunakan strings.xml
+            Toast.makeText(this, getString(R.string.error_login_failed), Toast.LENGTH_SHORT).show()
         }
     }
 }

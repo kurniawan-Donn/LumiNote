@@ -1,6 +1,5 @@
 package com.example.LumiNote
 
-import android.app.Activity
 import android.app.Dialog
 import android.content.Intent
 import android.graphics.Bitmap
@@ -18,11 +17,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import java.io.InputStream
+import kotlin.math.min
 
 class EditProfilActivity : AppCompatActivity() {
 
@@ -48,7 +47,7 @@ class EditProfilActivity : AppCompatActivity() {
     private val pickImageLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
+        if (result.resultCode == RESULT_OK) {
             result.data?.data?.let { uri ->
                 selectedImageUri = uri
                 // Tampilkan foto yang dipilih dengan cara native
@@ -58,6 +57,8 @@ class EditProfilActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        LanguageHelper.applyLanguage(this)
+        ThemeHelper.applyTheme(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profil)
 
@@ -103,7 +104,6 @@ class EditProfilActivity : AppCompatActivity() {
         }
     }
 
-    // ✅ Fungsi native untuk load dan crop circular image
     private fun loadCircularImageFromUri(uri: Uri) {
         try {
             val inputStream: InputStream? = contentResolver.openInputStream(uri)
@@ -144,7 +144,7 @@ class EditProfilActivity : AppCompatActivity() {
                 ExifInterface.ORIENTATION_ROTATE_270 -> rotateImage(bitmap, 270f)
                 else -> bitmap
             }
-        } catch (e: Exception) {
+        } catch (_: Exception) {
             return bitmap
         }
     }
@@ -157,7 +157,7 @@ class EditProfilActivity : AppCompatActivity() {
 
     // Fungsi untuk membuat circular bitmap
     private fun getCircularBitmap(bitmap: Bitmap): Bitmap {
-        val size = Math.min(bitmap.width, bitmap.height)
+        val size = min(bitmap.width, bitmap.height)
         val x = (bitmap.width - size) / 2
         val y = (bitmap.height - size) / 2
 
@@ -246,31 +246,31 @@ class EditProfilActivity : AppCompatActivity() {
 
         // Validasi Nama
         if (nama.isEmpty()) {
-            Toast.makeText(this, "Nama tidak boleh kosong", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.error_name_empty), Toast.LENGTH_SHORT).show()
             return
         }
 
         // Validasi ID Nama (jika diubah)
         if (idNamaBaru != currentUser.idNama) {
             if (idNamaBaru.length < 4) {
-                Toast.makeText(this, "ID Nama minimal 4 karakter 😤", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.error_id_too_short), Toast.LENGTH_SHORT).show()
                 return
             }
 
             if (!idNamaBaru.matches(Regex("^[a-z0-9]+$"))) {
-                Toast.makeText(this, "ID Nama hanya boleh huruf kecil dan angka 🥺", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.error_id_format), Toast.LENGTH_SHORT).show()
                 return
             }
 
             if (userManager.isIdExists(idNamaBaru)) {
-                Toast.makeText(this, "ID Nama sudah digunakan 🤫", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.error_id_exists), Toast.LENGTH_SHORT).show()
                 return
             }
         }
 
         // Validasi Password
         if (passwordBaru.length < 5) {
-            Toast.makeText(this, "Password minimal 5 karakter 🤪", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.error_password_too_short), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -279,7 +279,7 @@ class EditProfilActivity : AppCompatActivity() {
         currentUser.bio = bio
         currentUser.password = passwordBaru
 
-        // ✅ Update foto profil jika dipilih - SIMPAN SECARA PERMANEN
+        // Update foto profil
         if (selectedImageUri != null) {
             val savedPath = ImageHelper.saveImageToInternalStorage(
                 this,
@@ -311,7 +311,7 @@ class EditProfilActivity : AppCompatActivity() {
             userManager.updateUser(currentUser)
         }
 
-        Toast.makeText(this, "Profil berhasil diperbarui 🛠", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.toast_profile_updated), Toast.LENGTH_SHORT).show()
 
         // Kembali ke ProfilActivity
         setResult(RESULT_OK)

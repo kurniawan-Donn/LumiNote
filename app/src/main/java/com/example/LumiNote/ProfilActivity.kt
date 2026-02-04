@@ -1,18 +1,21 @@
 package com.example.LumiNote
 
-import android.app.Activity
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.graphics.Matrix
-import android.media.ExifInterface
+import androidx.exifinterface.media.ExifInterface
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
@@ -26,6 +29,8 @@ class ProfilActivity : AppCompatActivity() {
     private lateinit var imgProfile: ImageView
     private lateinit var tvNama: TextView
     private lateinit var tvBio: TextView
+
+    private lateinit var layoutPengaturanPemberitahuan: LinearLayout
 
     // Menu Items
     private lateinit var layoutFsforit: LinearLayout
@@ -46,33 +51,51 @@ class ProfilActivity : AppCompatActivity() {
 
     private lateinit var userManager: UserManager
     private lateinit var sessionManager: SessionManager
+    private lateinit var pemberitahuanPrefs: PemberitahuanPreferences
 
-    companion object {
-        private const val EDIT_PROFILE_REQUEST = 100
+    private val editProfileLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == RESULT_OK) {
+            Toast.makeText(this, getString(R.string.toast_profil_diperbarui), Toast.LENGTH_SHORT).show()
+            loadUserData()
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // 🔥 PERBAIKAN: Apply language DAN theme sebelum super.onCreate()
+        LanguageHelper.applyLanguage(this)
+        ThemeHelper.applyTheme(this)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profil)
 
         try {
             initViews()
             userManager = UserManager(this)
+            pemberitahuanPrefs = PemberitahuanPreferences(this)
             sessionManager = SessionManager(this)
             loadUserData()
             setupListeners()
+
+            // 🔥 Load status dark mode ke switch
+            loadDarkModeSwitch()
+
+            // ✅ TAMBAHAN BARU: Load bahasa yang dipilih
+            loadLanguageDisplay()
         } catch (e: Exception) {
-            Toast.makeText(this, "Error: ${e.message} 😅", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.toast_error, e.message), Toast.LENGTH_LONG).show()
             e.printStackTrace()
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == EDIT_PROFILE_REQUEST && resultCode == Activity.RESULT_OK) {
-            Toast.makeText(this, "Profil berhasil diperbarui ✨", Toast.LENGTH_SHORT).show()
-            loadUserData()
-        }
+    override fun onResume() {
+        super.onResume()
+        loadPemberitahuanSettings()
+        // 🔥 Refresh dark mode switch saat kembali ke activity
+        loadDarkModeSwitch()
+        // ✅ TAMBAHAN BARU: Refresh language display
+        loadLanguageDisplay()
     }
 
     private fun initViews() {
@@ -93,6 +116,8 @@ class ProfilActivity : AppCompatActivity() {
         // Pengaturan
         switchModeGelap = findViewById(R.id.switchModeGelap)
         switchPemberitahuan = findViewById(R.id.switchPemberitahuan)
+        layoutPengaturanPemberitahuan = findViewById(R.id.layoutPengaturanPemberitahuan)
+
         layoutBahasa = findViewById(R.id.layoutBahasa)
         tvBahasa = findViewById(R.id.tvBahasa)
 
@@ -104,30 +129,15 @@ class ProfilActivity : AppCompatActivity() {
     }
 
     private fun setupListeners() {
-        // Back button
-        backButton.setOnClickListener {
-            finish()
-        }
+        backButton.setOnClickListener { finish() }
 
-        // Edit button
-        btnEdit.setOnClickListener {
-            openEditProfil()
-        }
+        btnEdit.setOnClickListener { openEditProfil() }
 
-        // Menu listeners
-        layoutFsforit.setOnClickListener {
-            openFaforit()
-        }
+        layoutFsforit.setOnClickListener { openFaforit() }
+        layoutArsip.setOnClickListener { openArsip() }
+        layoutStatistik.setOnClickListener { openStatistik() }
 
-        layoutArsip.setOnClickListener {
-            openArsip()
-        }
-
-        layoutStatistik.setOnClickListener {
-            openStatistik()
-        }
-
-        // Pengaturan listeners
+        // 🔥 PERBAIKAN: Toggle dark mode dengan recreate activity
         switchModeGelap.setOnCheckedChangeListener { _, isChecked ->
             toggleModeGelap(isChecked)
         }
@@ -136,27 +146,37 @@ class ProfilActivity : AppCompatActivity() {
             togglePemberitahuan(isChecked)
         }
 
-        layoutBahasa.setOnClickListener {
-            showBahasaBottomSheet()
+        layoutPengaturanPemberitahuan.setOnClickListener {
+            openPengaturanPemberitahuan()
         }
 
-        // Tentang Aplikasi listeners
-        layoutBackup.setOnClickListener {
-            openBackupRestore()
-        }
+        // ✅ TAMBAHAN BARU: Buka bottom sheet bahasa
+        layoutBahasa.setOnClickListener { showBahasaBottomSheet() }
 
-        layoutHapusData.setOnClickListener {
-            showHapusDataDialog()
-        }
+        layoutBackup.setOnClickListener { openBackupRestore() }
+        layoutHapusData.setOnClickListener { showHapusDataDialog() }
+        layoutTentangKami.setOnClickListener { openTentangKami() }
+        layoutLogout.setOnClickListener { showLogoutDialog() }
+    }
 
-        layoutTentangKami.setOnClickListener {
-            openTentangKami()
-        }
+    // 🔥 FUNGSI BARU: Load status dark mode ke switch
+    private fun loadDarkModeSwitch() {
+        val isDarkMode = ThemeHelper.isDarkMode(this)
 
-        // Logout
-        layoutLogout.setOnClickListener {
-            showLogoutDialog()
+        // Set switch tanpa trigger listener
+        switchModeGelap.setOnCheckedChangeListener(null)
+        switchModeGelap.isChecked = isDarkMode
+
+        // Pasang kembali listener
+        switchModeGelap.setOnCheckedChangeListener { _, isChecked ->
+            toggleModeGelap(isChecked)
         }
+    }
+
+    // ✅ FUNGSI BARU: Load bahasa yang dipilih ke TextView
+    private fun loadLanguageDisplay() {
+        val languageName = LanguageHelper.getLanguageDisplayName(this)
+        tvBahasa.text = languageName
     }
 
     private fun loadUserData() {
@@ -166,25 +186,23 @@ class ProfilActivity : AppCompatActivity() {
             if (userId != null) {
                 val user = userManager.getUserById(userId)
                 if (user != null) {
-                    // Update UI
                     tvNama.text = user.nama
                     tvBio.text = user.bio
 
-                    // Load foto profil dari internal storage
                     if (user.fotoProfil.isNotEmpty()) {
                         loadImageFromInternalStorage(user.fotoProfil)
                     } else {
                         imgProfile.setImageResource(R.drawable.ic_person)
                     }
                 } else {
-                    Toast.makeText(this, "User tidak ditemukan 🧐", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.toast_user_tidak_ditemukan), Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(this, "Session tidak valid 🔄", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.toast_session_tidak_valid), Toast.LENGTH_SHORT).show()
                 finish()
             }
         } catch (e: Exception) {
-            Toast.makeText(this, "Error loading data: ${e.message} 😅", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.toast_error_loading_data, e.message), Toast.LENGTH_LONG).show()
             e.printStackTrace()
         }
     }
@@ -193,7 +211,6 @@ class ProfilActivity : AppCompatActivity() {
         try {
             val bitmap = ImageHelper.loadImageFromInternalStorage(filePath)
             if (bitmap != null) {
-                // Crop menjadi circular
                 val circularBitmap = getCircularBitmap(bitmap)
                 imgProfile.setImageBitmap(circularBitmap)
             } else {
@@ -214,12 +231,8 @@ class ProfilActivity : AppCompatActivity() {
                 var bitmap = BitmapFactory.decodeStream(inputStream)
                 inputStream.close()
 
-                // Rotate jika perlu (handle rotasi dari EXIF)
                 bitmap = rotateImageIfRequired(bitmap, uri)
-
-                // Crop menjadi circular
                 val circularBitmap = getCircularBitmap(bitmap)
-
                 imgProfile.setImageBitmap(circularBitmap)
             } else {
                 imgProfile.setImageResource(R.drawable.ic_person)
@@ -247,7 +260,7 @@ class ProfilActivity : AppCompatActivity() {
                 ExifInterface.ORIENTATION_ROTATE_270 -> rotateImage(bitmap, 270f)
                 else -> bitmap
             }
-        } catch (e: Exception) {
+        } catch (_: Exception) {
             return bitmap
         }
     }
@@ -283,9 +296,9 @@ class ProfilActivity : AppCompatActivity() {
     private fun openEditProfil() {
         try {
             val intent = Intent(this, EditProfilActivity::class.java)
-            startActivityForResult(intent, EDIT_PROFILE_REQUEST)
+            editProfileLauncher.launch(intent)
         } catch (e: Exception) {
-            Toast.makeText(this, "Error: ${e.message} 😅", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.toast_error, e.message), Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -299,83 +312,102 @@ class ProfilActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    // ✅ FIXED: Langsung start activity, tidak perlu set listener lagi
     private fun openStatistik() {
         startActivity(Intent(this, StatistikActivity::class.java))
     }
 
+    // 🔥 PERBAIKAN: Simpan ke SharedPreferences dan recreate activity
     private fun toggleModeGelap(isEnabled: Boolean) {
-        val message = if (isEnabled) "Mode Gelap diaktifkan 🌙✨" else "Mode Terang diaktifkan ☀️✨"
+        // Simpan status ke SharedPreferences
+        ThemeHelper.setDarkMode(this, isEnabled)
+
+        val message = if (isEnabled) getString(R.string.toast_mode_gelap_aktif)
+        else getString(R.string.toast_mode_terang_aktif)
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+
+        // Recreate activity untuk apply theme
+        recreate()
+    }
+
+    private fun loadPemberitahuanSettings() {
+        val isEnabled = pemberitahuanPrefs.getSetelPemberitahuan()
+
+        switchPemberitahuan.setOnCheckedChangeListener(null)
+        switchPemberitahuan.isChecked = isEnabled
+
+        switchPemberitahuan.setOnCheckedChangeListener { _, checked ->
+            togglePemberitahuan(checked)
+        }
+
+        layoutPengaturanPemberitahuan.visibility =
+            if (isEnabled) View.VISIBLE else View.GONE
     }
 
     private fun togglePemberitahuan(isEnabled: Boolean) {
-        val message = if (isEnabled) "Pemberitahuan diaktifkan 🔔✅" else "Pemberitahuan dinonaktifkan 🔕❌"
+        pemberitahuanPrefs.setSetelPemberitahuan(isEnabled)
+
+        layoutPengaturanPemberitahuan.visibility =
+            if (isEnabled) View.VISIBLE else View.GONE
+
+        val message = if (isEnabled) {
+            getString(R.string.toast_pemberitahuan_aktif)
+        } else {
+            getString(R.string.toast_pemberitahuan_nonaktif)
+        }
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
+    private fun openPengaturanPemberitahuan() {
+        startActivity(Intent(this, PemberitahuanActivity::class.java))
+    }
+
+    // ✅ FUNGSI BARU: Tampilkan bottom sheet bahasa
     private fun showBahasaBottomSheet() {
-        Toast.makeText(this, "Pilih Bahasa akan segera hadir 🌍✨", Toast.LENGTH_SHORT).show()
+        val bottomSheet = BahasaBottomSheet.newInstance()
+        bottomSheet.show(supportFragmentManager, BahasaBottomSheet.TAG)
     }
 
     private fun openBackupRestore() {
         startActivity(Intent(this, BackupRestoreActivity::class.java))
     }
 
-    // =====================================
-// HAPUS DATA - Tambahkan ke ProfilActivity.kt
-// =====================================
-
-// Ganti method showHapusDataDialog() yang sudah ada dengan ini:
-
     private fun showHapusDataDialog() {
         try {
-            // Inflate custom dialog layout
             val dialogView = layoutInflater.inflate(R.layout.dialog_hapus_data, null)
 
-            // Create dialog
             val dialog = AlertDialog.Builder(this)
                 .setView(dialogView)
                 .setCancelable(true)
                 .create()
 
-            // Make dialog background transparent (untuk rounded corners)
             dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
-            // Get views from dialog
             val tvTitle = dialogView.findViewById<TextView>(R.id.tvTitle)
             val btnBatal = dialogView.findViewById<Button>(R.id.btnBatal)
             val btnYa = dialogView.findViewById<Button>(R.id.btnYa)
-            val ivIllustration = dialogView.findViewById<ImageView>(R.id.ivIllustration)
 
-            // Set title dengan emoji
-            tvTitle.text = "Anda Yakin Ingin Menghapus Data Aplikasi? 🗑️"
+            tvTitle.text = getString(R.string.dialog_hapus_data_title)
 
-            // Button Batal - dismiss dialog
             btnBatal.setOnClickListener {
                 dialog.dismiss()
-                Toast.makeText(this, "Penghapusan dibatalkan 😅", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.toast_penghapusan_dibatalkan), Toast.LENGTH_SHORT).show()
             }
 
-            // Button Ya - hapus data
             btnYa.setOnClickListener {
                 dialog.dismiss()
                 hapusSemuaData()
             }
 
-            // Show dialog
             dialog.show()
 
         } catch (e: Exception) {
-            Toast.makeText(this, "Error dialog: ${e.message}", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.toast_error_dialog, e.message), Toast.LENGTH_LONG).show()
             e.printStackTrace()
         }
     }
 
-    // Method untuk hapus semua data dengan tracking detail
     private fun hapusSemuaData() {
         try {
-            // Ambil jumlah data SEBELUM dihapus
             val catatanPrefs = CatatanPreferences(this)
             val jumlahCatatan = catatanPrefs.getCatatanList().size
 
@@ -386,20 +418,13 @@ class ProfilActivity : AppCompatActivity() {
             val jumlahArsipCatatan = arsipPrefs.getArsipCatatan().size
             val jumlahArsipTugas = arsipPrefs.getArsipTugas().size
 
-            // HAPUS DATA
             catatanPrefs.saveCatatanList(emptyList())
             tugasPrefs.saveList(emptyList())
             arsipPrefs.saveArsipCatatan(emptyList())
             arsipPrefs.saveArsipTugas(emptyList())
 
-            // Hapus info backup terakhir
-            //  val backupPrefs = BackupPreferences(this)
-            //  backupPrefs.saveLastBackupDate("")
-
-            // Hitung total
             val totalDihapus = jumlahCatatan + jumlahTugas + jumlahArsipCatatan + jumlahArsipTugas
 
-            // Tampilkan hasil sesuai yang terhapus
             showHapusDataSuccessDialog(
                 total = totalDihapus,
                 catatan = jumlahCatatan,
@@ -409,12 +434,11 @@ class ProfilActivity : AppCompatActivity() {
             )
 
         } catch (e: Exception) {
-            Toast.makeText(this, "Gagal menghapus data: ${e.message}", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.toast_gagal_hapus_data, e.message), Toast.LENGTH_LONG).show()
             e.printStackTrace()
         }
     }
 
-    // Dialog konfirmasi berhasil dengan detail dinamis
     private fun showHapusDataSuccessDialog(
         total: Int,
         catatan: Int,
@@ -422,79 +446,78 @@ class ProfilActivity : AppCompatActivity() {
         arsipCatatan: Int,
         arsipTugas: Int
     ) {
-        // Jika tidak ada data yang dihapus
-        if (total == 0) {
-            AlertDialog.Builder(this)
-                .setTitle("Tidak Ada Data 🤔")
-                .setMessage("Tidak ada data yang perlu dihapus.\nAplikasi sudah bersih! ✨")
-                .setPositiveButton("Oke! 👍") { dialog, _ ->
-                    dialog.dismiss()
-                }
-                .setCancelable(false)
-                .show()
-            return
-        }
-
-        // Build pesan dinamis berdasarkan apa yang terhapus
-        val message = buildString {
-            append("Total $total item telah dihapus:\n\n")
-
-            if (catatan > 0) {
-                append("• $catatan Catatan\n")
-            }
-
-            if (tugas > 0) {
-                append("• $tugas Tugas\n")
-            }
-
-            if (arsipCatatan > 0) {
-                append("• $arsipCatatan Arsip Catatan\n")
-            }
-
-            if (arsipTugas > 0) {
-                append("• $arsipTugas Arsip Tugas\n")
-            }
-
-            append("\nAplikasi siap untuk digunakan kembali! 🎉")
-        }
-
-        AlertDialog.Builder(this)
-            .setTitle("Data Berhasil Dihapus! 🗑️✨")
-            .setMessage(message)
-            .setPositiveButton("Oke! 👍") { dialog, _ ->
-                dialog.dismiss()
-            }
+        val dialogView = layoutInflater.inflate(R.layout.dialog_hapus_data_success, null)
+        val dialog = AlertDialog.Builder(this)
+            .setView(dialogView)
             .setCancelable(false)
-            .show()
+            .create()
+
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        val imgIcon = dialogView.findViewById<ImageView>(R.id.imgStatusIcon)
+        val tvTitle = dialogView.findViewById<TextView>(R.id.tvTitleSuccess)
+        val tvMessage = dialogView.findViewById<TextView>(R.id.tvMessageSuccess)
+        val btnOk = dialogView.findViewById<Button>(R.id.btnOkSuccess)
+
+        if (total == 0) {
+            imgIcon.setImageResource(R.drawable.img_confused)
+            tvTitle.text = getString(R.string.dialog_tidak_ada_data_title)
+            tvMessage.text = getString(R.string.dialog_tidak_ada_data_message)
+        } else {
+            imgIcon.setImageResource(R.drawable.img_dog_meme)
+            tvTitle.text = getString(R.string.dialog_data_berhasil_dihapus_title)
+
+            val summary = buildString {
+                append(getString(R.string.dialog_total_item_dihapus, total))
+                append("\n")
+                if (catatan > 0) append(getString(R.string.dialog_item_catatan, catatan) + "\n")
+                if (tugas > 0) append(getString(R.string.dialog_item_tugas, tugas) + "\n")
+                if (arsipCatatan > 0) append(getString(R.string.dialog_item_arsip_catatan, arsipCatatan) + "\n")
+                if (arsipTugas > 0) append(getString(R.string.dialog_item_arsip_tugas, arsipTugas))
+            }
+            tvMessage.text = summary
+            btnOk.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#4CAF50"))
+        }
+
+        btnOk.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
-
-
 
     private fun openTentangKami() {
         startActivity(Intent(this, TentangKamiActivity::class.java))
     }
 
     private fun showLogoutDialog() {
-        AlertDialog.Builder(this)
-            .setTitle("Logout 🚪😊")
-            .setMessage("Apakah Anda yakin ingin logout? 🤔\nJangan lupa kembali ya! 👋")
-            .setPositiveButton("Logout 👋") { dialog, _ ->
-                logout()
-                dialog.dismiss()
-            }
-            .setNegativeButton("Tetap di Sini 😊") { dialog, _ ->
-                dialog.dismiss()
-            }
-            .show()
+        val dialogView = layoutInflater.inflate(R.layout.dialog_logout, null)
+        val dialog = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .create()
+
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        val btnLogoutAction = dialogView.findViewById<Button>(R.id.btnLogoutAction)
+        val btnStay = dialogView.findViewById<Button>(R.id.btnStay)
+
+        btnLogoutAction.setOnClickListener {
+            logout()
+            dialog.dismiss()
+        }
+
+        btnStay.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 
     private fun logout() {
-        // Hapus session
         sessionManager.logout()
 
-        Toast.makeText(this, "Berhasil logout 👋✨", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.toast_berhasil_logout), Toast.LENGTH_SHORT).show()
 
-        // Redirect ke LoginActivity
         val intent = Intent(this, LoginActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)

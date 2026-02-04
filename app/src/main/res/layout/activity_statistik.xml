@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8FAFC"
+    android:background="@color/background_primary"
     android:fillViewport="true">
 
     <LinearLayout
@@ -12,11 +12,10 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Toolbar -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="#BCCCDC"
+            android:background="@color/header_color"
             android:elevation="4dp">
 
             <ImageView
@@ -24,19 +23,18 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="4dp"
-                android:contentDescription="Tombol Kembali"
+                android:contentDescription="@string/back_button"
                 android:padding="12dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_panah" />
+                app:tint="@color/text_on_header"
+                android:backgroundTint="@color/background_secondary"
+                android:src="@drawable/ic_panah" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="Statistik"
-                android:textColor="#2C3E50"
+                android:text="@string/statistics"
+                android:textColor="@color/icon_tint"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -46,17 +44,16 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="12dp"
-                android:contentDescription="Chart Icon"
+                android:contentDescription="@string/chart_icon"
                 android:src="@drawable/ic_chart_color" />
 
         </RelativeLayout>
 
-        <!-- Bar Chart Card -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            app:cardBackgroundColor="#D9EAFD"
+            app:cardBackgroundColor="@color/card_color"
             app:cardCornerRadius="16dp"
             app:cardElevation="4dp">
 
@@ -64,74 +61,35 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="15dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Progres Minggu Ini"
-                    android:textColor="#2C3E50"
+                    android:text="@string/weekly_progress"
+                    android:textColor="@color/text_primary"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <!-- Bar Chart -->
                 <com.github.mikephil.charting.charts.BarChart
                     android:id="@+id/barChart"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp" />
-
-                <!-- Legend -->
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    android:orientation="horizontal">
-
-                    <View
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:background="#9C27B0" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginEnd="16dp"
-                        android:text="Membuat"
-                        android:textColor="#2C3E50"
-                        android:textSize="12sp" />
-
-                    <View
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:background="#FF5252" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:text="Selesai"
-                        android:textColor="#2C3E50"
-                        android:textSize="12sp" />
-
-                </LinearLayout>
+                    android:layout_marginBottom="18dp" />
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Ringkasan Aktivitas Card -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            app:cardBackgroundColor="#D9EAFD"
+            app:cardBackgroundColor="@color/card_color"
             app:cardCornerRadius="16dp"
             app:cardElevation="4dp">
 
@@ -145,19 +103,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
-                    android:text="Ringkasan Aktivitas"
-                    android:textColor="#2C3E50"
+                    android:text="@string/activity_summary"
+                    android:textColor="@color/text_primary"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <!-- Grid 4 Cards -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="4">
 
-                    <!-- Catatan Card -->
                     <androidx.cardview.widget.CardView
                         android:layout_width="0dp"
                         android:layout_height="90dp"
@@ -177,7 +133,7 @@
                             <ImageView
                                 android:layout_width="28dp"
                                 android:layout_height="28dp"
-                                android:contentDescription="Catatan"
+                                android:contentDescription="@string/notes"
                                 android:src="@drawable/ic_notes"
                                 app:tint="@android:color/white" />
 
@@ -194,7 +150,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Catatan"
+                                android:text="@string/notes"
                                 android:textColor="@android:color/white"
                                 android:textSize="11sp" />
 
@@ -202,7 +158,6 @@
 
                     </androidx.cardview.widget.CardView>
 
-                    <!-- Tugas Card -->
                     <androidx.cardview.widget.CardView
                         android:layout_width="0dp"
                         android:layout_height="90dp"
@@ -223,7 +178,7 @@
                             <ImageView
                                 android:layout_width="28dp"
                                 android:layout_height="28dp"
-                                android:contentDescription="Tugas"
+                                android:contentDescription="@string/tasks"
                                 android:src="@drawable/ic_task"
                                 app:tint="@android:color/white" />
 
@@ -240,7 +195,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Tugas"
+                                android:text="@string/tasks"
                                 android:textColor="@android:color/white"
                                 android:textSize="11sp" />
 
@@ -248,7 +203,6 @@
 
                     </androidx.cardview.widget.CardView>
 
-                    <!-- Selesai Card -->
                     <androidx.cardview.widget.CardView
                         android:layout_width="0dp"
                         android:layout_height="90dp"
@@ -269,7 +223,7 @@
                             <ImageView
                                 android:layout_width="28dp"
                                 android:layout_height="28dp"
-                                android:contentDescription="Selesai"
+                                android:contentDescription="@string/completed"
                                 android:src="@drawable/ic_check_circle"
                                 app:tint="@android:color/white" />
 
@@ -286,7 +240,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Selesai"
+                                android:text="@string/completed"
                                 android:textColor="@android:color/white"
                                 android:textSize="11sp" />
 
@@ -294,7 +248,6 @@
 
                     </androidx.cardview.widget.CardView>
 
-                    <!-- Tertunda Card -->
                     <androidx.cardview.widget.CardView
                         android:layout_width="0dp"
                         android:layout_height="90dp"
@@ -314,7 +267,7 @@
                             <ImageView
                                 android:layout_width="28dp"
                                 android:layout_height="28dp"
-                                android:contentDescription="Tertunda"
+                                android:contentDescription="@string/pending"
                                 android:src="@drawable/ic_clock"
                                 app:tint="@android:color/white" />
 
@@ -331,7 +284,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Tertunda"
+                                android:text="@string/pending"
                                 android:textColor="@android:color/white"
                                 android:textSize="11sp" />
 
@@ -345,14 +298,13 @@
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Progress Circle Card -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            app:cardBackgroundColor="#D9EAFD"
+            app:cardBackgroundColor="@color/card_color"
             app:cardCornerRadius="16dp"
             app:cardElevation="4dp">
 
@@ -363,7 +315,6 @@
                 android:orientation="vertical"
                 android:padding="24dp">
 
-                <!-- Circular Progress -->
                 <RelativeLayout
                     android:layout_width="150dp"
                     android:layout_height="150dp">
@@ -383,8 +334,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:text="65%"
-                        android:textColor="#2C3E50"
+                        android:text=""
+                        android:textColor="@color/text_primary"
                         android:textSize="32sp"
                         android:textStyle="bold" />
 
@@ -396,16 +347,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:gravity="center"
-                    android:text="Anda Telah Menyelesaikan &quot;65%&quot;\nProgres Mingguan"
-                    android:textColor="#2C3E50"
-                    android:textSize="14sp"
+                    android:text="@string/weekly_progress_message"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Motivasi Card -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -422,16 +372,14 @@
                 android:orientation="horizontal"
                 android:padding="16dp">
 
-                <!-- Gambar Motivasi -->
                 <ImageView
                     android:id="@+id/imgMotivasi"
                     android:layout_width="120dp"
                     android:layout_height="160dp"
-                    android:contentDescription="Motivasi"
+                    android:contentDescription="@string/motivation_image"
                     android:scaleType="fitCenter"
                     android:src="@drawable/img_motivasi" />
 
-                <!-- Quote Section -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -448,7 +396,7 @@
                         android:layout_marginEnd="80dp"
                         android:layout_marginVertical="10dp"
                         android:layout_marginBottom="8dp"
-                        android:contentDescription="Icon"
+                        android:contentDescription="@string/bulb_icon"
                         android:src="@drawable/ic_bulb"/>
 
                     <TextView
@@ -458,8 +406,8 @@
                         android:layout_marginBottom="12dp"
                         android:background="@drawable/quote_background"
                         android:padding="12dp"
-                        android:text="&quot;Kamu paling produktif pada hari Minggu&quot;"
-                        android:textColor="#2C3E50"
+                        android:text="@string/motivation_quote1"
+                        android:textColor="@color/text_primary"
                         android:textSize="13sp"
                         android:textStyle="bold" />
 
@@ -468,7 +416,7 @@
                         android:layout_height="2dp"
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="0dp"
-                        android:background="#BCCCDC" />
+                        android:background="@color/text_secondary" />
 
                     <TextView
                         android:id="@+id/tvQuote2"
@@ -476,8 +424,8 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/quote_background"
                         android:padding="12dp"
-                        android:text="&quot;Tingkat penyelesaian tugas minggu ini meningkat&quot;"
-                        android:textColor="#2C3E50"
+                        android:text="@string/motivation_quote2"
+                        android:textColor="@color/text_primary"
                         android:textSize="13sp"
                         android:textStyle="bold" />
 
