@@ -5,13 +5,13 @@ plugins {
 }
 
 android {
-    namespace = "com.example.LumiNote"
-    compileSdk = 36
+    namespace = "com.example.luminote"
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.LumiNote.v2"
         minSdk = 24
-        targetSdk = 36
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
