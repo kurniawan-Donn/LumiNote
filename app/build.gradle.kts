@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    // Hapus kapt, tidak perlu untuk Glide versi baru
+
 }
 
 android {
@@ -12,8 +12,8 @@ android {
         applicationId = "com.example.LumiNote.v2"
         minSdk = 24
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 3
+        versionName = "1.2.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
