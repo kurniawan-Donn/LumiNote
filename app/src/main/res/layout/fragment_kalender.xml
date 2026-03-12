@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_primary">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="10dp">
+
+        <ImageButton
+            android:id="@+id/btn_kal_prev"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_btn_ripple_transparent"
+            android:src="@drawable/ic_arrow_left"
+            android:contentDescription="@string/desc_prev_month" />
+
+        <TextView
+            android:id="@+id/tv_kal_month_year"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="17sp"
+            android:textColor="@color/text_primary"
+            android:fontFamily="@font/interbold" />
+
+        <ImageButton
+            android:id="@+id/btn_kal_next"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_btn_ripple_transparent"
+            android:src="@drawable/ic_arrow_right"
+            android:contentDescription="@string/desc_next_month" />
+
+        <ImageButton
+            android:id="@+id/btn_kal_toggle"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/bg_btn_ripple_transparent"
+            android:src="@drawable/ic_toggle_calendar_off"
+            android:contentDescription="@string/desc_toggle_view"/>
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/layout_kal_calendar_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="4dp">
+
+                    <TextView android:layout_width="0dp" android:layout_height="match_parent"
+                        android:layout_weight="1" android:gravity="center"
+                        android:text="@string/day_sun" android:textSize="12sp" android:textColor="@color/text_secondary" />
+                    <TextView android:layout_width="0dp" android:layout_height="match_parent"
+                        android:layout_weight="1" android:gravity="center"
+                        android:text="@string/day_mon" android:textSize="12sp" android:textColor="@color/text_secondary" />
+                    <TextView android:layout_width="0dp" android:layout_height="match_parent"
+                        android:layout_weight="1" android:gravity="center"
+                        android:text="@string/day_tue" android:textSize="12sp" android:textColor="@color/text_secondary" />
+                    <TextView android:layout_width="0dp" android:layout_height="match_parent"
+                        android:layout_weight="1" android:gravity="center"
+                        android:text="@string/day_wed" android:textSize="12sp" android:textColor="@color/text_secondary" />
+                    <TextView android:layout_width="0dp" android:layout_height="match_parent"
+                        android:layout_weight="1" android:gravity="center"
+                        android:text="@string/day_thu" android:textSize="12sp" android:textColor="@color/text_secondary" />
+                    <TextView android:layout_width="0dp" android:layout_height="match_parent"
+                        android:layout_weight="1" android:gravity="center"
+                        android:text="@string/day_fri" android:textSize="12sp" android:textColor="@color/text_secondary" />
+                    <TextView android:layout_width="0dp" android:layout_height="match_parent"
+                        android:layout_weight="1" android:gravity="center"
+                        android:text="@string/day_sat" android:textSize="12sp" android:textColor="@color/text_secondary" />
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_kal_calendar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="4dp"
+                    android:nestedScrollingEnabled="false" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"
+                android:background="@color/text_secondary"
+                android:alpha="0.2" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="4dp">
+
+                <TextView
+                    android:id="@+id/tv_kal_agenda_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="13sp"
+                    android:textColor="@color/text_primary"
+                    android:fontFamily="@font/interbold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <CheckBox
+                        android:id="@+id/chip_kal_catatan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="@string/label_catatan"
+                        android:textSize="11sp"
+                        android:textColor="@color/text_primary"
+                        android:layout_marginEnd="8dp" />
+
+                    <CheckBox
+                        android:id="@+id/chip_kal_tugas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="@string/label_tugas"
+                        android:textSize="11sp"
+                        android:textColor="@color/text_primary" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/progress_kal_agenda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_kal_agenda"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp"
+                android:paddingBottom="80dp"
+                android:clipToPadding="false"
+                android:nestedScrollingEnabled="false" />
+
+            <TextView
+                android:id="@+id/tv_kal_empty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="80dp"
+                android:gravity="center"
+                android:text="@string/empty_agenda"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

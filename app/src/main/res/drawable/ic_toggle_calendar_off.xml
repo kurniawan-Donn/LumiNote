@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="28dp"
+    android:height="28dp"
+    android:viewportWidth="28"
+    android:viewportHeight="28">
+
+    <!-- garis atas -->
+    <path
+        android:fillColor="@color/text_primary"
+        android:pathData="M5,8h18v2H5z"/>
+
+    <!-- garis tengah -->
+    <path
+        android:fillColor="@color/text_primary"
+        android:pathData="M5,13h18v2H5z"/>
+
+    <!-- garis bawah -->
+    <path
+        android:fillColor="@color/text_primary"
+        android:pathData="M5,18h18v2H5z"/>
+
+</vector>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingVertical="10dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground">
+
+    <!-- Garis warna di kiri (biru=catatan, oranye=tugas) -->
+    <View
+        android:id="@+id/view_kal_indicator"
+        android:layout_width="4dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/bg_kal_indicator" />
+
+    <!-- Konten teks -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <!-- Badge tipe (Catatan / Tugas) -->
+        <TextView
+            android:id="@+id/tv_kal_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginBottom="2dp" />
+
+        <!-- Judul -->
+        <TextView
+            android:id="@+id/tv_kal_judul"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/text_primary"
+            android:fontFamily="@font/interbold"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <!-- Deskripsi -->
+        <TextView
+            android:id="@+id/tv_kal_deskripsi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/text_secondary"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <!-- Status tugas (Selesai / Belum selesai) -->
+        <TextView
+            android:id="@+id/tv_kal_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            android:layout_marginTop="2dp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <!-- Waktu di kanan -->
+    <TextView
+        android:id="@+id/tv_kal_waktu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textSize="12sp"
+        android:textColor="@color/text_secondary" />
+
+</LinearLayout>

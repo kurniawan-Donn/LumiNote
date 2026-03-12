@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="28dp"
+    android:height="28dp"
+    android:viewportWidth="28"
+    android:viewportHeight="28">
+
+    <!-- garis silang kiri -->
+    <path
+        android:fillColor="@color/text_primary"
+        android:pathData="M7,7L21,21"
+        android:strokeWidth="2"
+        android:strokeColor="@color/text_primary"
+        android:strokeLineCap="round"/>
+
+    <!-- garis silang kanan -->
+    <path
+        android:fillColor="@color/text_primary"
+        android:pathData="M21,7L7,21"
+        android:strokeWidth="2"
+        android:strokeColor="@color/text_primary"
+        android:strokeLineCap="round"/>
+
+</vector>
