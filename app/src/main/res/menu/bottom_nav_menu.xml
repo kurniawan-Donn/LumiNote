@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!--
+        Layout bottom nav: Catatan | [+FAB] | Tugas
+        Kalender dipindah ke tombol floating tersendiri di atas Tugas
+        (lihat activity_main.xml → card_btn_kalender)
+    -->
+
     <item
         android:id="@+id/navigation_catatan"
         android:icon="@drawable/ic_notes"
         android:title="@string/title_catatan" />
 
+    <!-- Slot tengah kosong — ditempati FAB -->
     <item
         android:id="@+id/navigation_plus"
         android:icon="@drawable/ic_plus1"
-        android:title="" />
+        android:title=""
+        android:enabled="false" />
 
     <item
         android:id="@+id/navigation_tugas"

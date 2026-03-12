@@ -6,6 +6,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -17,64 +18,49 @@ class MainActivity : AppCompatActivity() {
     private lateinit var fab: FloatingActionButton
     private lateinit var mainHeader: TextView
     private lateinit var btnToProfil: ImageButton
-    private lateinit var sessionManager: SessionManager
 
-    // 🔥 TAMBAHAN: Track dark mode state
+    // ✅ Tombol kalender floating
+    private lateinit var cardBtnKalender: CardView
+    private lateinit var btnKalender: ImageButton
+
+    private lateinit var sessionManager: SessionManager
     private var currentDarkMode: Boolean = false
     private var currentLanguage: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         LanguageHelper.applyLanguage(this)
         ThemeHelper.applyTheme(this)
-
         super.onCreate(savedInstanceState)
-
-        android.util.Log.d("MainActivity", "🏠 MAIN onCreate - Language: ${LanguageHelper.getLanguage(this)}, Theme Applied")
-
         setContentView(R.layout.activity_main)
 
-        sessionManager = SessionManager(this)
+        sessionManager    = SessionManager(this)
+        currentDarkMode   = ThemeHelper.isDarkMode(this)
+        currentLanguage   = LanguageHelper.getLanguage(this)
 
-        // 🔥 Simpan state dark mode saat pertama kali dibuat
-        currentDarkMode = ThemeHelper.isDarkMode(this)
-        currentLanguage = LanguageHelper.getLanguage(this)
-
-        // Inisialisasi views
-        bottomNav = findViewById(R.id.bottom_nav_view)
-        fab = findViewById(R.id.fab_add)
-        mainHeader = findViewById(R.id.main_header)
-        btnToProfil = findViewById(R.id.btnToProfil)
+        bottomNav      = findViewById(R.id.bottom_nav_view)
+        fab            = findViewById(R.id.fab_add)
+        mainHeader     = findViewById(R.id.main_header)
+        btnToProfil    = findViewById(R.id.btnToProfil)
+        cardBtnKalender = findViewById(R.id.card_btn_kalender)
+        btnKalender    = findViewById(R.id.btn_kalender)
 
         setupNavigation()
         setupFab()
         setupBottomNavListener()
         setupBackPressHandler()
         setupProfileButton()
-
-        // Log dark mode status
-        android.util.Log.d("MainActivity", "Dark Mode Active: ${ThemeHelper.isDarkMode(this)}")
+        setupKalenderButton()
     }
 
-    // 🔥 SOLUSI UTAMA: Refresh theme saat kembali dari ProfilActivity
     override fun onResume() {
         super.onResume()
-
         val newDarkMode = ThemeHelper.isDarkMode(this)
         val newLanguage = LanguageHelper.getLanguage(this)
-
-        android.util.Log.d("MainActivity", "🔄 onResume - Current: $currentDarkMode, New: $newDarkMode")
-
-        // Jika dark mode berubah, recreate activity
         if (currentDarkMode != newDarkMode || currentLanguage != newLanguage) {
-            android.util.Log.d("MainActivity", "🔄 Perubahan terdeteksi! Recreating MainActivity...")
             currentDarkMode = newDarkMode
             currentLanguage = newLanguage
             recreate()
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
     }
 
     private fun setupNavigation() {
@@ -89,11 +75,14 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_catatan -> {
                     navController.navigate(R.id.navigation_catatan)
                     mainHeader.text = getString(R.string.daftar_catatan)
+                    // Kalender button: warna normal
+                    setKalenderActive(false)
                     true
                 }
                 R.id.navigation_tugas -> {
                     navController.navigate(R.id.navigation_tugas)
                     mainHeader.text = getString(R.string.daftar_tugas)
+                    setKalenderActive(false)
                     true
                 }
                 R.id.navigation_plus -> {
@@ -105,17 +94,43 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun setupKalenderButton() {
+        cardBtnKalender.setOnClickListener { navigateToKalender() }
+        btnKalender.setOnClickListener    { navigateToKalender() }
+    }
+
+    private fun navigateToKalender() {
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.catatan_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
+
+        navController.navigate(R.id.navigation_kalender)
+        mainHeader.text = getString(R.string.title_kalender)
+
+        // Hilangkan active state dari bottom nav
+        bottomNav.menu.findItem(R.id.navigation_catatan)?.isChecked = false
+        bottomNav.menu.findItem(R.id.navigation_tugas)?.isChecked   = false
+
+        // Highlight tombol kalender
+        setKalenderActive(true)
+    }
+
+    /** Ubah visual tombol kalender saat aktif/tidak aktif */
+    private fun setKalenderActive(active: Boolean) {
+        val alpha = if (active) 1.0f else 0.7f
+        cardBtnKalender.alpha = alpha
+        cardBtnKalender.cardElevation = if (active) 16f else 10f
+    }
+
     private fun setupFab() {
-        fab.setOnClickListener {
-            showPilihTipeDialog()
-        }
+        fab.setOnClickListener { showPilihTipeDialog() }
     }
 
     private fun setupBottomNavListener() {
         bottomNav.setOnItemReselectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_catatan -> mainHeader.text = getString(R.string.daftar_catatan)
-                R.id.navigation_tugas -> mainHeader.text = getString(R.string.daftar_tugas)
+                R.id.navigation_tugas   -> mainHeader.text = getString(R.string.daftar_tugas)
             }
         }
     }
@@ -132,8 +147,10 @@ class MainActivity : AppCompatActivity() {
                     .findFragmentById(R.id.catatan_fragment) as NavHostFragment
                 val navController = navHostFragment.navController
 
-                if (navController.currentDestination?.id == R.id.navigation_catatan ||
-                    navController.currentDestination?.id == R.id.navigation_tugas) {
+                val dest = navController.currentDestination?.id
+                if (dest == R.id.navigation_catatan ||
+                    dest == R.id.navigation_tugas    ||
+                    dest == R.id.navigation_kalender) {
                     finish()
                 } else {
                     navController.navigateUp()
@@ -144,8 +161,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupProfileButton() {
         btnToProfil.setOnClickListener {
-            val intent = Intent(this, ProfilActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, ProfilActivity::class.java))
         }
     }
 }

@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Card Item Tugas -->
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="12dp"
-    android:layout_marginVertical="6dp"
+    android:layout_marginVertical="5dp"
     app:cardBackgroundColor="@color/card_color"
-    app:cardCornerRadius="25dp"
+    app:cardCornerRadius="20dp"
     app:cardElevation="2dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/kartutugas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="10dp">
 
-        <!-- CheckBox Selesai -->
+        <!-- ── CheckBox ───────────────────────────────────────── -->
         <CheckBox
             android:id="@+id/centang"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:minWidth="0dp"
             android:minHeight="0dp"
             android:contentDescription="@string/cd_task_checkbox"
@@ -29,88 +31,95 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <!-- Judul Tugas -->
+        <!-- ── Judul ────────────────────────────────────────── -->
         <TextView
             android:id="@+id/tugas_judul"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="10dp"
             android:layout_marginEnd="8dp"
             android:text="@string/task_title_sample"
             android:textColor="@color/text_primary"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:maxLines="1"
             android:ellipsize="end"
             app:layout_constraintStart_toEndOf="@id/centang"
-            app:layout_constraintEnd_toStartOf="@id/ic_edit_tugas"
+            app:layout_constraintEnd_toStartOf="@id/action_group_tugas"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Deskripsi Tugas -->
+        <!-- ── Deskripsi ─────────────────────────────────────── -->
         <TextView
             android:id="@+id/tugas_deskripsi"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="2dp"
             android:text="@string/task_description_sample"
             android:textColor="@color/text_secondary"
-            android:textSize="16sp"
+            android:textSize="13sp"
             android:maxLines="1"
             android:ellipsize="end"
             app:layout_constraintStart_toStartOf="@id/tugas_judul"
             app:layout_constraintEnd_toEndOf="@id/tugas_judul"
             app:layout_constraintTop_toBottomOf="@id/tugas_judul" />
 
-        <!-- Icon Edit -->
-        <ImageView
-            android:id="@+id/ic_edit_tugas"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/ic_edit"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/cd_edit_task"
+        <!-- ── Grup Icon Aksi ─────────────────────────────────── -->
+        <LinearLayout
+            android:id="@+id/action_group_tugas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/ic_hapus_tugas"
-            app:tint="@color/icon_tint" />
+            app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Icon Hapus -->
-        <ImageView
-            android:id="@+id/ic_hapus_tugas"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/ic_delete"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/cd_delete_task"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/ic_favorit_tugas"
-            app:tint="@color/icon_tint" />
+            <ImageView
+                android:id="@+id/ic_edit_tugas"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_edit"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/cd_edit_task"
+                android:padding="2dp"
+                app:tint="@color/icon_tint" />
 
-        <!-- Icon Favorit -->
-        <ImageView
-            android:id="@+id/ic_favorit_tugas"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/ic_star"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/cd_favorite_task"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            <ImageView
+                android:id="@+id/ic_hapus_tugas"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_delete"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/cd_delete_task"
+                android:padding="2dp"
+                app:tint="@color/icon_tint" />
 
-        <!-- Tanggal -->
+            <ImageView
+                android:id="@+id/ic_favorit_tugas"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_star"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/cd_favorite_task"
+                android:padding="2dp"
+                app:tint="@color/icon_tint" />
+
+        </LinearLayout>
+
+        <!-- ── Tanggal (kanan bawah) ─────────────────────────── -->
         <TextView
             android:id="@+id/tgltugas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
             android:text="@string/task_date_sample"
             android:textColor="@color/text_secondary"
-            android:textSize="13sp"
-            app:layout_constraintTop_toBottomOf="@id/ic_favorit_tugas"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:textSize="11sp"
+            app:layout_constraintTop_toBottomOf="@id/action_group_tugas"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-        <!-- Placeholder Layout (jika dibutuhkan) -->
         <LinearLayout
             android:id="@+id/layoutkartutugas"
             android:layout_width="0dp"

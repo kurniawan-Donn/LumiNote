@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Lapisan 3: shadow paling luar (paling transparan) -->
+    <item
+        android:left="1dp"
+        android:top="2dp"
+        android:right="1dp"
+        android:bottom="0dp">
+        <shape android:shape="oval">
+            <solid android:color="#00000000"/>
+            <stroke
+                android:width="5dp"
+                android:color="#18000000"/>
+        </shape>
+    </item>
+
+    <!-- Lapisan 2: shadow tengah -->
+    <item
+        android:left="1dp"
+        android:top="1dp"
+        android:right="1dp"
+        android:bottom="0dp">
+        <shape android:shape="oval">
+            <solid android:color="#00000000"/>
+            <stroke
+                android:width="4dp"
+                android:color="#28000000"/>
+        </shape>
+    </item>
+
+    <!-- Lapisan 1: shadow dalam (paling pekat) -->
+    <item
+        android:left="1dp"
+        android:top="1dp"
+        android:right="1dp"
+        android:bottom="0dp">
+        <shape android:shape="oval">
+            <solid android:color="#00000000"/>
+            <stroke
+                android:width="3dp"
+                android:color="#38000000"/>
+        </shape>
+    </item>
+
+    <!-- Lapisan utama: lingkaran berwarna background_primary -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#00000000"/>
+            <stroke
+                android:width="5dp"
+                android:color="@color/background_primary"/>
+        </shape>
+    </item>
+
+</layer-list>

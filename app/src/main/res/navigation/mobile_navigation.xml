@@ -7,14 +7,21 @@
 
     <fragment
         android:id="@+id/navigation_catatan"
-        android:name="com.example.LumiNote.CatatanFragment"
+        android:name="com.example.luminote.CatatanFragment"
         android:label="@string/title_catatan"
         tools:layout="@layout/fragment_catatan" />
 
     <fragment
         android:id="@+id/navigation_tugas"
-        android:name="com.example.LumiNote.TugasFragment"
+        android:name="com.example.luminote.TugasFragment"
         android:label="@string/title_tugas"
         tools:layout="@layout/fragment_tugas" />
+
+    <!-- ✅ BARU: KalenderFragment -->
+    <fragment
+        android:id="@+id/navigation_kalender"
+        android:name="com.example.luminote.KalenderFragment"
+        android:label="@string/title_kalender"
+        tools:layout="@layout/fragment_kalender" />
 
 </navigation>

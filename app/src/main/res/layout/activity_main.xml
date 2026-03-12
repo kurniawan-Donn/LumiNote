@@ -2,12 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_primary">
 
+    <!-- ══════════════════════════════════════════════
+         HEADER
+    ══════════════════════════════════════════════ -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header_container"
         android:layout_width="0dp"
@@ -26,26 +28,30 @@
             android:textColor="@color/text_on_header"
             android:textSize="20sp"
             android:fontFamily="@font/interbold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/btnToProfil"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginEnd="16dp"
+            android:background="@android:color/transparent"
             android:contentDescription="@string/desc_to_profile"
             android:padding="0dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_to_profil"
             android:scaleType="fitCenter"
+            android:src="@drawable/ic_to_profil"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!-- ══════════════════════════════════════════════
+         FRAGMENT CONTAINER
+    ══════════════════════════════════════════════ -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/catatan_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -53,39 +59,93 @@
         android:layout_height="0dp"
         app:defaultNavHost="true"
         app:navGraph="@navigation/mobile_navigation"
-        app:layout_constraintTop_toBottomOf="@id/header_container"
         app:layout_constraintBottom_toTopOf="@id/bottom_nav_view"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/header_container" />
 
+    <!-- ══════════════════════════════════════════════
+         BOTTOM NAVIGATION
+    ══════════════════════════════════════════════ -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav_view"
         android:layout_width="0dp"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:background="@color/bottom_nav_color"
-        app:itemIconSize="30dp"
+        app:elevation="8dp"
+        app:itemIconSize="26dp"
         app:itemIconTint="@color/whiteb"
-        app:itemTextColor="@color/whiteb"
+        app:itemTextColor="@color/white"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- ══════════════════════════════════════════════
+         FAB TAMBAH — tengah, warna biru, melayang
+    ══════════════════════════════════════════════ -->
+
+    <!-- Lingkaran putih mengelilingi FAB (di belakang FAB) -->
+    <View
+        android:id="@+id/fab_ring"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="14dp"
+        android:background="@drawable/bg_fab_ring"
+        android:elevation="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="18dp"
         android:contentDescription="@string/desc_add_button"
         android:src="@drawable/ic_plus1"
-        app:backgroundTint="@color/background_primary"
+        app:backgroundTint="@color/bottom_nav_color"
+        app:tint="@color/white"
         app:borderWidth="0dp"
-        app:elevation="10dp"
-        app:fabCustomSize="76dp"
+        app:elevation="14dp"
+        app:fabCustomSize="64dp"
         app:fabSize="auto"
-        app:maxImageSize="65dp"
+        app:maxImageSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- ══════════════════════════════════════════════
+         TOMBOL KALENDER FLOATING
+         Posisi: center-aligned di atas label "Tugas"
+         (1/4 kanan layar), melayang dengan shadow
+    ══════════════════════════════════════════════ -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_btn_kalender"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="90dp"
+        android:layout_marginEnd="0dp"
+        app:cardBackgroundColor="@color/bottom_nav_color"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="19dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/bottom_nav_view"
+        app:layout_constraintEnd_toEndOf="@id/bottom_nav_view"
+        app:layout_constraintHorizontal_bias="0.95">
+
+        <ImageButton
+            android:id="@+id/btn_kalender"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/title_kalender"
+            android:padding="11dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_kalender"
+            app:tint="@color/whiteb" />
+
+    </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
