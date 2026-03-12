@@ -639,6 +639,25 @@
     <string name="completed_with_count">Completed (%1$d)</string>
     <string name="list_tugas_diperbarui">Task list updated</string>
 
+    <string name="title_kalender">Calendar</string>
+        <string name="desc_prev_month">Previous month</string>
+        <string name="desc_next_month">Next month</string>
+        <string name="desc_toggle_view">Toggle view</string>
+        <string name="day_sun">Sun</string>
+        <string name="day_mon">Mon</string>
+        <string name="day_tue">Tue</string>
+        <string name="day_wed">Wed</string>
+        <string name="day_thu">Thu</string>
+        <string name="day_fri">Fri</string>
+        <string name="day_sat">Sat</string>
+        <string name="label_catatan">Notes</string>
+        <string name="label_tugas">Tasks</string>
+        <string name="empty_agenda">No notes or tasks\nfor today</string>
+        <string name="widget_description">Display Luminote notes on the home screen</string>
+    <string name="status_selesai">Selesai ✓</string>
+    <string name="status_belum_selesai">Belum selesai</string>
+    <string name="all_agenda_prefix">All agenda —</string>
+
     <!-- Header Navigation -->
     <string name="header_catatan">Note List</string>
     <string name="header_tugas">Task List</string>

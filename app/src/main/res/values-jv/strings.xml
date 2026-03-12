@@ -641,10 +641,25 @@
     <!-- User Default Values (opsional - yen nganggo solusi alternatif) -->
     <string name="default_user_name">Jeneng</string>
     <string name="default_user_bio">Deskripsi Bio…</string>
+    <string name="all_agenda_prefix">Sedaya agenda —</string>
 
-
-
-
+    <string name="title_kalender">Tanggalan</string>
+        <string name="desc_prev_month">Sasi sedurunge</string>
+        <string name="desc_next_month">Sasi sakbanjure</string>
+        <string name="desc_toggle_view">Ganti tampilan</string>
+        <string name="day_sun">Ahad</string>
+        <string name="day_mon">Sen</string>
+        <string name="day_tue">Sel</string>
+        <string name="day_wed">Reb</string>
+        <string name="day_thu">Kem</string>
+        <string name="day_fri">Jum</string>
+        <string name="day_sat">Set</string>
+        <string name="label_catatan">Cathetan</string>
+        <string name="label_tugas">Tugas</string>
+        <string name="empty_agenda">Mboten wonten cathetan utawi tugas\ndinten niki</string>
+        <string name="widget_description">Nampilake cathetan Luminote ing layar utama</string>
+    <string name="status_selesai">Selesai ✓</string>
+    <string name="status_belum_selesai">Belum selesai</string>
 
 
     <!-- Header Navigation -->

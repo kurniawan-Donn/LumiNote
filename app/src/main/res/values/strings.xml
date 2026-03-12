@@ -645,8 +645,26 @@
     <string name="default_user_name">Nama</string>
     <string name="default_user_bio">Deskripsi Bio…</string>
 
+    <string name="title_kalender">Kalender</string>
 
 
+        <string name="desc_prev_month">Bulan sebelumnya</string>
+        <string name="desc_next_month">Bulan berikutnya</string>
+        <string name="desc_toggle_view">Toggle tampilan</string>
+        <string name="day_sun">Min</string>
+        <string name="day_mon">Sen</string>
+        <string name="day_tue">Sel</string>
+        <string name="day_wed">Rab</string>
+        <string name="day_thu">Kam</string>
+        <string name="day_fri">Jum</string>
+        <string name="day_sat">Sab</string>
+        <string name="label_catatan">Catatan</string>
+        <string name="label_tugas">Tugas</string>
+        <string name="empty_agenda">Tidak ada catatan atau tugas\npada hari ini</string>
+        <string name="widget_description">Tampilkan catatan Luminote di layar utama</string>
+    <string name="status_selesai">Selesai ✓</string>
+    <string name="status_belum_selesai">Belum selesai</string>
+    <string name="all_agenda_prefix">Semua agenda —</string>
 
     <!-- Header Navigation -->
     <string name="header_catatan">Daftar Catatan</string>

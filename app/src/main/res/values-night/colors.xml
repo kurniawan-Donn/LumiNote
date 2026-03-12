@@ -55,4 +55,15 @@
     <color name="notification_header_text_secondary">#B0B0B0</color>
     <color name="notification_icon_tint">#FFFFFF</color>
     <color name="notification_content_bg">@color/card_color</color>
+
+    <!-- Nama Tetap Sama, Kode Warna Disesuaikan (Lebih Terang) -->
+    <color name="dot_catatan">#FF9800</color>
+    <color name="dot_tugas">#7C4DFF</color>
+
+    <!-- Referensi tetap merujuk ke nama yang sama -->
+    <color name="color_primary">@color/dot_catatan</color>
+    <color name="color_secondary">@color/dot_tugas</color>
+    <color name="on_primary">#121212</color>
+
+
 </resources>
