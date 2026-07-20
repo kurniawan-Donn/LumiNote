@@ -1,100 +1,357 @@
 <div align="center">
 
-<img src="Screenshots/pcb.png" width="100%"/>
+<img src="Screenshots/banner2.png" width="100%"/>
+
+<br>
 
 # 📒 Luminote
 
-Aplikasi Catatan & Manajemen Tugas Modern
+### ✨ Smart Notes & Task Manager for Android
 
-</div>
+Aplikasi Android modern untuk mengelola **Catatan**, **Tugas**, **Pengingat**, **Kalender**, dan **Statistik Produktivitas** dalam satu aplikasi yang sederhana, elegan, dan mudah digunakan.
 
-<div align="center">
-
-# 📒✨
-
-### **Aplikasi Catatan & Manajemen Tugas Modern untuk Android**
-
-Kelola **catatan**, **tugas**, **pengingat**, **kalender**, dan **statistik produktivitas** dalam satu aplikasi yang sederhana, modern, dan mudah digunakan.
+<br>
 
 ![Platform](https://img.shields.io/badge/Platform-Android-success?style=for-the-badge)
 ![Language](https://img.shields.io/badge/Kotlin-100%25-blue?style=for-the-badge)
-![Architecture](https://img.shields.io/badge/MVVM-Architecture-orange?style=for-the-badge)
-![Database](https://img.shields.io/badge/Room-Database-green?style=for-the-badge)
+![Architecture](https://img.shields.io/badge/Architecture-MVVM-orange?style=for-the-badge)
+![Database](https://img.shields.io/badge/Database-Room-green?style=for-the-badge)
+![Material](https://img.shields.io/badge/UI-Material%20Design-purple?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-Completed-brightgreen?style=for-the-badge)
 
+<br>
+
+*"Stay Organized, Stay Productive."*
+
 </div>
 
 ---
 
-# 📖 Deskripsi
+# 📖 Tentang Luminote
 
-**Luminote** merupakan aplikasi Android yang dirancang untuk membantu pengguna mengelola **catatan** dan **tugas** secara lebih produktif.
+**Luminote** merupakan aplikasi Android yang dirancang untuk membantu pengguna mengelola aktivitas sehari-hari dengan lebih produktif.
 
-Tidak hanya sebagai aplikasi pencatat biasa, Luminote dilengkapi berbagai fitur modern seperti:
+Tidak hanya sebagai aplikasi pencatat biasa, **Luminote** menggabungkan berbagai fitur penting seperti **Catatan**, **Manajemen Tugas**, **Pengingat Otomatis**, **Kalender Interaktif**, **Statistik Produktivitas**, hingga **Personalisasi Aplikasi**, sehingga seluruh aktivitas dapat dikelola dalam satu tempat.
 
-- 📝 Catatan
-- ✅ Manajemen Tugas
-- 🔔 Reminder Otomatis
-- 📅 Kalender Interaktif
-- ⭐ Favorit
-- 📂 Arsip
-- 📊 Statistik Mingguan
-- 🌙 Dark Mode
-- 🌐 Multi Bahasa
-- 💾 Backup & Restore
-
-Dengan antarmuka yang sederhana dan intuitif, aplikasi ini cocok digunakan oleh **pelajar, mahasiswa, pekerja, maupun masyarakat umum**.
+Aplikasi ini dikembangkan menggunakan **Kotlin**, menerapkan pola arsitektur **MVVM**, dan memanfaatkan **Room Database** sebagai penyimpanan data lokal agar performa tetap cepat, ringan, dan dapat digunakan secara offline.
 
 ---
 
-# ✨ Fitur Utama
+# ✨ Mengapa Memilih Luminote?
 
-## 📝 Catatan (Notes)
+<table>
+<tr>
 
-Fitur catatan memungkinkan pengguna untuk:
+<td align="center" width="25%">
 
-- ➕ Menambahkan catatan
-- ✏️ Mengedit catatan
-- 🗑️ Menghapus catatan
-- ⭐ Menambahkan ke Favorit
-- 📂 Mengarsipkan catatan
-- 📅 Menampilkan tanggal pembuatan
-- 📌 Menampilkan catatan pada kalender
+## 📝
+
+### Catatan
+
+Kelola seluruh ide dan catatan penting dengan mudah.
+
+</td>
+
+<td align="center" width="25%">
+
+## ✅
+
+### Tugas
+
+Atur deadline dan pantau progres penyelesaian tugas.
+
+</td>
+
+<td align="center" width="25%">
+
+## 🔔
+
+### Reminder
+
+Pengingat otomatis lengkap dengan alarm dan notifikasi.
+
+</td>
+
+<td align="center" width="25%">
+
+## 📊
+
+### Statistik
+
+Pantau produktivitas setiap minggu melalui grafik interaktif.
+
+</td>
+
+</tr>
+</table>
 
 ---
 
-#  Preview Aplikasi
+# 🚀 Fitur Unggulan
+
+| Fitur | Keterangan |
+|:------|:-----------|
+| 📝 Catatan | Membuat, mengedit, menghapus, favorit dan arsip |
+| ✅ Tugas | Deadline, reminder, status selesai/belum selesai |
+| 📅 Kalender | Menampilkan seluruh aktivitas berdasarkan tanggal |
+| ⭐ Favorit | Menyimpan catatan dan tugas penting |
+| 📂 Arsip | Menyimpan data tanpa menghapusnya |
+| 📊 Statistik | Ringkasan aktivitas mingguan & diagram progres |
+| 👤 Profil | Mengubah foto profil, nama, bio, username dan password |
+| 🌙 Dark Mode | Tema terang dan gelap |
+| 🌐 Multi Bahasa | Indonesia, Jawa dan Inggris |
+| 🔔 Alarm | Nada dering, getar, volume, pengulangan dan DND |
+| 💾 Backup & Restore | Mencadangkan dan memulihkan data |
+| 📤 Share App | Bagikan APK maupun link aplikasi |
+
+---
+
+# 📑 Daftar Isi
+
+- [📖 Tentang Luminote](#-tentang-luminote)
+- [✨ Mengapa Memilih Luminote](#-mengapa-memilih-luminote)
+- [🚀 Fitur Unggulan](#-fitur-unggulan)
+- [📸 Preview Aplikasi](#-preview-aplikasi)
+- [🛠️ Teknologi yang Digunakan](#️-teknologi-yang-digunakan)
+
+---
+
+# 📸 Preview Aplikasi
+
 <div align="center">
 
-###   🔐 Login       | 🚀 Register |      📸 Splash
-<img src="Screenshots/login.jpeg" width="200"/>
-<img src="Screenshots/register.jpeg" width="200"/>
-<img src="Screenshots/splash.jpeg" width="200"/>
+## 🚀 Memulai Aplikasi
 
-#
+<table>
 
-###  🌞 Light Mode | 🌙 Dark Mode
-<img src="Screenshots/light_mode.jpeg" width="200"/>
-<img src="Screenshots/dark_mode.jpeg" width="200"/>
+<tr>
 
-#
+<td align="center">
 
-### Fitur Utama
-📝 Catatan | ✅ Tugas |👤 Profil
+### Splash Screen
 
-  <img src="Screenshots/catatan.jpeg" width="200"/>
-  <img src="Screenshots/dark_mode.jpeg" width="200"/>
-  <img src="Screenshots/profi.jpeg" width="200"/>
-  <img src="Screenshots/profil2.jpeg" width="200"/>
+<img src="Screenshots/splash.jpeg" width="180"/>
 
-###  📅 Kalender 
-<img src="Screenshots/calender.jpeg" width="200"/>
-<img src="Screenshots/calender2.jpeg" width="200"/>
+</td>
+
+<td align="center">
+
+### Login
+
+<img src="Screenshots/login.jpeg" width="180"/>
+
+</td>
+
+<td align="center">
+
+### Register
+
+<img src="Screenshots/register.jpeg" width="180"/>
+
+</td>
+
+</tr>
+
+</table>
+
+<br>
+
+---
+
+## 🏠 Halaman Utama
+
+<table>
+
+<tr>
+
+<td align="center">
+
+### Catatan
+
+<img src="Screenshots/catatan.jpeg" width="180"/>
+
+</td>
+
+<td align="center">
+
+### Tugas
+
+<img src="Screenshots/tugas.jpeg" width="180"/>
+
+</td>
+
+</tr>
+
+</table>
+
+<br>
+
+---
+
+## 📅 Organisasi Aktivitas
+
+<table>
+
+<tr>
+
+<td align="center">
+
+### Kalender
+
+<img src="Screenshots/calender.jpeg" width="180"/>
+
+</td>
+
+<td align="center">
+
+### Kalender Detail
+
+<img src="Screenshots/calender2.jpeg" width="180"/>
+
+</td>
+
+<td align="center">
+
+### Statistik
+
+<img src="Screenshots/statistik.jpeg" width="180"/>
+
+</td>
+
+</tr>
+
+</table>
+
+<br>
+
+---
+
+## 👤 Personalisasi
+
+<table>
+
+<tr>
+
+<td align="center">
+
+### Profil
+
+<img src="Screenshots/profi.jpeg" width="180"/>
+
+</td>
+
+<td align="center">
+
+### Profil
+
+<img src="Screenshots/profil2.jpeg" width="180"/>
+
+</td>
+
+<td align="center">
+
+### Edit Profil
+
+<img src="Screenshots/edit_profil.jpeg" width="180"/>
+
+</td>
+
+</tr>
+
+</table>
+
+<br>
+
+---
+
+## 🌙 Tampilan Aplikasi
+
+<table>
+
+<tr>
+
+<td align="center">
+
+### Light Mode
+
+<img src="Screenshots/light_mode.jpeg" width="180"/>
+
+</td>
+
+<td align="center">
+
+### Dark Mode
+
+<img src="Screenshots/tugas.jpeg" width="180"/>
+
+</td>
+
+</tr>
+
+</table>
+
 </div>
 
 ---
 
-## ✅ Tugas (Task)
+# 🛠️ Teknologi yang Digunakan
+
+<div align="center">
+
+| Teknologi | Deskripsi |
+|------------|-------------------------------|
+| ☕ Kotlin | Bahasa Pemrograman Android |
+| 🏗️ MVVM | Architecture Pattern |
+| 💾 Room Database | Database Lokal |
+| 🎨 Material Design | User Interface |
+| 🔔 AlarmManager | Reminder & Alarm |
+| 📱 Notification Manager | Notifikasi |
+| 🗂️ RecyclerView | Menampilkan Data |
+| 🖼️ Image Picker | Memilih Foto Profil |
+| 📁 File Picker | Upload File Gambar |
+| 📅 CalendarView | Kalender Interaktif |
+| 📊 MPAndroidChart | Diagram Statistik |
+| 💾 SharedPreferences / DataStore | Penyimpanan Pengaturan |
+
+</div>
+
+---
+
+> 📌 **Selanjutnya pada Bagian 2**, dokumentasi akan membahas seluruh fitur aplikasi secara detail, mulai dari **Catatan, Tugas, Kalender, Favorit, Arsip, Statistik, Profil, Pengaturan, Alarm, Bahasa, Backup & Restore, hingga Tentang Aplikasi**.
+
+# 🚀 Fitur Lengkap Luminote
+
+Luminote menghadirkan berbagai fitur untuk membantu pengguna mengelola aktivitas harian dengan lebih produktif, mulai dari mencatat ide sederhana hingga mengatur tugas dengan pengingat otomatis.
+
+---
+
+# 📝 Catatan (Notes)
+
+<img src="Screenshots/catatan.jpeg" width="250" align="right"/>
+
+Menu **Catatan** digunakan untuk menyimpan berbagai informasi penting seperti ide, jadwal, maupun catatan harian.
+
+### ✨ Fitur
+
+- ➕ Menambahkan catatan baru
+- ✏️ Mengedit catatan
+- 🗑️ Menghapus catatan
+- ⭐ Menandai sebagai Favorit
+- 📂 Mengarsipkan catatan
+- 📅 Menampilkan tanggal pembuatan
+- 📌 Terintegrasi dengan Kalender
+
+> 💡 **Tips**
+>
+> Catatan yang dibuat akan otomatis ditampilkan pada kalender menggunakan indikator kecil di setiap tanggal.
+
+<br clear="right"/>
+
+---
+
+# ✅ Manajemen Tugas (Task)
+
+<img src="Screenshots/tugas.jpeg" width="250" align="right"/>
 
 Kelola seluruh pekerjaan dalam satu tempat.
 
@@ -104,277 +361,22 @@ Kelola seluruh pekerjaan dalam satu tempat.
 - ✏️ Edit tugas
 - 🗑️ Hapus tugas
 - 📅 Menentukan deadline
-- ⏰ Menambahkan Reminder
-- ✔️ Tandai selesai / belum selesai
+- ✔️ Tandai selesai
+- ⌛ Tandai belum selesai
 - ⭐ Simpan ke Favorit
 - 📂 Arsipkan tugas
+- 🔔 Tambahkan Reminder
 
-### Reminder Otomatis
-
-Saat waktu reminder tiba aplikasi akan:
-
-- 🔔 Membunyikan alarm
-- 📱 Menampilkan notifikasi
-- 🎵 Memutar nada dering yang dipilih pengguna
-
----
-
-# 📅 Kalender Interaktif
-
-Pada halaman **Beranda** terdapat tombol kalender di bagian kiri bawah.
-
-Kalender akan menampilkan:
-
-🔵 Tanda pada tanggal yang memiliki **Catatan**
-
-🔴 Tanda pada tanggal yang memiliki **Tugas**
-
-⏰ Deadline tugas sesuai tanggal dan jam yang telah ditentukan.
-
-Dengan fitur ini pengguna dapat melihat seluruh aktivitas berdasarkan tanggal secara lebih mudah.
-
----
-
-# ⭐ Favorit
-
-Digunakan untuk menyimpan aktivitas penting.
-
-Berisi:
-
-- ⭐ Catatan Favorit
-- ⭐ Tugas Favorit
-
-Item favorit dapat ditambahkan maupun dihapus kapan saja.
-
----
-
-# 📂 Arsip
-
-Menu Arsip digunakan untuk menyimpan data tanpa menghapusnya.
-
-Fitur:
-
-- 📄 Arsip Catatan
-- ✅ Arsip Tugas
-- 🔄 Pulihkan dari Arsip
-- 🗑️ Hapus Permanen
-
----
-
-# 📊 Statistik Produktivitas
-
-Statistik menampilkan aktivitas pengguna selama **7 hari terakhir**.
-
-## Ringkasan Aktivitas
-
-- 📝 Total Catatan
-- ✅ Total Tugas
-- ✔️ Tugas Selesai
-- ⌛ Tugas Belum Selesai
-
-## Diagram Progress
-
-Menampilkan persentase penyelesaian tugas menggunakan diagram.
-
-Contoh:
-<div align="center">
-  
-###   Statistik 📊
-<img src="Screenshots/statistik.jpeg" width="200"/>
-<img src="Screenshots/statistik2.jpeg" width="200"/>
-</div>
-
-#
-
-## Pesan Interaktif
-
-Aplikasi akan memberikan motivasi berdasarkan aktivitas pengguna.
-
-Contoh:
-
-> 🔥 Hebat! Anda sangat aktif minggu ini.
-
-atau
-
-> 🌟 Pertahankan semangat! Produktivitas Anda terus meningkat.
-
----
-
-# 👤 Profil
-
-Pengguna dapat mengubah informasi akun.
-
-Data yang dapat diubah:
-
-- 📷 Foto Profil
-  - Ambil dari Galeri
-  - Upload File Foto
-- 👤 Nama
-- 📝 Bio
-- 🆔 Username
-- 🔒 Password
-
----
-
-# ⚙️ Pengaturan
-
-## 🌙 Tema
-
-Tersedia dua mode tampilan:
-
-- ☀️ Light Mode
-- 🌙 Dark Mode
-
----
-
-## 🔔 Pengaturan Notifikasi
-
-Notifikasi dapat diaktifkan maupun dinonaktifkan.
-
-### Saat Notifikasi Nonaktif
-
-Menu pengaturan lanjutan akan disembunyikan.
-
-### Saat Notifikasi Aktif
-
-Muncul menu tambahan:
-
-### 📢 Pemberitahuan
-
-Mengaktifkan seluruh notifikasi aplikasi.
-
-### ⏳ Tugas Mendatang
-
-Memberikan pengingat ketika deadline tugas sudah mendekat.
-
-### 🚨 Tugas Terlambat
-
-Memberikan notifikasi apabila tugas belum selesai setelah melewati batas waktu.
-
----
-
-# ⏰ Pengaturan Alarm
-
-Pengguna dapat mengatur alarm sesuai kebutuhan.
-
-### 🎵 Nada Dering
-
-Memilih ringtone sesuai keinginan.
-
-### 📳 Mode Getar
-
-Mengaktifkan atau menonaktifkan getaran.
-
-### 🔁 Pengulangan Alarm
-
-Pilihan:
-
-- Harian
-- Hari Kerja
-- Akhir Pekan
-- Kustom
-
-### 🏷️ Label Alarm
-
-Menambahkan nama atau keterangan alarm.
-
-### 🔊 Volume Alarm
-
-Slider horizontal yang dapat langsung mengubah volume secara real-time.
-
-Ketika digeser:
-
-- Volume langsung berubah
-- Nada dering akan diputar sebagai contoh
-
-### 🌙 Jangan Ganggu (Do Not Disturb)
-
-Jika diaktifkan, pengguna dapat menentukan sampai kapan seluruh notifikasi dibisukan.
-
----
-
-# 🌐 Bahasa
-
-Luminote mendukung tiga bahasa.
-
-- 🇮🇩 Indonesia
-- 🇯🇼 Jawa
-- 🇺🇸 English
-
----
-
-# 💾 Backup & Restore
-
-Digunakan untuk menjaga keamanan data.
-
-Fitur:
-
-- 💾 Backup Data
-- ♻️ Restore Data
-
----
-
-# 🗑️ Hapus Data
-
-Menghapus seluruh data aplikasi setelah pengguna memberikan konfirmasi.
-
----
-
-# ℹ️ Tentang Aplikasi
-
-Berisi informasi mengenai aplikasi dan developer.
-
-Menu ini menyediakan:
-
-- 📄 Informasi Aplikasi
-- 💻 Source Code GitHub
-- 📱 WhatsApp Developer
-- 📷 Instagram Developer
-
----
-
-# 📤 Bagikan Aplikasi
-
-Pengguna dapat membagikan aplikasi melalui:
-
-- 📦 File APK
-- 🔗 Link Download
-- 📋 Salin Link Download
-
----
-
-# 🚪 Logout
-
-Mengeluarkan akun dari aplikasi dengan aman.
-
----
-
-# 🏠 Halaman Beranda
-
-Halaman utama terdiri dari dua menu utama.
-
-## 📝 Catatan
-
-Menampilkan seluruh catatan pengguna.
-
-## ✅ Tugas
-
-Menampilkan seluruh daftar tugas pengguna.
-
-Di bagian kiri bawah tersedia tombol **Kalender** yang menampilkan seluruh aktivitas berdasarkan tanggal.
-
----
-
-# 🔔 Cara Kerja Reminder
+### 🔄 Alur Reminder
 
 ```text
 Tambah Tugas
       │
       ▼
-Menentukan Deadline
+Atur Deadline
       │
       ▼
-Menambahkan Reminder
+Tambahkan Reminder
       │
       ▼
 Alarm Berbunyi
@@ -383,91 +385,538 @@ Alarm Berbunyi
 Notifikasi Muncul
       │
       ▼
-Tugas Diselesaikan
+Selesaikan Tugas
       │
       ▼
 Masuk Statistik
 ```
 
----
+> 📌 Jika reminder aktif, aplikasi akan membunyikan alarm sesuai waktu yang telah ditentukan.
 
-# 📱 Halaman Aplikasi
-
-- 🚀 Splash Screen
-- 🔐 Login
-- 📝 Register
-- 🏠 Beranda
-- 📝 Catatan
-- ✅ Tugas
-- 📅 Kalender
-- ➕ Tambah Catatan
-- ➕ Tambah Tugas
-- ⭐ Favorit
-- 📂 Arsip
-- 📊 Statistik
-- 👤 Profil
-- ⚙️ Pengaturan
-- 🔔 Pengaturan Notifikasi
-- ⏰ Pengaturan Alarm
-- 🌐 Bahasa
-- 💾 Backup & Restore
-- ℹ️ Tentang Aplikasi
+<br clear="right"/>
 
 ---
 
-# 🛠️ Teknologi yang Digunakan
+# 📅 Kalender Interaktif
 
-| Teknologi | Keterangan |
-|-----------|------------|
-| Kotlin | Bahasa Pemrograman |
-| Android Studio | IDE |
-| MVVM | Architecture Pattern |
-| Room Database | Penyimpanan Data |
-| RecyclerView | Menampilkan List |
-| ViewBinding | Binding View |
-| AlarmManager | Reminder |
-| Notification Manager | Notifikasi |
-| SharedPreferences / DataStore | Penyimpanan Pengaturan |
-| CalendarView | Kalender |
-| Image Picker | Memilih Foto |
-| File Picker | Upload File |
-| MPAndroidChart | Diagram Statistik |
+<div align="center">
+
+<img src="Screenshots/calender.jpeg" width="220"/>
+<img src="Screenshots/calender2.jpeg" width="220"/>
+
+</div>
+
+Kalender menjadi pusat seluruh aktivitas pengguna.
+
+### Kalender akan menampilkan
+
+🔵 Catatan
+
+🔴 Tugas
+
+⏰ Deadline Tugas
+
+📅 Aktivitas berdasarkan tanggal
+
+### Keunggulan
+
+✔ Mudah melihat aktivitas harian
+
+✔ Menampilkan seluruh jadwal dalam satu tampilan
+
+✔ Deadline terlihat langsung pada kalender
 
 ---
 
-# 📌 Keunggulan Luminote
+# ⭐ Favorit
 
-✅ Catatan & Tugas dalam satu aplikasi
+Menu **Favorit** digunakan untuk menyimpan aktivitas yang dianggap penting.
 
-✅ Reminder dengan Alarm
+### Yang dapat disimpan
 
-✅ Kalender Interaktif
+- ⭐ Catatan Favorit
+- ⭐ Tugas Favorit
 
-✅ Statistik Mingguan
+### Keuntungan
 
-✅ Diagram Progress Penyelesaian
+- Lebih cepat diakses
+- Tidak perlu mencari dari daftar panjang
 
-✅ Pesan Motivasi Otomatis
+---
 
-✅ Favorit & Arsip
+# 📂 Arsip
 
-✅ Tema Terang & Gelap
+Arsip berfungsi untuk menyimpan data tanpa menghapusnya.
 
-✅ Multi Bahasa
+### Fitur
 
-✅ Backup & Restore
+- 📄 Arsip Catatan
+- ✅ Arsip Tugas
+- 🔄 Pulihkan Data
+- 🗑️ Hapus Permanen
 
-✅ Pengaturan Alarm Lengkap
+> 💡 Sangat cocok digunakan untuk menyimpan tugas lama tanpa memenuhi halaman utama.
 
-✅ Profil yang Dapat Disesuaikan
+---
 
-✅ Antarmuka Modern dan Mudah Digunakan
+# 📊 Statistik Produktivitas
+
+<div align="center">
+
+<img src="Screenshots/statistik.jpeg" width="220"/>
+<img src="Screenshots/statistik2.jpeg" width="220"/>
+
+</div>
+
+Luminote membantu pengguna mengetahui tingkat produktivitas selama **7 hari terakhir**.
+
+### Ringkasan Aktivitas
+
+- 📝 Total Catatan
+- ✅ Total Tugas
+- ✔️ Tugas Selesai
+- ⌛ Tugas Belum Selesai
+
+### Pesan Interaktif
+
+Jika produktivitas tinggi
+
+> 🔥 Hebat! Anda sangat aktif minggu ini.
+
+Jika produktivitas sedang
+
+> 🌟 Produktivitas Anda meningkat. Terus semangat!
+
+Jika produktivitas rendah
+
+> 💪 Ayo mulai selesaikan tugas Anda hari ini!
+
+---
+
+# 👤 Profil
+
+<div align="center">
+
+<img src="Screenshots/profi.jpeg" width="220"/>
+<img src="Screenshots/profil2.jpeg" width="220"/>
+
+</div>
+
+Pengguna dapat mengubah informasi akun kapan saja.
+
+### Data yang dapat diubah
+
+📷 Foto Profil
+
+👤 Nama
+
+📝 Bio
+
+🆔 Username
+
+🔒 Password
+
+Foto profil dapat dipilih dari:
+
+- Galeri
+- Upload File
+
+---
+
+# ⚙️ Pengaturan
+
+Menu Pengaturan memungkinkan pengguna menyesuaikan aplikasi sesuai kebutuhan.
+
+## 🌙 Tema
+
+- ☀ Light Mode
+- 🌙 Dark Mode
+
+Perubahan tema diterapkan secara langsung.
+
+---
+
+## 🔔 Pengaturan Notifikasi
+
+Pengguna dapat mengaktifkan maupun menonaktifkan notifikasi.
+
+### Saat Aktif
+
+Muncul pengaturan lanjutan.
+
+- 📢 Pemberitahuan
+- ⏳ Tugas Mendatang
+- 🚨 Tugas Terlambat
+
+### Saat Nonaktif
+
+Semua pengaturan lanjutan akan disembunyikan agar tampilan lebih sederhana.
+
+---
+
+# ⏰ Pengaturan Alarm
+
+Pengguna memiliki kontrol penuh terhadap alarm.
+
+### Preferensi Alarm
+
+🎵 Nada Dering
+
+📳 Getar
+
+🔁 Pengulangan
+
+🏷 Label Alarm
+
+🔊 Volume
+
+🌙 Jangan Ganggu
+
+### Mode Pengulangan
+
+- Harian
+- Hari Kerja
+- Akhir Pekan
+- Kustom
+
+### Volume
+
+Menggunakan slider horizontal.
+
+Saat digeser
+
+✔ Volume berubah secara langsung
+
+✔ Nada contoh diputar otomatis
+
+---
+
+# 🌐 Multi Bahasa
+
+Luminote mendukung tiga bahasa.
+
+🇮🇩 Indonesia
+
+🇯🇼 Jawa
+
+🇺🇸 English
+
+Perubahan bahasa dapat dilakukan kapan saja melalui menu Pengaturan.
+
+---
+
+# 💾 Backup & Restore
+
+Melindungi data pengguna agar tidak hilang.
+
+### Fitur
+
+✔ Backup Data
+
+✔ Restore Data
+
+✔ Memindahkan data ke perangkat lain
+
+---
+
+# 🗑️ Hapus Data
+
+Menghapus seluruh data aplikasi.
+
+Sebelum menghapus, sistem akan meminta konfirmasi untuk mencegah kesalahan.
+
+---
+
+# 📤 Bagikan Aplikasi
+
+Luminote dapat dibagikan melalui:
+
+- 📦 File APK
+- 🔗 Link Download
+- 📋 Salin Link
+
+---
+
+# ℹ Tentang Aplikasi
+
+Berisi informasi mengenai aplikasi.
+
+### Menu
+
+💻 Source Code GitHub
+
+📱 WhatsApp Developer
+
+📷 Instagram Developer
+
+ℹ Informasi Versi Aplikasi
+
+---
+
+# 🚪 Logout
+
+Logout dilakukan secara aman.
+
+Setelah logout pengguna akan diarahkan kembali ke halaman Login.
+
+---
+
+# 📱 Seluruh Halaman Aplikasi
+
+| Halaman | Status |
+|----------|--------|
+| 🚀 Splash Screen | ✅ |
+| 🔐 Login | ✅ |
+| 📝 Register | ✅ |
+| 🏠 Beranda | ✅ |
+| 📝 Catatan | ✅ |
+| ✅ Tugas | ✅ |
+| 📅 Kalender | ✅ |
+| ⭐ Favorit | ✅ |
+| 📂 Arsip | ✅ |
+| 📊 Statistik | ✅ |
+| 👤 Profil | ✅ |
+| ⚙ Pengaturan | ✅ |
+| 🔔 Pengaturan Notifikasi | ✅ |
+| ⏰ Pengaturan Alarm | ✅ |
+| 🌐 Bahasa | ✅ |
+| 💾 Backup & Restore | ✅ |
+| 📤 Bagikan Aplikasi | ✅ |
+| 🚪 Logout | ✅ |
+
+---
+
+# 🏗️ Arsitektur Aplikasi
+
+Luminote dikembangkan menggunakan pola arsitektur **MVVM (Model - View - ViewModel)** agar kode lebih terstruktur, mudah dikembangkan, dan mudah dipelihara.
+
+```mermaid
+flowchart TD
+
+A[👤 User]
+A --> B[📱 Activity / Fragment]
+
+B --> C[🧠 ViewModel]
+
+C --> D[📦 Repository]
+
+D --> E[(💾 Room Database)]
+
+C --> F[⚙️ SharedPreferences / DataStore]
+
+B --> G[🔔 Alarm Manager]
+
+G --> H[📲 Notification Manager]
+```
+
+---
+
+# 📂 Struktur Project
+
+```text
+📂 features
+├── auth
+├── notes
+├── task
+├── calendar
+├── favorite
+├── archive
+├── statistics
+├── settings
+└── profile
+```
+
+---
+
+# ⚙️ Persyaratan Sistem
+
+Sebelum menjalankan project, pastikan perangkat telah memiliki:
+
+| Software | Versi |
+|-----------|--------|
+| Android Studio | Hedgehog atau lebih baru |
+| Kotlin | Terbaru |
+| Gradle | Sesuai Project |
+| Android SDK | API 24+ |
+| JDK | 17 |
+
+---
+
+# 🚀 Cara Menjalankan Project
+
+### 1️⃣ Clone Repository
+
+```bash
+git clone https://github.com/kurniawan-Donn/Luminote.git
+```
+
+### 2️⃣ Masuk ke Folder Project
+
+```bash
+cd Luminote
+```
+
+### 3️⃣ Buka Menggunakan Android Studio
+
+```
+File
+→ Open
+→ Pilih Folder Project
+```
+
+### 4️⃣ Tunggu Gradle Sync
+
+Android Studio akan mengunduh seluruh dependency secara otomatis.
+
+### 5️⃣ Jalankan Aplikasi
+
+Klik tombol ▶ **Run**
+
+atau tekan
+
+```
+Shift + F10
+```
+
+---
+
+# 🛠️ Tech Stack
+
+<div align="center">
+
+| Technology | Digunakan Untuk |
+|------------|----------------|
+| ☕ Kotlin | Bahasa Pemrograman |
+| 🏗 MVVM | Architecture |
+| 💾 Room Database | Penyimpanan Data |
+| 📱 RecyclerView | List Data |
+| 📅 CalendarView | Kalender |
+| 🔔 AlarmManager | Reminder |
+| 📲 NotificationManager | Notifikasi |
+| 🖼 Image Picker | Foto Profil |
+| 📁 File Picker | Upload Gambar |
+| 🎨 Material Design | UI Modern |
+| 📊 MPAndroidChart | Statistik |
+
+</div>
+
+---
+
+# 📈 Alur Penggunaan Aplikasi
+
+```text
+            Login
+              │
+              ▼
+         Halaman Utama
+              │
+      ┌───────┴────────┐
+      ▼                ▼
+  Catatan           Tugas
+      │                │
+      ▼                ▼
+ Kalender         Reminder
+      │                │
+      └──────┬─────────┘
+             ▼
+        Statistik
+             │
+             ▼
+        Produktivitas
+```
+
+---
+
+# 🌟 Keunggulan Luminote
+
+✔️ Tampilan Modern
+
+✔️ Mudah Digunakan
+
+✔️ Ringan
+
+✔️ Offline
+
+✔️ Reminder Otomatis
+
+✔️ Kalender Interaktif
+
+✔️ Statistik Produktivitas
+
+✔️ Backup & Restore
+
+✔️ Multi Bahasa
+
+✔️ Tema Terang & Gelap
+
+✔️ Pengaturan Alarm Lengkap
+
+✔️ Profil yang Dapat Disesuaikan
+
+---
+
+# 🗺️ Roadmap
+
+### Fitur yang telah tersedia
+
+- [x] Catatan
+- [x] Tugas
+- [x] Reminder
+- [x] Kalender
+- [x] Favorit
+- [x] Arsip
+- [x] Statistik
+- [x] Profil
+- [x] Tema Gelap
+- [x] Multi Bahasa
+- [x] Backup & Restore
+- [x] Share APK
+
+### Pengembangan Selanjutnya
+
+- [ ] Sinkronisasi Cloud
+- [ ] Login Google
+- [ ] Widget Android
+- [ ] Export PDF
+- [ ] Export Excel
+- [ ] Voice Notes
+- [ ] Fingerprint Authentication
+- [ ] AI Smart Reminder
+
+---
+
+# 🤝 Kontribusi
+
+Kontribusi sangat terbuka.
+
+Jika ingin membantu pengembangan project ini silakan:
+
+1. Fork repository
+2. Buat branch baru
+
+```bash
+git checkout -b feature/NamaFitur
+```
+
+3. Commit perubahan
+
+```bash
+git commit -m "Menambahkan fitur baru"
+```
+
+4. Push
+
+```bash
+git push origin feature/NamaFitur
+```
+
+5. Buat Pull Request
 
 ---
 
 # 📄 Lisensi
 
-Project ini dibuat untuk keperluan pembelajaran dan pengembangan aplikasi Android.
+Project ini dibuat sebagai media pembelajaran dan pengembangan aplikasi Android.
 
 Silakan menggunakan, memodifikasi, maupun mengembangkan project ini dengan tetap mencantumkan atribusi kepada pengembang.
 
@@ -475,20 +924,26 @@ Silakan menggunakan, memodifikasi, maupun mengembangkan project ini dengan tetap
 
 # 👨‍💻 Developer
 
-**Dony Kurniawan**
+<div align="center">
+
+## Dony Kurniawan
+
+Android Developer • Kotlin Enthusiast
 
 💻 GitHub
 
 https://github.com/kurniawan-Donn
 
----
+<br>
 
-<div align="center">
+Terima kasih telah mengunjungi repository ini 🙌
 
-## ⭐ Jangan lupa berikan Star jika project ini bermanfaat!
+Jika project ini bermanfaat,
 
-Terima kasih telah menggunakan **Luminote** ❤️
+⭐ **Jangan lupa berikan Star pada repository ini.**
 
-Made with ☕ using Kotlin
+<br>
+
+Made with ❤️ using Kotlin & Android Studio
 
 </div>
