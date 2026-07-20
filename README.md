@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="screenshots/pcb.png" width="100%"/>
+<img src="Screenshots/pcb.png" width="100%"/>
 
 # 📒 Luminote
 
@@ -63,17 +63,36 @@ Fitur catatan memungkinkan pengguna untuk:
 
 ---
 
-# 📸 Preview Aplikasi
+#  Preview Aplikasi
+<div align="center">
 
-| Light Mode | Dark Mode |
-|------------|-----------|
-| ![](screenshots/pcb.png) | ![](screenshots/pcb.png) |
+###   🔐 Login       | 🚀 Register |      📸 Splash
+<img src="Screenshots/login.jpeg" width="200"/>
+<img src="Screenshots/register.jpeg" width="200"/>
+<img src="Screenshots/splash.jpeg" width="200"/>
 
-| Catatan | Tugas | Statistik |
-|----------|-------|-----------|
-| ![](screenshots/pcb.png) | ![](screenshots/pcb.png) | ![](screenshots/pcb.png) |
+#
 
+###  🌞 Light Mode | 🌙 Dark Mode
+<img src="Screenshots/light_mode.jpeg" width="200"/>
+<img src="Screenshots/dark_mode.jpeg" width="200"/>
 
+#
+
+### Fitur Utama
+📝 Catatan | ✅ Tugas |👤 Profil
+
+  <img src="Screenshots/catatan.jpeg" width="200"/>
+  <img src="Screenshots/dark_mode.jpeg" width="200"/>
+  <img src="Screenshots/profi.jpeg" width="200"/>
+  <img src="Screenshots/profil2.jpeg" width="200"/>
+
+###  📅 Kalender 
+<img src="Screenshots/calender.jpeg" width="200"/>
+<img src="Screenshots/calender2.jpeg" width="200"/>
+</div>
+
+---
 
 ## ✅ Tugas (Task)
 
@@ -158,12 +177,14 @@ Statistik menampilkan aktivitas pengguna selama **7 hari terakhir**.
 Menampilkan persentase penyelesaian tugas menggunakan diagram.
 
 Contoh:
+<div align="center">
+  
+###   Statistik 📊
+<img src="Screenshots/statistik.jpeg" width="200"/>
+<img src="Screenshots/statistik2.jpeg" width="200"/>
+</div>
 
-```
-██████████████████░░░░
-
-80% Selesai
-```
+#
 
 ## Pesan Interaktif
 
