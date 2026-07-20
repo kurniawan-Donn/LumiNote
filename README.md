@@ -1,4 +1,12 @@
-# 📒 Luminote - Smart Notes & Task Manager
+<div align="center">
+
+<img src="screenshots/pcb.png" width="100%"/>
+
+# 📒 Luminote
+
+Aplikasi Catatan & Manajemen Tugas Modern
+
+</div>
 
 <div align="center">
 
