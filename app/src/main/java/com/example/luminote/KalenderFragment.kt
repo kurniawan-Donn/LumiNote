@@ -114,8 +114,8 @@ class KalenderFragment : Fragment() {
         tvAgendaDate          = view.findViewById(R.id.tv_kal_agenda_date)
         tvEmptyAgenda         = view.findViewById(R.id.tv_kal_empty)
         progressAgenda        = view.findViewById(R.id.progress_kal_agenda)
-        chipCatatan = view.findViewById(R.id.chip_kal_catatan)
-        chipTugas   = view.findViewById(R.id.chip_kal_tugas)
+        chipCatatan           = view.findViewById(R.id.chip_kal_catatan)
+        chipTugas             = view.findViewById(R.id.chip_kal_tugas)
     }
 
     // ─── Setup ───────────────────────────────────────────────────────────────
