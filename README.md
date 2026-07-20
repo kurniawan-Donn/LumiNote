@@ -1,4 +1,12 @@
-# 📒 Luminote - Smart Notes & Task Manager
+<div align="center">
+
+<img src="screenshots/pcb.png" width="100%"/>
+
+# 📒 Luminote
+
+Aplikasi Catatan & Manajemen Tugas Modern
+
+</div>
 
 <div align="center">
 
@@ -59,11 +67,11 @@ Fitur catatan memungkinkan pengguna untuk:
 
 | Light Mode | Dark Mode |
 |------------|-----------|
-| ![](screenshots/home_light.png) | ![](screenshots/home_dark.png) |
+| ![](screenshots/home_light.png) | ![](screenshots/pcb.png) |
 
 | Catatan | Tugas | Statistik |
 |----------|-------|-----------|
-| ![](screenshots/note.png) | ![](screenshots/task.png) | ![](screenshots/statistik.png) |
+| ![](screenshots/note.png) | ![](screenshots/pcb.png) | ![](screenshots/statistik.png) |
 
 
 
