@@ -67,11 +67,11 @@ Fitur catatan memungkinkan pengguna untuk:
 
 | Light Mode | Dark Mode |
 |------------|-----------|
-| ![](screenshots/home_light.png) | ![](screenshots/pcb.png) |
+| ![](screenshots/pcb.png) | ![](screenshots/pcb.png) |
 
 | Catatan | Tugas | Statistik |
 |----------|-------|-----------|
-| ![](screenshots/note.png) | ![](screenshots/pcb.png) | ![](screenshots/statistik.png) |
+| ![](screenshots/pcb.png) | ![](screenshots/pcb.png) | ![](screenshots/pcb.png) |
 
 
 
